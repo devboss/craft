@@ -1,0 +1,109 @@
+/**
+ * @license
+ * MyFonts Webfont Build ID 3394285, 2017-05-24T05:50:36-0400
+ *
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are
+ * explicitly restricted from using the Licensed Webfonts(s).
+ *
+ * You may obtain a valid license at the URLs below.
+ *
+ * Webfont: GillSansMTStd-MediumItalic by Monotype
+ * URL: https://www.myfonts.com/fonts/mti/gill-sans/std-italic/
+ * Copyright: Font software Copyright 2001 Adobe Systems Incorporated. Typeface designs Copyright The Monotype Corporation. All Rights Reserved.
+ * Licensed pageviews: 250,000
+ *
+ * Webfont: GillSansMTStd-Light by Monotype
+ * URL: https://www.myfonts.com/fonts/mti/gill-sans/std-light/
+ * Copyright: Font software Copyright 2001 Adobe Systems Incorporated. Typeface designs Copyright The Monotype Corporation. All Rights Reserved.
+ * Licensed pageviews: 250,000
+ *
+ * Webfont: GillSansMTStd-LightItalic by Monotype
+ * URL: https://www.myfonts.com/fonts/mti/gill-sans/std-light-italic/
+ * Copyright: Font software Copyright 2001 Adobe Systems Incorporated. Typeface designs Copyright The Monotype Corporation. All Rights Reserved.
+ * Licensed pageviews: 250,000
+ *
+ * Webfont: GillSansMTStd-Medium by Monotype
+ * URL: https://www.myfonts.com/fonts/mti/gill-sans/std-roman/
+ * Copyright: Font software Copyright 2001 Adobe Systems Incorporated. Typeface designs Copyright The Monotype Corporation. All Rights Reserved.
+ * Licensed pageviews: 250,000
+ *
+ * Webfont: GillSansMTStd-Bold by Monotype
+ * URL: https://www.myfonts.com/fonts/mti/gill-sans/std-bold/
+ * Copyright: Font software Copyright 2001 Adobe Systems Incorporated. Typeface designs Copyright The Monotype Corporation. All Rights Reserved.
+ * Licensed pageviews: 250,000
+ *
+ * Webfont: GillSansMTStd-BoldItalic by Monotype
+ * URL: https://www.myfonts.com/fonts/mti/gill-sans/std-bold-italic/
+ * Copyright: Font software Copyright 2001 Adobe Systems Incorporated. Typeface designs Copyright The Monotype Corporation. All Rights Reserved.
+ * Licensed pageviews: 250,000
+ *
+ * Webfont: JustLovelyExtras by Nicky Laatz
+ * URL: https://www.myfonts.com/fonts/nicky-laatz/just-lovely/extras/
+ * Copyright: Copyright (c) 2016 by Nicky Laatz. All rights reserved.
+ * Licensed pageviews: 20,000
+ *
+ * Webfont: JustLovelySlanted by Nicky Laatz
+ * URL: https://www.myfonts.com/fonts/nicky-laatz/just-lovely/slanted/
+ * Copyright: Copyright (c) 2016 by Nicky Laatz. All rights reserved.
+ * Licensed pageviews: 20,000
+ *
+ * Webfont: JustLovelySlantedWide by Nicky Laatz
+ * URL: https://www.myfonts.com/fonts/nicky-laatz/just-lovely/slanted-wide/
+ * Copyright: Copyright (c) 2016 by Nicky Laatz. All rights reserved.
+ * Licensed pageviews: 20,000
+ *
+ * Webfont: JustLovely by Nicky Laatz
+ * URL: https://www.myfonts.com/fonts/nicky-laatz/just-lovely/just-lovely/
+ * Copyright: Copyright (c) 2016 by Nicky Laatz. All rights reserved.
+ * Licensed pageviews: 20,000
+ *
+ *
+ * License: https://www.myfonts.com/viewlicense?type=web&buildid=3394285
+ *
+ * © 2017 MyFonts Inc
+*/
+
+
+/* @import must be at top of file, otherwise CSS will not work */
+@import url("//hello.myfonts.net/count/33caed");
+
+$base-url: '' !default;
+
+@font-face {
+    font-family: $font-face-gill-sans;
+    src: url('#{$base-url}/fonts/33CAED_1_0.eot');
+    src: url('#{$base-url}/fonts/33CAED_1_0.eot?#iefix') format('embedded-opentype'),url('#{$base-url}/fonts/33CAED_1_0.woff2') format('woff2'),url('#{$base-url}/fonts/33CAED_1_0.woff') format('woff'),url('#{$base-url}/fonts/33CAED_1_0.ttf') format('truetype');
+    font-weight: $font-weight-light;
+}
+
+@font-face {
+    font-family: $font-face-gill-sans;
+    src: url('#{$base-url}/fonts/34A8E8_0_0.eot');
+    src: url('#{$base-url}/fonts/34A8E8_0_0.eot?#iefix') format('embedded-opentype'),url('#{$base-url}/fonts/34A8E8_0_0.woff2') format('woff2'),url('#{$base-url}/fonts/34A8E8_0_0.woff') format('woff'),url('#{$base-url}/fonts/34A8E8_0_0.ttf') format('truetype');
+    font-weight: $font-weight-light;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: $font-face-gill-sans;
+    src: url('#{$base-url}/fonts/33CAED_3_0.eot');
+    src: url('#{$base-url}/fonts/33CAED_3_0.eot?#iefix') format('embedded-opentype'),url('#{$base-url}/fonts/33CAED_3_0.woff2') format('woff2'),url('#{$base-url}/fonts/33CAED_3_0.woff') format('woff'),url('#{$base-url}/fonts/33CAED_3_0.ttf') format('truetype');
+    font-weight: $font-weight-regular;
+}
+
+@font-face {
+    font-family: $font-face-just-lovely;
+    src: url('#{$base-url}/fonts/33CAED_9_0.eot');
+    src: url('#{$base-url}/fonts/33CAED_9_0.eot?#iefix') format('embedded-opentype'),url('#{$base-url}/fonts/33CAED_9_0.woff2') format('woff2'),url('#{$base-url}/fonts/33CAED_9_0.woff') format('woff'),url('#{$base-url}/fonts/33CAED_9_0.ttf') format('truetype');
+    font-weight: $font-weight-regular;
+}
+
+@font-face {
+    font-family: $font-face-doves-type;
+    src: url('#{$base-url}/fonts/DovesType-Regular.eot');
+    src: url('#{$base-url}/fonts/DovesType-Regular.eot?#iefix') format('embedded-opentype'),
+    url('#{$base-url}/fonts/DovesType-Regular.woff2') format('woff2'),
+    url('#{$base-url}/fonts/DovesType-Regular.woff') format('woff');
+    font-weight: $font-weight-regular;
+}

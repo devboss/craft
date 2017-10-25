@@ -1,0 +1,19 @@
+{
+    "name": "resharmonics/laplanduk-website",
+    "description": "Craft CMS based website for LaplandUK.",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Tom Densham",
+            "email": "nedmas@mavenfortytwo.co.uk"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "laravel/homestead": "^5.1"
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true
+    }
+}

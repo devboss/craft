@@ -1,0 +1,77 @@
+{% import "_macros.twig" as macros %}
+
+{% extends "_blueprint-layout" %}
+
+{% block blueprint_content %}
+	<div class="background-sketch--reviews-leg show-for-medium"></div>
+	<div class="background-sketch--reviews-pedalling-cyclist"></div>
+	<div class="background-sketch--reviews-penny-farthing-champion"></div>
+
+	<div class="blueprint__container">
+		{{ macros.worksheet }}
+
+		{{ macros.title( 'Reviews' ) }}
+
+		{% set background_images = [ 'reviews-pen', 'reviews-oil-well', null, 'reviews-pen-lid' ] %}
+
+        {% for review in entry.reviews %}
+			{% set frame = ((loop.index % 5) == 0 ? 5 : loop.index % 5) %}
+	        {% set background_image = ( background_images[ loop.index0 ] is defined ) ? background_images[ loop.index0 ] : false %}
+            {% if loop.index is divisible by(2) %}
+				<div class="row">
+					<div class="column large-5 large-order-1 -no-grow">
+						<h2 class="-review-mobile hide-for-large margin-bottom-none">{{ review.reviewTitle }}</h2>
+
+						{% if background_image %}
+							<div class="background-sketch--{{ background_image }} show-for-medium"></div>
+						{% endif %}
+
+						<div class="reviews-frame__container">
+							<div class="reviews-frame--{{ frame }}">
+                                {% if review.reviewImage.first() %}
+									<img class="reviews-frame__image--{{ frame }}" src="{{ review.reviewImage.first().getUrl('reviewFrame' ~ frame) }}">
+                                {% endif %}
+							</div>
+						</div>
+					</div>
+
+					<div class="column medium-10 offset-medium-1 large-5 offset-large-1 -no-grow">
+						<div class="blueprint__text-section -title-padding-left-medium">
+							<h2 class="show-for-large">{{ review.reviewTitle }}</h2>
+                            {{ review.reviewContent }}
+							<p><a class="text-link" href="{{ review.reviewExternalLink }}">External link ></a></p>
+						</div>
+					</div>
+				</div>
+			{% else %}
+				<div class="row">
+					<div class="column large-5 offset-large-1 -no-grow">
+						<h2 class="-review-mobile hide-for-large margin-bottom-none">{{ review.reviewTitle }}</h2>
+
+						{% if background_image %}
+							<div class="background-sketch--{{ background_image }} show-for-medium"></div>
+						{% endif %}
+
+						<div class="reviews-frame__container">
+							<div class="reviews-frame--{{ frame }}">
+                                {% if review.reviewImage.first() %}
+									<img class="reviews-frame__image--{{ frame }}" src="{{ review.reviewImage.first().getUrl('reviewFrame' ~ frame) }}">
+                                {% endif %}
+							</div>
+						</div>
+					</div>
+
+					<div class="column medium-10 offset-medium-1 large-5 offset-large-0 -no-grow">
+						<div class="blueprint__text-section -title-padding-left-small">
+							<h2 class="show-for-large">{{ review.reviewTitle }}</h2>
+                            {{ review.reviewContent }}
+							<p><a class="text-link" href="{{ review.reviewExternalLink }}">External link ></a></p>
+						</div>
+					</div>
+				</div>
+            {% endif %}
+        {% endfor %}
+
+		{{ macros.sign_off_box( 'Wish', 'Collector of wishes' ) }}
+	</div>
+{% endblock %}

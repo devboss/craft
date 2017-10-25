@@ -1,0 +1,47 @@
+{% import "_macros.twig" as macros %}
+
+{% extends "_blueprint-layout" %}
+
+{% block blueprint_content %}
+	<div class="background-sketch--faqs-books"></div>
+	<div class="background-sketch--faqs-globe"></div>
+	<div class="background-sketch--faqs-magnifying-glass"></div>
+
+	<div class="blueprint__container">
+		{{ macros.worksheet }}
+
+		{{ macros.title( 'FAQs' ) }}
+
+		{% if cartAssist is defined and cartAssist.cartAssistEnabled is defined and cartAssist.cartAssistEnabled %}
+		<!-- nanorep embedded widget -->
+		<script type="text/javascript">
+          (function(){var e = document.createElement("script");e.src = '//cdn-customers.nanorep.com/common/iframe/parent_iframe_v2.js';document.head.appendChild(e);})();
+		</script>
+		<iframe id="supportFrame" src="//elfhelp.laplanduk.co.uk" style="width:100%;height:800px;border:0"></iframe>
+		<!-- //nanorep embedded widget -->
+		{% else %}
+		<div class="row">
+			<div class="column large-10 offset-large-1 -no-grow">
+
+				<ul class="accordion" data-class="Accordion" data-name="faqs">
+					{% for faq in entry.faqs %}
+						<li class="accordion__item">
+							<h2 class="accordion__link heading-2--gill-sans">{{ faq.question }}</h2>
+							<div class="accordion__content">
+								<div class="accordion__content-inner">
+									{{ faq.answer }}
+								</div>
+							</div>
+
+							<a class="accordion__arrow svg-link-fix"><svg class="fit"><use xlink:href="/images/svg/sprite.svg#faqs-arrow" xmlns:xlink="http://www.w3.org/1999/xlink"></use></svg></a>
+						</li>
+					{% endfor %}
+				</ul>
+
+			</div>
+		</div>
+		{% endif %}
+
+		{{ macros.sign_off_box( 'Conker', 'Trainee Toy Factory Elf' ) }}
+	</div>
+{% endblock %}

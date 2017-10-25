@@ -1,0 +1,16 @@
+.image-title--childs-details {
+	margin-top: rem(50);
+}
+
+.my-party__small-policy {
+	@include font( $font-gill-sans, $font-weight-light, 14 );
+}
+
+.my-party__italic-warning {
+	@include font( $font-gill-sans, $font-weight-light, 18 );
+	font-style: italic;
+}
+
+.my-party__child-details-break {
+	margin-top: rem(50);
+}

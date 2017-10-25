@@ -1,0 +1,29 @@
+$rotations: (
+    small: 1,
+    1: 1,
+    3: 3,
+    5: 5,
+    8: 8,
+    five: 5
+);
+
+@each $size, $value in $rotations {
+    .rotate-cw-#{$size} {
+        transform: rotate( $value * 1deg ) !important;
+    }
+
+    .rotate-ccw-#{$size} {
+        transform: rotate( $value * -1deg ) !important;
+    }
+}
+
+$origin-horizontal: ( left: 0, center: 0.5, right: 1 );
+$origin-vertical: ( top: 0, center: 0.5, bottom: 1 );
+
+@each $h-name, $h-value in $origin-horizontal {
+    @each $v-name, $v-value in $origin-vertical {
+        .transform-origin-#{$v-name}-#{$h-name} {
+            transform-origin: percentage($h-value) percentage($v-value);
+        }
+    }
+}

@@ -1,0 +1,43 @@
+.booking-summary__continue--disabled {
+  opacity: 0.5;
+}
+
+.booking-summary__total-price,
+.booking-summary__time {
+  @include font($font-gill-sans, $font-weight-regular, 18);
+}
+
+.booking-summary__total-price-price {
+  @include font($font-gill-sans, $font-weight-semi-bold, 24);
+}
+
+.booking-summary__price {
+  float: right;
+}
+
+.booking-summary__list {
+  margin-left: rem(20);
+  li {
+    @include font($font-gill-sans, $font-weight-light, 18);
+    display: list-item;
+  }
+}
+
+.booking-summary__extras {
+  margin-top: rem(40);
+  margin-bottom: rem(20);
+}
+
+.image-misc__image--removeextrainverse,
+.image-misc__image--removeextra {
+  cursor: pointer;
+  float: right;
+}
+
+.image-misc__image--removeextra.show-for-small-only,
+.image-misc__image--removeextrainverse.show-for-medium {
+  width: rem(15) !important;
+  height: rem(15) !important;
+  margin-top: rem(3);
+  margin-left: rem(10);
+}

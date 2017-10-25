@@ -1,0 +1,81 @@
+.booking-complete__wrapper {
+	.medium-offset-8 {
+		margin: 0 auto;
+	}
+	margin-bottom: rem(220);
+	.image-misc__image--eekofull {
+		margin: 0 auto rem(50) auto;
+		width: rem(450) !important;
+		height: rem(480)!important;
+		background-repeat: no-repeat;
+		@include breakpoint(small down) {
+			width: rem(300) !important;
+			height: rem(320)!important;
+		}
+	}
+
+	@include breakpoint(medium down) {
+		margin-bottom: rem(10);
+	}
+
+
+}
+
+.image-misc__image--mobile-explore {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+
+.heading-2--thankyou {
+	@include font($font-gill-sans, $font-weight-semi-bold, 22);
+}
+
+.heading-2--booking-complete-message {
+	@include font($font-gill-sans, $font-weight-light, 18, 30);
+}
+
+.heading-2--share-the-magic {
+	@include font($font-just-lovely, $font-weight-regular, 52);
+}
+
+.image-misc__image--completecircle {
+	margin-left: auto;
+	position: relative;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-direction: row;
+	flex-direction: row;
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	@include breakpoint(small down) {
+		width: rem(277) !important;
+		height: rem(188) !important;
+	}
+
+	@include breakpoint(medium) {
+		margin-right: rem(300);
+	}
+
+}
+
+.booking-complete__share-the-magic-wrapper {
+	width: rem(48);
+	height: rem(28);
+	flex: 1 0 0;
+	display: inline-block;
+
+}
+
+.image-misc__image--eeko {
+	position: absolute;
+	bottom: rem(-31);
+}
+
+.image-misc__image--explore {
+	position: absolute;
+	right: rem(0);
+	bottom: rem(0);
+}

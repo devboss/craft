@@ -1,0 +1,15 @@
+{
+  "autoload": {
+    "psr-0": { "Omnipay\\Realex\\" : "vendor/jholdroyd/omnipay-realex/src/" }
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://bitbucket.org/resharmonics-ondemand/omnipay-realex"
+    }
+  ],
+  "require": {
+    "jholdroyd/omnipay-realex": "dev-master"
+  },
+  "minimum-stability": "dev"
+}

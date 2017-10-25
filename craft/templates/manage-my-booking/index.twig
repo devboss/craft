@@ -1,0 +1,80 @@
+{#
+ # Event info entry template
+ # -------------------
+ #
+ # This template gets loaded whenever a Event info entry’s URL is
+ # requested. That’s because the Event info section’s Template setting is
+ # set to “event-info/_entry”, the path to this template.
+ #
+ # When this template is loaded, it will already have an ‘entry’
+ # variable, set to the requested Event info entry.
+ #
+ # See this page for more details on how Craft routes requests:
+ # http://craftcms.com/docs/routing
+ #}
+
+{% extends "_layout" %}
+
+{% block content %}
+{% if (siteStatus.mmbLive is defined and siteStatus.mmbLive) %}
+    <div id="app" v-show="booking.id !== 0" class="mmb-app wooden-background">
+        <div class="blueprint">
+            <div class="blueprint__container">
+                <wooden-horses></wooden-horses>
+                <div class="row">
+                    <mmb-nav></mmb-nav>
+                </div>
+                <div class="row">
+                    <div class="column">
+
+                        <!--<router-link :to="{name:'my-bookings'}">Back to My Bookings</router-link>-->
+                        <!--{% raw %}<p>Booking Reference: {{ booking.bookingReference }}</p>{% endraw %}-->
+
+                        <router-view></router-view>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% else %}
+    {% set title = "Coming Soon..." %}
+
+    <div id="booking-portal" class="container-fluid wooden-background">
+        <div class="blueprint">
+            <div class="blueprint__container">
+                <div class="worksheet-box">
+                    <span class="worksheet-box__title">Worksheet</span>
+                    <span class="worksheet-box__text">Toy Maker’s Blueprint</span>
+                </div>
+                <div class="error-page error-page--404">
+                    <h1 class="image-title image-title--coming-soon">
+                        <span class="image-title__image--coming-soon">Coming soon...</span>
+                    </h1>
+                    <div class="error-page__summary">
+                        {% if siteStatus.mmbOfflineSummary %}
+                            {{ siteStatus.mmbOfflineSummary }}
+                        {% else %}
+                            <p>The personalise my visit will re-open soon. We will send you an email to remind you.</p>
+                        {% endif %}
+                    </div>
+                    <div class="error-page__suggestion">
+                        {% if siteStatus.mmbOfflineSuggestion %}
+                            {{ siteStatus.mmbOfflineSuggestion }}
+                        {% else %}
+                            <p>Until then, you can head back to the <a href="/">homepage</a>.</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+{% endblock %}
+
+{% block scripts %}
+    {% if (siteStatus.mmbLive is defined and siteStatus.mmbLive) %}
+    <script src="{{ craft.aurora.mix('js/manage-my-booking.js') }}"></script>
+    {% endif %}
+{% endblock %}

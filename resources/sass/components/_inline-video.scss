@@ -1,0 +1,141 @@
+.inline-video {
+    position: relative;
+
+    &.-visitors-guide {
+        position: absolute;
+        height: 0;
+        left: percentage( 24 / 375 );
+        bottom: percentage( 28 / 764 );
+        width: percentage( 327 / 375 );
+        padding-top: percentage( 232 / 375 );
+
+        @include breakpoint( large ) {
+            left: percentage( 112 / $book-page-max-width );
+            bottom: auto;
+            top: percentage( 375 / $book-page-max-height );
+            width: percentage( 276 / $book-page-max-width );
+            padding-top: percentage( 196 / $book-page-max-width );
+        }
+    }
+}
+
+.inline-video__drop-shadow {
+    position: absolute;
+    left: 2%;
+    right: 2%;
+    top: 2%;
+    bottom: 2%;
+    box-shadow: 13px 9px 21px 13px rgba( $color-black, 0.5 );
+    z-index: 1;
+
+    &.-visitors-guide {
+        left: 5%;
+        right: 5.5%;
+        top: 9%;
+        bottom: 13.8%;
+        box-shadow: -2px 2px 21px 2px rgba( $color-black, 0.5 );
+    }
+}
+
+.inline-video__container {
+    position: absolute;
+    width: 100%;
+    height: 0;
+    padding-top: ( 9 / 16 ) * 100%;
+    background: $color-black;
+    z-index: 2;
+
+    &.-invitation {
+        $width: percentage( 971 / 1066 );
+        width: $width;
+        padding-top: ( 9 / 16 ) * $width;
+        left: percentage( 49 / 1066 );
+        top: percentage( 41 / 600 );
+    }
+
+    &.-sneak-peak {
+        $width: percentage( 971 / 1066 );
+        width: $width;
+        padding-top: ( 9 / 16 ) * $width;
+        left: percentage( 49 / 1066 );
+        top: percentage( 50 / 632 );
+    }
+
+    &.-visitors-guide {
+        $width: percentage( 288 / 330 );
+        width: $width;
+        padding-top: ( 9 / 16 ) * $width;
+        left: percentage( 19 / 330 );
+        top: percentage( 29 / 222 );
+    }
+}
+
+.inline-video__video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    transition: opacity $transition-fast linear;
+
+    .-video-ready.-poster-loaded .inline-video__container > & {
+        opacity: 1;
+    }
+
+    iframe {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.inline-video__play {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    transition: opacity $transition-fast linear;
+    pointer-events: none;
+
+    .-video-ready.-video-untouched &,
+    .-video-ready.-video-ended & {
+        opacity: 1;
+    }
+
+    .-video-playing & {
+        opacity: 0;
+    }
+}
+
+.inline-video__frame {
+    position: relative;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    z-index: 3;
+
+    .ie10 & {
+        z-index: 1;
+    }
+
+    &.-invitation {
+        @include background-image( "videos/what-is-lapland-video-invitation-background.png" );
+        @include background-image-aspect-ratio( "videos/what-is-lapland-video-invitation-background.png", 100% )
+    }
+
+    &.-sneak-peak {
+        @include background-image( "videos/what-is-lapland-video-sneak-peak-background.png" );
+        @include background-image-aspect-ratio( "videos/what-is-lapland-video-sneak-peak-background.png", 100% )
+    }
+
+    &.-visitors-guide {
+        position: absolute;
+        left: 0;
+        top: 0;
+        @include background-image( "videos/visitors-guide-video-background.png" );
+        @include background-image-aspect-ratio( "videos/visitors-guide-video-background.png", 100% )
+    }
+}

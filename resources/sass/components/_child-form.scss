@@ -1,0 +1,106 @@
+.child-form__form-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: rem(30);
+
+	.input-container__text:after {
+		content: "" !important;
+	}
+
+	@include breakpoint(medium down) {
+		.input-container,
+		.input-container__help-text,
+		.vdp-datepicker {
+			width: 100% !important;
+
+		}
+
+		.input-container {
+			label {
+				align-self: flex-start;
+				text-align: left!important;
+			}
+		}
+
+		input,
+		.input-container__help-text,
+		.multiselect,
+		.vdp-datepicker {
+			max-width: 100%!important;
+		}
+
+		.input-container__help-text {
+			.button.margin-bottom-medium.rotate-ccw-small {
+				margin: 0 auto;
+			}
+		}
+
+	}
+
+    .small-12 {
+        margin-bottom: rem(30);
+        display: inline-block;
+    }
+
+	.input-container {
+		width: 70%;
+        margin: 0 auto;
+        @include breakpoint(640px down) {
+            display: inline-block !important;
+        }
+		label {
+			flex: 1 1 0%;
+			padding-right: rem(30);
+			@include font($font-gill-sans, $font-weight-regular, 18);
+			text-transform: uppercase;
+		}
+
+		input,
+		.input-container__help-text,
+		.multiselect,
+		.vdp-datepicker {
+			max-width: rem(425);
+		}
+
+		.multiselect,
+		.vdp-datepicker {
+			flex: 2 1 0%;
+			padding: 0!important;
+		}
+
+		.vdp-datepicker {
+			input {
+				width: 100%;
+			}
+		}
+
+		.input-container__help-text {
+			flex: 2 1 0%;
+			@include font($font-gill-sans, $font-weight-light, 18);
+			font-style: italic;
+			&.-no-italic {
+				font-style: normal;
+			}
+		}
+
+		&.-next-help-text {
+			margin-bottom: rem(10);
+		}
+
+		.input-container__attendance-year {
+			margin-top: rem(20);
+			width: 33.33333333333333333333%
+		}
+
+		.input-container__attended-before-label {
+			align-self: flex-start;
+			margin-top: rem(20);
+		}
+
+        input {
+            flex: 2 1 0%;
+			vertical-align: text-bottom;
+        }
+	}
+
+}

@@ -1,0 +1,44 @@
+.worksheet-box {
+    position: absolute;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    width: em( 193, 15 );
+    height: em( 52, 15 );
+    padding: em( 9, 15 ) 0 0 em( 8, 15 );
+
+    &:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: em( -1, 15 );
+        width: 100%;
+        height: em( 2, 15 );
+        @include horizontal-line-background( -20 );
+    }
+
+    // use ems to scale everything
+    font-size: 12px;
+
+    @include breakpoint( large ) {
+        font-size: 15px;
+    }
+}
+
+.worksheet-box__title {
+    @include font( $font-gill-sans, $font-weight-regular, 1em );
+    line-height: 1;
+    display: block;
+}
+
+.worksheet-box__text {
+    @include font( $font-just-lovely, $font-weight-regular, em( 44, 15 ) );
+    line-height: 1;
+    display: block;
+    position: absolute;
+    left: em( 30, 44 );
+    bottom: em( -17, 44 );
+    white-space: nowrap;
+    color: rgba( $color-white, 0.82 );
+    transform: rotate( -1.5deg );
+}

@@ -1,0 +1,141 @@
+{% macro button( text, url, variation = false, modifiers = '' ) %}
+	{% set tag = ( url != false ) ? 'a' : 'span' %}
+	{% set href = ( url != false ) ? ' href=' ~ url ~ '' : '' %}
+	{% set target = ( 'http' in url ) ? ' target="_blank"' : '' %}
+	<{{ tag }} class="button{{ variation ? '--' ~ variation : '' }} {{ modifiers }}"{{ href }}{{ target }}>
+		<span class="button__inner">
+			<span class="button__text">{{ text }}</span>
+			<svg class="button__arrow">
+				<use xlink:href="/images/svg/sprite.svg#button-arrow"
+				     xmlns:xlink="http://www.w3.org/1999/xlink" />
+			</svg>
+		</span>
+	</{{ tag }}>
+{% endmacro %}
+
+{% macro worksheet ( text='Toy Maker’s Blueprint' ) %}
+	<div class="worksheet-box">
+		<span class="worksheet-box__title">Worksheet</span>
+		<span class="worksheet-box__text">{{ text }}</span>
+	</div>
+{% endmacro %}
+
+{% macro title ( text ) %}
+	<h1 class="image-title image-title--{{ text | kebab }}">
+		<span class="image-title__image--{{ text | kebab }}">{{ text }}</span>
+	</h1>
+{% endmacro %}
+
+{% macro sign_off_box( character_name, position, variation='', name_prefix='' ) %}
+	{% set existing_characters = [ 'eeko', 'sage', 'conker', 'compass', 'wish', 'whittle', 'pixie-mixie', 'zauber' ] %}
+	{% set url_character_name = ( character_name | kebab ) %}
+	{% set url = ( url_character_name in existing_characters ) ? url_character_name : '' %}
+	{% set url = ( url == 'wish' or url == 'compass' ) ? 'compass-and-wish' : url %}
+	{% set url = ( url | length ) ? '/' ~ url : '' %}
+
+	<a class="signed-off-box{{ variation ? '--' ~ variation : '' }}" href="/#/books/elf-world{{ url }}">
+		<div class="signed-off-box__horizontal-line-1"></div>
+		<div class="signed-off-box__horizontal-line-2"></div>
+
+		<span class="signed-off-box__cta -{{ url_character_name }}"><span class="signed-off-box__cta-highlight">Click</span> to learn more about {{ name_prefix }}{{ character_name }}</span>
+
+		<div class="signed-off-box__icon -{{ url_character_name }}"></div>
+		<div class="signed-off-box__line">
+			<span class="signed-off-box__title">Signed off by:</span>
+			<span class="signed-off-box__text--name -{{ character_name | kebab }}">{{ character_name }}</span>
+		</div>
+		<div class="signed-off-box__line">
+			<span class="signed-off-box__title">Position:</span>
+			<span class="signed-off-box__text">{{ position }}</span>
+		</div>
+	</a>
+{% endmacro %}
+
+{% macro cover( book_name ) %}
+	<div class="page__side page__side--front page__side--cover">
+		<picture class="page__picture">
+			{# Transparent gif to not mess up image load count on mobile #}
+			<source media="--medium"
+			        sizes="100vw"
+			        data-srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+
+			<source sizes="100vw"
+			        data-srcset="/images/static/books/desktop/{{ book_name }}-cover-482w.png 482w, /images/static/books/desktop/{{ book_name }}-cover-964w.png 964w">
+			<img class="page__image lazyload">
+		</picture>
+	</div>
+{% endmacro %}
+
+{% macro page( book_name, page_number, page_name='', back_page_extra_html='', front_page_extra_html='' ) %}
+	{% set url = ( page_name | length ) ? page_name : 'page-' ~ page_number %}
+	{% set image_page = ( page_name | length ) ? page_number ~ '-' ~ page_name : page_number %}
+
+	<div class="page__side page__side--back" data-name="{{ url }}">
+		<picture class="page__picture">
+			<source media="--medium"
+			        sizes="100vw"
+			        data-srcset="/images/static/books/mobile/{{ book_name }}-{{ image_page }}-top-375w.jpg 375w,
+						        /images/static/books/mobile/{{ book_name }}-{{ image_page }}-top-768w.jpg 768w,
+						        /images/static/books/mobile/{{ book_name }}-{{ image_page }}-top-1023w.jpg 1023w,
+						        /images/static/books/mobile/{{ book_name }}-{{ image_page }}-top-1536w.jpg 1536w">
+
+			<source sizes="100vw"
+			        data-srcset="/images/static/books/desktop/{{ book_name }}-{{ image_page }}-left-482w.png 482w, /images/static/books/desktop/{{ book_name }}-{{ image_page }}-left-964w.png 964w">
+			<img class="page__image lazyload">
+		</picture>
+
+		{{ back_page_extra_html | raw }}
+
+		<a class="page__button transparent-button page__button--close hide-for-large"></a>
+		<a class="page__button transparent-button page__button--previous show-for-large"></a>
+	</div>
+	<div class="page__side page__side--front">
+		<picture class="page__picture">
+			<source media="--medium"
+			        sizes="100vw"
+			        data-srcset="/images/static/books/mobile/{{ book_name }}-{{ image_page }}-bottom-375w.jpg 375w,
+						        /images/static/books/mobile/{{ book_name }}-{{ image_page }}-bottom-768w.jpg 768w,
+						        /images/static/books/mobile/{{ book_name }}-{{ image_page }}-bottom-1023w.jpg 1023w,
+						        /images/static/books/mobile/{{ book_name }}-{{ image_page }}-bottom-1536w.jpg 1536w">
+
+			<source sizes="100vw"
+			        data-srcset="/images/static/books/desktop/{{ book_name }}-{{ image_page }}-right-482w.png 482w, /images/static/books/desktop/{{ book_name }}-{{ image_page }}-right-964w.png 964w">
+			<img class="page__image lazyload">
+		</picture>
+
+		{{ front_page_extra_html | raw }}
+
+		<a class="page__button transparent-button page__button--close show-for-large"></a>
+		<a class="page__button transparent-button page__button--previous hide-for-large"></a>
+		<a class="page__button transparent-button page__button--next"></a>
+	</div>
+{% endmacro %}
+
+{% macro draw_animation ( animation_name, data_file_types='' ) %}
+	{% set data_file_attr = ( data_file_types | length ) ? ' data-file-types="' ~ data_file_types ~ '"' : '' %}
+	<div class="draw-animation--{{ animation_name }} show-for-large" data-class="DrawAnimation" data-name="{{ animation_name }}"{{ data_file_attr | raw }}></div>
+{% endmacro %}
+
+{% macro inline_video ( video_id, video_placeholder, modifier='', extra_classes='' ) %}
+	{% set modifier = ( modifier | length ) ? ' ' ~ modifier : '' %}
+	{% set extra_classes = ( extra_classes | length ) ? ' ' ~ extra_classes : '' %}
+
+	<div class="inline-video -video-untouched{{ modifier }}{{ extra_classes }}" data-class="InlineVideo" data-id="{{ video_id }}">
+		<div class="inline-video__drop-shadow{{ modifier }}"></div>
+		<div class="inline-video__container{{ modifier }}">
+			<div class="inline-video__video"></div>
+			<a class="inline-video__play{{ modifier }}">
+				<img class="inline-video__poster lazyload" data-src="{{ video_placeholder }}">
+			</a>
+		</div>
+		<div class="inline-video__frame{{ modifier }}"></div>
+	</div>
+{% endmacro %}
+
+{% macro elf_buttons () %}
+	{% set pages = [ 'eeko', 'sage', 'conker', 'compass', 'wish', 'whittle', 'pixie-mixie', 'zauber' ] %}
+	{% for page in pages %}
+		{% set url = ( page == 'compass' or page == 'wish' ) ? 'compass-and-wish' : page %}
+		<a class="page__button page__button--{{ page }} transparent-button" href="/#/books/elf-world/{{ url }}"></a>
+	{% endfor %}
+{% endmacro %}

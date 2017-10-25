@@ -1,0 +1,52 @@
+$close: -86px -55px 30px 30px;
+$copy: -0px -55px 32px 34px;
+$cross: -205px -55px 29px 30px;
+$drawing-pin: -0px -12px 51px 43px;
+$email: -51px -12px 41px 31px;
+$external-link: -116px -55px 30px 30px;
+$facebook: -0px -89px 20px 31px;
+$left-arrow: -125px -12px 41px 19px;
+$magnifying-glass: -234px -55px 29px 30px;
+$maximise: -176px -55px 29px 30px;
+$minimise: -146px -55px 30px 30px;
+$pager-bar-bottom: -0px -6px 823px 6px;
+$pager-bar-top: -0px -0px 823px 6px;
+$share: -263px -55px 26px 27px;
+$thumbs-up-active: -59px -55px 27px 34px;
+$thumbs-up: -32px -55px 27px 34px;
+$twitter: -92px -12px 33px 29px;
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 3);
+}
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 4);
+}
+@function sprite-width($sprite) {
+   @return nth($sprite, 3);
+}
+@function sprite-height($sprite) {
+   @return nth($sprite, 4);
+}
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 1);
+  $sprite-offset-y: nth($sprite, 2);
+  background-position: $sprite-offset-x $sprite-offset-y;
+}
+@mixin sprite($sprite, $display: block) {
+   @include sprite-position($sprite);
+  background-repeat: no-repeat;
+  overflow: hidden;
+  display: $display;
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}
+
+.icon {
+  background-image: url('http://localhost:3000/images/css-sprite/sprite.png?8863b7f4ef2549699ed39b5e8716456fd6034152');
+}
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .icon {
+    background-image: url('http://localhost:3000/images/css-sprite/sprite@2x.png?f9bb583bb95b619d4a8cb95cc260301f62b037c4');
+    background-size: 823px 120px;
+  }
+}

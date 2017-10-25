@@ -1,0 +1,19 @@
+.nr-style-scroll, .nr-answering-answer-content {
+    &::-webkit-scrollbar, &::-webkit-scrollbar-button {
+        width: 5px;
+        height: 0;
+    }
+
+    &::-webkit-scrollbar-corner {
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: $color-cocoa-bean;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+        border: 1px solid $color-cocoa-bean;
+    }
+}

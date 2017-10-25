@@ -1,0 +1,111 @@
+.homepage {
+    position: relative;
+    width: 100%;
+    overflow-x: hidden;
+    opacity: 0;
+    transition: opacity $transition-fast linear;
+
+    .-app-ready & {
+        opacity: 1;
+    }
+}
+
+.homepage__container {
+    position: relative;
+    width: 100%;
+}
+
+@mixin homepage-image() {
+    position: absolute;
+    display: block;
+
+    img {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.homepage__aurora, .homepage__snow {
+    @include homepage-image();
+
+    z-index: z-index( aurora );
+}
+
+.homepage__background {
+    @include homepage-image();
+
+    width: 100%;
+    height: 100%;
+    z-index: z-index( background );
+}
+
+%homepage__button {
+    position: absolute;
+    z-index: z-index( content );
+}
+
+.homepage__button--elves {
+    @extend %homepage__button;
+
+    width: percentage( 465 / 750 );
+    height: percentage( 136 / 1342 );
+    left: percentage( 208 / 750 );
+    top: percentage( 688 / 1342 );
+
+    @include breakpoint( large ) {
+        width: percentage( 138 / 4820 );
+        height: percentage( 488 / 1536 );
+        left: percentage( 2194 / 4820 );
+        top: percentage( 664 / 1536 );
+        transform: rotate(8.5deg);
+    }
+}
+
+.homepage__button--untold-story {
+    @extend %homepage__button;
+
+    width: percentage( 421 / 750 );
+    height: percentage( 105 / 1342 );
+    left: percentage( 221 / 750 );
+    top: percentage( 583 / 1342 );
+
+    @include breakpoint( large ) {
+        width: percentage( 114 / 4820 );
+        height: percentage( 448 / 1536 );
+        left: percentage( 2361 / 4820 );
+        top: percentage( 719 / 1536 );
+    }
+}
+
+.homepage__button--visitors-guide {
+    @extend %homepage__button;
+
+    width: percentage( 388 / 750 );
+    height: percentage( 107 / 1342 );
+    left: percentage( 238 / 750 );
+    top: percentage( 476 / 1342 );
+
+    @include breakpoint( large ) {
+        width: percentage( 117 / 4820 );
+        height: percentage( 416 / 1536 );
+        left: percentage( 2475 / 4820 );
+        top: percentage( 745 / 1536 );
+    }
+}
+
+.homepage__button--elf-times {
+    @extend %homepage__button;
+
+    width: percentage( 528 / 750 );
+    height: percentage( 260 / 1342 );
+    left: percentage( 134 / 750 );
+    top: percentage( 849 / 1342 );
+
+    @include breakpoint( large ) {
+        width: percentage( 360 / 4820 );
+        height: percentage( 464 / 1536 );
+        left: percentage( 3034 / 4820 );
+        top: percentage( 453 / 1536 );
+    }
+}

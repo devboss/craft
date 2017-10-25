@@ -1,0 +1,198 @@
+.blueprint {
+    position: relative;
+    max-width: px( $blueprint-max-width );
+    margin: 0 auto;
+    background-color: $color-blueprint-background;
+    box-shadow: 0 2px 14px 2px rgba( $color-black, 0.72 );
+    overflow: hidden;
+
+    padding: px( $blueprint-outer-padding-small );
+
+    @include breakpoint( large ) {
+        padding: px( $blueprint-outer-padding-large );
+    }
+
+    @include breakpoint( xlarge ) {
+        padding: px( $blueprint-outer-padding-xlarge );
+    }
+
+    background-image: url( "/images/backgrounds/blueprints/grid.png" ),
+        url( "/images/backgrounds/blueprints/directions.jpg" );
+    background-repeat: repeat, repeat;
+    background-position: center top, center top;
+
+    @include breakpoint( retina ) {
+        background-image: url( "/images/backgrounds/blueprints/grid@2x.png" ),
+        url( "/images/backgrounds/blueprints/directions@2x.jpg" );
+        background-size: 1292px, 1292px;
+    }
+
+    &.-overflow-visible {
+        overflow: visible;
+    }
+}
+
+.blueprint__container {
+    position: relative;
+    border: 1px solid rgba( $color-white, 0.65 );
+
+    padding: rem( $blueprint-inner-padding-top-small ) 0 rem( $blueprint-inner-padding-bottom-small );
+
+    @include breakpoint ( medium ) {
+        padding: rem( $blueprint-inner-padding-top-medium )
+            percentage( $blueprint-inner-padding-horizontal-medium-perc )
+            rem( $blueprint-inner-padding-bottom-medium );
+    }
+
+    @include breakpoint ($breakpoint-signed-off-ml) {
+        padding-bottom: rem( $blueprint-inner-padding-bottom-medium-large );
+    }
+
+    @include breakpoint ( large ) {
+        padding: rem( $blueprint-inner-padding-top-large )
+            percentage( $blueprint-inner-padding-horizontal-large-perc )
+            rem( $blueprint-inner-padding-bottom-large );
+    }
+
+    @include breakpoint( xlarge ) {
+        padding: rem( $blueprint-inner-padding-top-xlarge )
+            percentage( $blueprint-inner-padding-horizontal-xlarge-perc )
+            rem( $blueprint-inner-padding-bottom-xlarge );
+    }
+}
+
+.blueprint__container--hotel-partners {
+    @extend .blueprint__container;
+
+    @include breakpoint( medium down ) {
+        padding-top: 136px;
+    }
+}
+
+.blueprint__container--superstar-days {
+    @extend .blueprint__container;
+
+    @include breakpoint( small only ) {
+        padding-top: 0;
+    }
+}
+
+.blueprint__container--premium-plus {
+    @extend .blueprint__container;
+    border: 1px solid rgba( $color-ronchi, 0.4 );
+}
+
+.blueprint__container--gallery,
+.blueprint__container--login {
+    @extend .blueprint__container;
+
+    padding-bottom: rem( 230 );
+
+    @include breakpoint ( large ) {
+        padding-bottom: rem( 185 );
+    }
+
+    @include breakpoint( xlarge ) {
+        padding-bottom: rem( 210 );
+    }
+}
+
+.blueprint__text-section {
+    @include blueprint-text-box();
+}
+
+.blueprint-text-callout {
+    @include font( $font-just-lovely, $font-weight-regular, 50, 50 );
+
+    @include breakpoint( large ) {
+        font-size: rem( 54 );
+    }
+}
+
+.blueprint-text-callout__large {
+    @include font-size-line-height( 96, 86 );
+
+    @include breakpoint( large ) {
+        @include font-size-line-height( 105, 93 );
+    }
+}
+
+.history-untold-story__text {
+    @include font( $font-just-lovely, $font-weight-regular, 74, 65 );
+    color: $color-candlelight;
+    text-align: center;
+
+    @include breakpoint( large ) {
+        width: 46.5%;
+        text-align: left;
+    }
+}
+
+.history-untold-story__image {
+    @include breakpoint( medium down ) {
+        width: 150%;
+        max-width: none;
+    }
+}
+
+.history-christmas-magic-text {
+    @include font( $font-just-lovely, $font-weight-regular, 51, 60 );
+}
+
+.history-signature-text {
+    @include font( $font-just-lovely, $font-weight-regular, 36, 43 );
+    padding: rem( 15 ) 0 0 rem( 50 );
+}
+
+@function percentage-plus-scalar-calc( $perc, $scalar ) {
+    @return calc( #{percentage( $perc )} + #{px-or-existing-unit($scalar)} );
+}
+
+.join-us-cogs {
+    max-width: none;
+
+    width: percentage-plus-scalar-calc( 1, $blueprint-outer-padding-small * 2 + 2 );
+    margin-left: px( -$blueprint-outer-padding-small + 1 );
+
+    @include breakpoint( medium ) {
+        $perc: 1 / ( 1 - $blueprint-inner-padding-horizontal-medium-perc * 2 );
+
+        width: percentage-plus-scalar-calc(
+                $perc,
+                $blueprint-outer-padding-small * 2 + 2
+        );
+
+        margin-left: percentage-plus-scalar-calc(
+                -( $blueprint-inner-padding-horizontal-medium-perc * $perc ) - 37 / 1232,
+                -( $blueprint-outer-padding-small + 1 )
+        );
+    }
+
+    @include breakpoint( large ) {
+        $perc: 1 / ( 1 - $blueprint-inner-padding-horizontal-large-perc * 2 );
+
+        width: percentage-plus-scalar-calc(
+                $perc,
+                $blueprint-outer-padding-large * 2 + 2
+        );
+
+        margin-left: percentage-plus-scalar-calc(
+                -( $blueprint-inner-padding-horizontal-large-perc * $perc ) - 37 / 1232,
+                -( $blueprint-outer-padding-large + 1 )
+        );
+    }
+
+    @include breakpoint( xlarge ) {
+        $perc: 1 / ( 1 - $blueprint-inner-padding-horizontal-xlarge-perc * 2 );
+
+        width: percentage-plus-scalar-calc(
+                $perc,
+                $blueprint-outer-padding-xlarge * 2 + 2
+        );
+
+        margin-left: percentage-plus-scalar-calc(
+                -( $blueprint-inner-padding-horizontal-xlarge-perc * $perc ) - 37 / 1232,
+                -( $blueprint-outer-padding-xlarge + 1 )
+        );
+    }
+}

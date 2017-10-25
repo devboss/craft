@@ -1,0 +1,79 @@
+body {
+	color: $color-white;
+
+	// This if for doves-type hopefully it doesn't break the other fonts!
+	font-variant-numeric: lining-nums;
+    font-feature-settings: 'lnum';
+}
+
+h2, .heading-2 {
+	@include heading-2();
+
+    &.-review-mobile {
+        margin-left: 16%;
+    }
+}
+
+.heading-2--gill-sans {
+	@include heading-2(gill-sans);
+	@include breakpoint(small down) {
+		font-size: 1.7rem!important;
+	}
+}
+
+.heading-2--doves {
+	@include heading-2(doves);
+
+    &.-what-is-lapland-uk {
+        @include breakpoint( small down ) {
+            font-size: rem( 21 );
+        }
+    }
+}
+
+.heading-2--small-doves {
+	@include heading-2(small-doves);
+
+	@include breakpoint (small) {
+		margin-top: rem(30);
+	}
+
+}
+
+h3, .heading-3 {
+	@include heading-3();
+}
+
+p, ul, ol {
+	@include paragraph();
+
+	&:not(.-ignore-last):last-child {
+		margin-bottom: 0;
+	}
+
+	strong {
+		font-weight: $font-weight-regular;
+	}
+
+    &.-leader,
+	.-leader & {
+        font-size: rem( 26 );
+    }
+}
+
+.text-link {
+	font-family: inherit;
+	font-weight: $font-weight-regular;
+	text-decoration: underline;
+	color: inherit;
+
+	.desktop &:hover {
+		text-decoration: none;
+	}
+
+	// show us if we're missing a link!
+	&:not([href]) {
+		color: #ff009c;
+	}
+}
+

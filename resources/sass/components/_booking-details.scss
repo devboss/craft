@@ -1,0 +1,127 @@
+
+
+.heading-2__booking-detail {
+	@include font($font-doves-type, $font-weight-regular, 28);
+	margin-top: rem(50);
+	margin-bottom: rem(30);
+}
+
+#booking-details {
+	.input-container {
+		margin-bottom: rem(30);
+		@include breakpoint(small down) {
+			display: inline-block!important;
+			width: 100%;
+		}
+	}
+	@include breakpoint(medium) {
+		padding-right: rem(30);
+	}
+
+
+	.multiselect {
+		input {
+			border: none;
+			margin-top: rem(-12);
+			text-align: center;
+			width: 100%;
+		}
+	}
+
+	.vdp-datepicker {
+		input {
+			border: none;
+		}
+	}
+
+    input[type=text],
+    input[type=email],
+    input[type=number],
+    input[type=tel] {
+        flex: 2 1 0%;
+    }
+
+	.datepicker {
+		width: 100%;
+		flex: 2 1 0%;
+		input {
+			width:100%;
+		}
+		color: black;
+	}
+}
+
+.booking-detail__children_alert {
+	@include font($font-gill-sans, $font-weight-light, 18);
+}
+
+.-creditcard:after,
+.-calendar:after,
+.-promocode .pc-apply {
+	content: " ";
+	display: block;
+	height: rem(17);
+	width: rem(24);
+	position: absolute;
+	margin-top: rem(17);
+	top: 0;
+	right: rem(20);
+	align-self: flex-start;
+	@include breakpoint(medium) {
+		margin-top: rem(16);
+	}
+	@include breakpoint(small down) {
+		margin-top: 0;
+		top: rem(42);
+	}
+}
+
+.-creditcard:after {
+	@include background-image( 'misc/creditcard.png', auto );
+}
+
+.-calendar:after {
+	@include background-image( 'misc/calendar.png', auto );
+	height: rem(18);
+	width: rem(18);
+}
+
+.-promocode .pc-apply {
+	@include background-image( 'misc/promocode.png', auto );
+	height: rem(19);
+	width: rem(24);
+	cursor: pointer;
+}
+
+.-terms {
+	@include font($font-gill-sans, $font-weight-light, 16);
+
+	input {
+		margin-right: rem( 16 );
+		vertical-align: text-bottom;
+	}
+}
+
+.booking-detail__make-payment-button {
+	padding: rem(20);
+	margin-bottom: 0!important;
+	@include breakpoint(medium up) {
+		margin-left: rem(20);
+	}
+}
+
+.where-did-you-hear {
+	.multiselect__single {
+		@include font($font-gill-sans, $font-weight-regular, 14);
+	}
+}
+
+#booking-details-payment-form {
+	input {
+		border-radius: 0;
+	}
+}
+
+.booking-detail__children_alert {
+	margin-bottom: rem(30)!important;
+}

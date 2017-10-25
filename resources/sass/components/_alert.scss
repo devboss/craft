@@ -1,0 +1,76 @@
+.alert {
+    position: relative;
+    padding: rem(10);
+    margin-bottom: rem(30);
+    border: 2px solid #fff;
+    font-style: italic;
+
+    &:before,
+    &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        height: 85px;
+        width: 169px;
+        background-repeat: no-repeat;
+        background-size: 169px 85px;
+    }
+
+    &:before {
+        top: 0;
+        left: 0;
+        background-image: url('/images/backgrounds/borders/alert-texture-left.png');
+    }
+
+    &:after {
+        bottom: 0;
+        right: 0;
+        background-image: url('/images/backgrounds/borders/alert-texture-right.png');
+    }
+}
+
+.alert-info {
+    padding: rem(20);
+
+    border-color: transparent;
+    border-image: url('/images/backgrounds/borders/alert-warning.png') 2 stretch;
+
+    font-style: normal;
+
+    &:before,
+    &:after {
+        display: none;
+    }
+}
+
+.alert-danger {
+    border-color: #fff602;
+    border-image: url('/images/backgrounds/borders/alert-danger.png') 2 stretch;
+    color: #fff602;
+}
+
+.alert-warning {
+    border-color: transparent;
+    border-image: url('/images/backgrounds/borders/alert-warning.png') 2 stretch;
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .alert {
+        &:before {
+            background-image: url('/images/backgrounds/borders/alert-texture-left@2x.png');
+        }
+
+        &:after {
+            background-image: url('/images/backgrounds/borders/alert-texture-right@2x.png');
+        }
+    }
+
+    .alert-danger {
+        border-image: url('/images/backgrounds/borders/alert-danger@2x.png') 2 stretch;
+    }
+
+    .alert-info,
+    .alert-warning {
+        border-image: url('/images/backgrounds/borders/alert-warning@2x.png') 2 stretch;
+    }
+}

@@ -1,0 +1,54 @@
+.overlay {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: z-index( overlay );
+
+    &.-open {
+        display: flex;
+    }
+}
+
+.overlay--loader {
+    opacity: 0;
+    transition: opacity $transition-medium linear;
+
+    &.-visible {
+        opacity: 1;
+    }
+}
+
+.overlay__background {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba( $color-black, 0.2 );
+    opacity: 0;
+    transition: opacity $transition-medium linear;
+    z-index: z-index( overlay__background );
+
+    .-visible & {
+        opacity: 1;
+    }
+}
+
+.overlay__background--gallery {
+    background: rgba( $color-blue-zodiac, 0.9 );
+}
+
+@mixin overlay-pop-transition( $activeSelector: '.-visible', $scale: 0.85, $time: $transition-medium ) {
+    transition: transform $time $ease-in-back;
+    transform: scale( $scale );
+
+    #{$activeSelector} & {
+        transition: transform $time $ease-out-back;
+        transform: scale( 1 );
+    }
+}

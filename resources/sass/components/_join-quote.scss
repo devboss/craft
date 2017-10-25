@@ -1,0 +1,112 @@
+.join-quote {
+    position: relative;
+    padding: rem( 15 ) 0;
+
+    @include breakpoint( large ) {
+        padding: 0;
+
+        &.-top-left {
+            padding-top: rem( 30 );
+            padding-left: rem( 30 );
+        }
+
+        &.-top-right {
+            padding-top: rem( 30 );
+            padding-right: rem( 30 );
+        }
+
+        &.-bottom-left {
+            padding-left: rem( 30 );
+            padding-bottom: rem( 20 );
+        }
+
+        &.-bottom-right {
+            padding-right: rem( 30 );
+            padding-bottom: rem( 20 );
+        }
+
+        &:before, &:after {
+            content: '';
+            position: absolute;
+            display: none;
+
+            @include background-image( "blueprints/join-us-quote-edge.png" );
+            @include background-image-dimensions( "blueprints/join-us-quote-edge.png" );
+        }
+
+        &.-top-left:before {
+            display: block;
+            left: 0;
+            top: 0;
+            transform: rotate( -90deg );
+        }
+
+        &.-top-right:before {
+            display: block;
+            right: 0;
+            top: 0;
+        }
+
+        &.-bottom-left:after {
+            display: block;
+            left: 0;
+            bottom: rem( 10 );
+            transform: rotate( 180deg );
+        }
+
+        &.-bottom-right:after {
+            display: block;
+            right: 0;
+            bottom: 0;
+            transform: rotate( 90deg );
+        }
+
+    }
+}
+
+.join-quote__text {
+    margin-bottom: rem( 10 );
+}
+
+$squiggles: ( 1, 2, 3 );
+
+.join-quote__cite {
+    position: relative;
+    display: block;
+    text-align: right;
+
+    @each $number in $squiggles {
+        &.-squiggle-#{$number} {
+            $height: get-image-height( "/images/backgrounds/blueprints/join-us-squiggle-#{$number}.png" );
+            padding-bottom: rem( $height );
+
+            &:after {
+                content: '';
+                position: absolute;
+                right: 0;
+                bottom: rem( 5 );
+
+                @include background-image( "blueprints/join-us-squiggle-#{$number}.png" );
+                @include background-image-dimensions(  "blueprints/join-us-squiggle-#{$number}.png" );
+            }
+        }
+    }
+
+    &.-squiggle-hide-for-large {
+        @include breakpoint( large ) {
+            padding-bottom: 0;
+
+            &:after {
+                display: none;
+            }
+        }
+    }
+}
+
+.join-quote__person {
+    @include font( $font-just-lovely, $font-weight-regular, 42, 42 );
+}
+
+.join-quote__position {
+    @include font( $font-doves-type, $font-weight-regular, 20, 20 );
+}

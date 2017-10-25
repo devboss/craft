@@ -1,0 +1,115 @@
+{% import "_macros.twig" as macros %}
+
+{% extends "_blueprint-layout" %}
+
+{% block blueprint_content %}
+	<div class="blueprint__container--superstar-days">
+		{{ macros.worksheet }}
+
+		{{ macros.title( 'Superstar Days' ) }}
+
+		<div class="background-sketch--superstar-days-sagittarius show-for-large"></div>
+
+		<div class="row margin-bottom-medium large-margin-bottom-none">
+			<div class="column small-12 large-6 flex-center-horizontal large-padding-top-xxlarge margin-bottom-medium">
+				<div class="blueprint__text-section -leader">
+					{% set leadParagraph = entry.superstarDaysText.type('leadParagraph').first() %}
+                    {% if leadParagraph %}
+                        {{ leadParagraph.text }}
+                    {% endif %}
+				</div>
+
+				<div class="blueprint__text-section -padding-left-xlarge">
+					{% set block0 = entry.superstarDaysText.type('paragraph').nth(0) %}
+                    {% if block0 %}
+                        {{ block0.text }}
+                    {% endif %}
+				</div>
+
+				<div class="blueprint__text-section -padding-left-medium -padding-right-xlarge">
+					{% set block1 = entry.superstarDaysText.type('paragraph').nth(1) %}
+                    {% if block1 %}
+                        {{ block1.text }}
+                    {% endif %}
+				</div>
+
+				{{ macros.button( 'Book now', '/booking-portal', 'blueprint', 'rotate-ccw-1' ) }}
+			</div>
+
+			<div class="column small-12 large-6">
+				{% set photo = entry.superstarDaysImages.first() %}
+                {% if photo %}
+					<img class="column-child-expander--double margin-left-none" src="/images/static/superstar-days-photo-1189w.png" alt="{{ photo.title }}">
+                {% endif %}
+			</div>
+		</div>
+
+		<div class="row margin-bottom-large large-margin-bottom-medium">
+			<div class="column small-12 large-6 large-order-1">
+				<div class="blueprint__text-section -margin-bottom-large -padding-left-medium -padding-right-medium">
+					{% set block2 = entry.superstarDaysText.type('paragraph').nth(2) %}
+                    {% if block2 %}
+                        {{ block2.text }}
+                    {% endif %}
+				</div>
+
+				<div class="blueprint__text-section -margin-bottom-small -padding-left-xlarge -padding-right-small">
+					{% set block3 = entry.superstarDaysText.type('paragraph').nth(3) %}
+                    {% if block3 %}
+                        {{ block3.text }}
+                    {% endif %}
+					<p class="show-for-sr">{{ entry.quoteText }}</p>
+				</div>
+
+				{% set quoteImage = entry.quoteImage.first() %}
+                {% if quoteImage %}
+					<img src="{{ quoteImage.getUrl('superstarDaysQuote') }}" alt="{{ quoteImage.title }}">
+                {% endif %}
+			</div>
+
+			<div class="column small-12 large-6 flex-center-horizontal">
+				<img alt="Spyglass" class="column-child-expander--double margin-bottom-medium" src="/images/static/superstar-days-spyglass-1234w.png">
+
+				<div class="blueprint__text-section">
+					{% set block4 = entry.superstarDaysText.type('paragraph').nth(4) %}
+                    {% if block4 %}
+                        {{ block4.text }}
+                    {% endif %}
+				</div>
+
+				<div class="blueprint__text-section -padding-left-medium -padding-right-medium">
+					{% set block5 = entry.superstarDaysText.type('paragraph').nth(5) %}
+                    {% if block5 %}
+                        {{ block5.text }}
+                    {% endif %}
+				</div>
+
+				{{ macros.button( 'Book now', '/booking-portal', 'blueprint', 'rotate-ccw-1' ) }}
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="column small-12 large-6 large-order-1">
+				<div class="blueprint__text-section -padding-left-small">
+					{% set block6 = entry.superstarDaysText.type('paragraph').nth(6) %}
+                    {% if block6 %}
+                        {{ block6.text }}
+                    {% endif %}
+				</div>
+
+				<div class="blueprint__text-section -padding-left-large -padding-right-medium">
+					{% set block7 = entry.superstarDaysText.type('paragraph').nth(7) %}
+                    {% if block7 %}
+                        {{ block7.text }}
+                    {% endif %}
+				</div>
+			</div>
+
+			<div class="column small-12 large-6 margin-top-xlarge-negative large-margin-top-none">
+				<div class="background-sketch--superstar-days-bear"></div>
+			</div>
+		</div>
+
+		{{ macros.sign_off_box( 'Compass', 'Father Christmas’ route-planner' ) }}
+	</div>
+{% endblock %}

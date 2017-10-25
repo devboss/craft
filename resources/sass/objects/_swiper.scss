@@ -1,0 +1,53 @@
+.desktop .swiper-wrapper {
+    transition-timing-function: $ease-in-out-quart;
+}
+
+.swiper-button-prev, .swiper-button-next {
+    background: none;
+    transition: opacity 0.3s linear;
+    margin-top: 0;
+    transform: translate(0, -50%);
+    color: $color-white;
+}
+
+.swiper-slide {
+    box-sizing: border-box;
+
+    picture {
+        display: block;
+        width: 100%;
+
+        img {
+            display: block;
+            width: 100%;
+        }
+    }
+}
+
+.swiper-button-prev, .swiper-button-next {
+    background: rgba( 255, 255, 255, 0 );
+
+    & > svg {
+        pointer-events: none;
+    }
+}
+
+.swiper-button-prev {
+    transform: translate(0, -50%) scaleX( -1 );
+    left: 15px;
+}
+
+.swiper-button-next {
+    right: 15px;
+}
+
+.swiper-wrapper--wine-details {
+    align-items: stretch;
+}
+
+.swiper-slide--wine-details {
+    display: flex;
+    height: auto;
+    overflow: hidden;
+    align-items: center;
+}

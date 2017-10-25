@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <NR:PLACEHOLDER id="head"/>
+    <link href="https://www.laplanduk.co.uk/css/cart-assist-support-page.css" rel="stylesheet" type="text/css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /><!--[if lt IE 9]><script src="//my.nanorep.com/common/html5.js"></script><![endif]-->
+    <!-- Please remove this if Support page needs translation
+    <script type="text/javascript" src="//<%Site.nanoRepDomain%>/widget/scripts/supportcenter/supportCenterTranslation.js"></script>
+    <script type="text/javascript" src="//www.nanorep.com/customers/common/langs.js"></script>
+    <script type="text/javascript">
+
+        Site.Translation.init(
+            langs["<%Page.LangCode%>"]
+        );
+    </script>
+    -->
+
+    <script type="text/javascript" src="https://cdn-customers.nanorep.com/common/iframe/iframe_v2.js"></script>
+    <script>
+        (function(){
+            window.iframeHlpr=new iframeHelper({parentURL:"https://www.laplanduk.co.uk",iframeBasicURL:"<% Site.Domain %>",nanoRepProdDomain:"<%Site.nanoRepDomain%>",dontAllowJustiframe:true});
+        })();
+    </script>
+</head>
+
+<body>
+<!--
+<script type="text/javascript">
+if (!window.Site) window.Site = {};
+window.Site.disableChanneling = true;
+</script>-->
+
+<!--  LANGUAGE SELECTOBOX START -->
+<nR:IF condition="Site.IsMultiKB">
+    <div class="SupportlanguageBar">
+        <div class="arrowbox"></div>
+
+        <span>Change Language</span>
+        <div class="languageBox">
+            <nR:Repeater type="language"> <a href="<%Lang.URL%>"><%Lang.Name%></a>   </nR:Repeater>
+        </div>
+
+    </div>
+</nR:IF>
+<!--  LANGUAGE SELECTOBOX END -->
+
+<header>
+    <!--<div class="pageWidth borderBoxSizing">
+        <div id="logo"><a href="https://www.laplanduk.co.uk" target="_blank"><%Site.Name%></a></div>
+    </div>-->
+</header>
+
+<div class="row">
+    <div class="column large-10 offset-large-1">
+        <div id="widgetContainer">
+            <nR:WIDGET></nR:WIDGET>
+        </div>
+
+        <div class="burger-menu">
+            <a class="burger-button hide-for-large" onclick="toggle( '.burger-topics' )">
+                <span class="burger-button__burger">
+                    <span class="burger-button__patty"></span>
+                </span>
+                <span class="burger-button__text" data-translation-key="topics">Topics</span>
+            </a>
+
+            <script>
+                function toggle (selector) {
+                    let el = document.querySelector(selector);
+
+                    if ( typeof (el.oldClassName) !== 'undefined' ) {
+                      el.className = el.oldClassName;
+                      delete el.oldClassName;
+                    }
+                    else {
+                      el.oldClassName = el.className || '';
+                      el.className += ' block';
+                    }
+                }
+            </script>
+
+            <div class="burger-topics hide-for-large">
+                <nR:Repeater type="label" from="list" listName="burger-topics">
+                    <a class="burger-topic" href="<%Label.Link%>">
+                        <span class="burger-topic__text"><%Label.Name%></span>
+                    </a>
+                </nR:Repeater>
+            </div>
+        </div>
+
+        <div class="nav-icons row -justify-content-center show-for-large">
+            <nR:Repeater type="label" from="list" listName="nav-icons" maxItems="6">
+                <a class="nav-icon column small-4 medium-2" href="<%Label.Link%>">
+                    <span class="nav-icon__image--<%Repeater.Ordinal%>"></span>
+                    <span class="nav-icon__text"><%Label.Name%></span>
+                </a>
+            </nR:Repeater>
+        </div>
+    </div>
+</div>
+
+<div class="row large-margin-bottom-large">
+    <NR:IF condition="Page.Type!=Home">
+        <div class="column large-3 offset-large-1 show-for-large">
+            <nav class="breadcrumbs">
+                <a class="breadcrumbs__link text-link" href="https://www.laplanduk.co.uk/faqs" target="_top" data-translation-key="homeText">FAQs</a>
+
+                <nR:Repeater type="label" from="nestPath" order="down">
+                    <nR:IF condition="Label.IsCurrentPageLabel">
+                        <span class="breadcrumbs__link"><%Label.Name%></span>
+                        <%ELSE%>
+                        <a class="breadcrumbs__link text-link" href="<%Label.Link%>"><%Label.Name%></a>
+                    </nR:IF>
+                </nR:Repeater>
+            </nav>
+
+            <ul class="nav">
+                <nR:Repeater type="label" from="list" listName="nav" maxItems="20">
+                    <li class="nav__item">
+                        <a href="<%Label.Link%>"><%Label.Name%></a>
+
+                        <ul class="subnav">
+                            <nR:Repeater type="article" sort="faq" labelId="<%Label.ID%>" maxItems="5">
+                                <li class="subnav__item"><a class="text-link" href="<%Article.Link%>"><%Article.Title%></a></li>
+                            </nR:Repeater>
+                        </ul>
+                    </li>
+                </nR:Repeater>
+            </ul>
+        </div>
+        <div class="column large-7">
+            <!-- cart assist bugs out if content placeholder is here, hence ugly markup below -->
+    </NR:IF>
+            <NR:PLACEHOLDER id="content"/>
+    <NR:IF condition="Page.Type!=Home">
+        </div>
+    </NR:IF>
+</div>
+
+<!-- footer -->
+<footer>
+    <div class="pageWidth borderBoxSizing">
+        &copy; copyright <script language="javascript" type="text/javascript">
+        var today = new Date()
+        var year = today.getFullYear()
+        document.write(year)
+    </script> all rights reserved
+        <a id="nrBranding" href="http://www.cartassist.co.uk/" target="_blank">Self-service by CartAssist</a>
+    </div>
+</footer>
+<!-- /footer -->
+
+<!--Please do not remove this Div, If Remove, then iFrame resizing will not work-->
+<div id="nrBottomOfPage"></div>
+<!--/Please do not remove this Div-->
+<!-- End iFrame Resizing -->
+
+<script>
+    document.body.style.height = "auto";
+    // iFrame initiate resizing and other messages to be sent to parent hosting page
+    window.iframeHlpr.InitiateResizeIframe();
+</script>
+<script src="https://www.laplanduk.co.uk/js/detect.js"></script>
+<script>
+    var className;
+
+    if ( detect.os.phone ) {
+        className = 'phone';
+    }
+    else if ( detect.os.tablet ) {
+        className = 'tablet';
+    }
+    else {
+        className = 'desktop';
+    }
+
+    document.querySelector( 'html' ).className = className;
+</script>
+</body>
+</html>

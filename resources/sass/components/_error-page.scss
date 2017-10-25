@@ -1,0 +1,51 @@
+.error-page {
+    margin-right: auto;
+    margin-left: auto;
+    width: 50%;
+
+    text-align: center;
+
+    background-repeat: no-repeat;
+    background-position: bottom center;
+
+    a, a:link {
+        font-weight: 500;
+        text-decoration: underline;
+
+        &:hover,
+        &:active {
+            text-decoration: none;
+        }
+    }
+}
+
+.error-page--conker {
+    padding-bottom: 268px;
+    @include background-image('misc/conker.png');
+    background-size: 198px 268px;
+}
+
+.error-page--404 {
+    padding-bottom: 277px;
+    @include background-image('misc/conker-404.png');
+    background-size: 175px 277px;
+}
+
+.error-page--500 {
+    padding-bottom: 140px;
+    @include background-image('misc/conker-500.png');
+    background-size: 323px 140px;
+}
+
+.error-page__summary {
+    margin-bottom: rem(32);
+
+    p, ul, ol {
+        font-size: rem(24);
+        font-weight: 500;
+    }
+}
+
+.error-page__suggestion {
+    margin-bottom: rem(32);
+}

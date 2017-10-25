@@ -1,0 +1,44 @@
+.cookie-message {
+    position: fixed;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba( $color-black, 0.85 );
+    z-index: z-index( cookie-message );
+    transform: translate3d( 0, 100%, 0 );
+    transition: transform $transition-medium $ease-in-out-quart;
+
+    &.-open {
+        display: flex;
+    }
+
+    &.-visible {
+        transform: translate3d( 0, 0, 0 );
+    }
+}
+
+.cookie-message__close {
+    display: block;
+    height: 44px;
+    width: 44px;
+    margin: 0 1px;
+    flex: 0 0 auto;
+
+    svg {
+        @include svg-dimensions-fixed-artwork( cookie-close, 26 );
+        margin: 9px;
+    }
+}
+
+.cookie-message__text {
+    @include font( $font-doves-type, $font-weight-regular, 16, 20 );
+
+    margin: 0 10px;
+    color: $color-white;
+    flex: 0 1 auto;
+    text-align: center;
+}

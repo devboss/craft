@@ -1,0 +1,90 @@
+{% import "_macros.twig" as macros %}
+
+{% extends "_layout" %}
+
+{% block content %}
+	<div class="homepage" data-class="Homepage">
+		<div class="homepage__container">
+			<picture class="homepage__aurora">
+				<source srcset="/images/backgrounds/homepage/aura-mobile.png 1x, /images/backgrounds/homepage/aura-mobile@2x.png 2x"
+				        media="(max-width: 1023px)" />
+				<source srcset="/images/backgrounds/homepage/aura-desktop.png 1x, /images/backgrounds/homepage/aura-desktop@2x.png 2x" />
+				<img class="homepage__aurora-image">
+			</picture>
+
+			<div class="homepage__snow" data-class="HomepageSnow"></div>
+
+			<picture class="homepage__background">
+				<source srcset="/images/backgrounds/homepage/background-mobile.png 1x, /images/backgrounds/homepage/background-mobile@2x.png 2x"
+				        media="(max-width: 1023px)" />
+				<source srcset="/images/backgrounds/homepage/background-desktop.png 1x, /images/backgrounds/homepage/background-desktop@2x.png 2x" />
+				<img class="homepage__background-image">
+			</picture>
+
+			<a class="homepage__button--elves transparent-button" href="/#/books/elf-world"></a>
+			<a class="homepage__button--untold-story transparent-button" href="/#/books/untold-story"></a>
+			<a class="homepage__button--visitors-guide transparent-button" href="/#/books/visitors-guide"></a>
+			<a class="homepage__button--elf-times transparent-button" href="/elf-times"></a>
+		</div>
+
+		<p class="copyright--home">&copy; Copyright Lapland<sup>UK</sup> 2017. All right reserved.</p>
+	</div>
+{% endblock %}
+
+{% block overlays %}
+	<div class="overlay" data-class="BookOverlay" data-name="elf-world">
+		<div class="overlay__background"></div>
+		<div class="overlay__content overlay__content--book">
+			<div class="book" data-class="Book" data-name="elf-world">
+				{{ macros.cover( 'elf-world' ) }}
+
+				{{ macros.page( 'elf-world', 1, 'intro', '', macros.elf_buttons() ) }}
+				{{ macros.page( 'elf-world', 2, 'eeko', '', macros.draw_animation( 'eeko' ) ) }}
+				{{ macros.page( 'elf-world', 3, 'sage', '', macros.draw_animation( 'sage' ) ) }}
+				{{ macros.page( 'elf-world', 4, 'conker' ) }}
+				{{ macros.page( 'elf-world', 5, 'compass-and-wish', macros.draw_animation( 'compass-name', 'colour' ), macros.draw_animation( 'wish' ) ) }}
+				{{ macros.page( 'elf-world', 6, 'whittle', macros.draw_animation( 'whittle-name', 'colour' ) ) }}
+				{{ macros.page( 'elf-world', 7, 'pixie-mixie', '', macros.draw_animation( 'pixie-mixie' ) ) }}
+				{{ macros.page( 'elf-world', 8, 'zauber' ) }}
+			</div>
+		</div>
+	</div>
+
+	<div class="overlay" data-class="BookOverlay" data-name="untold-story">
+		<div class="overlay__background"></div>
+		<div class="overlay__content overlay__content--book">
+			<div class="book" data-class="Book" data-name="untold-story">
+				{{ macros.cover( 'untold-story' ) }}
+
+				{{ macros.page( 'untold-story', 1 ) }}
+				{{ macros.page( 'untold-story', 2 ) }}
+				{{ macros.page( 'untold-story', 3 ) }}
+				{{ macros.page( 'untold-story', 4 ) }}
+				{{ macros.page( 'untold-story', 5 ) }}
+				{{ macros.page( 'untold-story', 6 ) }}
+				{{ macros.page( 'untold-story', 7 ) }}
+				{{ macros.page( 'untold-story', 8 ) }}
+				{{ macros.page( 'untold-story', 9 ) }}
+				{{ macros.page( 'untold-story', 10 ) }}
+				{{ macros.page( 'untold-story', 11 ) }}
+				{{ macros.page( 'untold-story', 12 ) }}
+				{{ macros.page( 'untold-story', 13 ) }}
+				{{ macros.page( 'untold-story', 14 ) }}
+				{{ macros.page( 'untold-story', 15 ) }}
+				{{ macros.page( 'untold-story', 16 ) }}
+				{{ macros.page( 'untold-story', 17 ) }}
+			</div>
+		</div>
+	</div>
+
+	<div class="overlay" data-class="BookOverlay" data-name="visitors-guide">
+		<div class="overlay__background"></div>
+		<div class="overlay__content overlay__content--book">
+			<div class="book" data-class="Book" data-name="visitors-guide">
+				{{ macros.cover( 'visitors-guide' ) }}
+
+				{{ macros.page( 'visitors-guide', 1, '', '', macros.inline_video( '222802985', '/images/static/visitors-guide-poster-586w.jpg', '-visitors-guide', 'rotate-cw-5' ) ) }}
+			</div>
+		</div>
+	</div>
+{% endblock %}

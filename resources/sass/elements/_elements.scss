@@ -1,0 +1,27 @@
+body {
+	background-color: $color-kilamanjaro;
+}
+
+figure {
+    display: block;
+}
+
+figcaption {
+    @include font( $font-just-lovely, $font-weight-regular, 31, 37 );
+    color: $color-white;
+    margin: rem( 14 ) 0;
+
+    @include breakpoint( large ) {
+        &.-large {
+            @include font-size-line-height( 40, 48 );
+        }
+    }
+}
+
+.vdp-datepicker {
+	.vdp-datepicker__calendar {
+		span {
+			color: #46566D;
+		}
+	}
+}

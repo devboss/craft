@@ -1,0 +1,77 @@
+$frame-column-max-width: 427;
+$frames: ( 1, 2, 3, 4, 5 );
+
+@each $frame-number in $frames {
+    .reviews-frame--#{$frame-number} {
+        position: relative;
+        margin: 0 auto rem( 16 );
+        z-index: z-index( blueprint-object );
+
+        @include background-image( "blueprints/reviews-frame-#{$frame-number}.png" );
+        @include background-image-dimensions-fluid( "blueprints/reviews-frame-#{$frame-number}.png", $frame-column-max-width );
+
+        @include breakpoint( large ) {
+            margin-bottom: rem( 32 );
+        }
+    }
+}
+
+// necessary for firefox and edge
+// https://stackoverflow.com/questions/23717953/padding-bottom-top-in-flexbox-layout
+.reviews-frame__container {
+    position: relative;
+
+    $gutter: map-get( $grid-gutters, small );
+    @include child-expander( $gutter * 2 );
+    @include child-expander-margin( -$gutter, -$gutter );
+
+    @include breakpoint( large ) {
+        width: 100%;
+        margin: 0;
+    }
+}
+
+.reviews-frame__image--1 {
+    position: absolute;
+    transform: translate( -50%, -50% ) rotate( -3.9deg );
+    width: percentage( 276 / 377 );
+    height: percentage( 169 / 316 );
+    left: percentage( 187 / 377 );
+    top: percentage( 138 / 316 );
+}
+
+.reviews-frame__image--2 {
+    position: absolute;
+    transform: translate( -50%, -50% );
+    width: percentage( 249 / 324 );
+    height: percentage( 158 / 238 );
+    left: percentage( 163 / 324 );
+    top: percentage( 120 / 238 );
+}
+
+.reviews-frame__image--3 {
+    position: absolute;
+    transform: translate( -50%, -50% ) rotate( 5.4deg );
+    width: percentage( 277 / 358 );
+    height: percentage( 177 / 278 );
+    left: percentage( 179 / 358 );
+    top: percentage( 141 / 278 );
+}
+
+.reviews-frame__image--4 {
+    position: absolute;
+    transform: translate( -50%, -50% ) rotate( 1.7deg );
+    width: percentage( 286 / 367 );
+    height: percentage( 175 / 302 );
+    left: percentage( 184 / 367 );
+    top: percentage( 129 / 302 );
+}
+
+.reviews-frame__image--5 {
+    position: absolute;
+    transform: translate( -50%, -50% );
+    width: percentage( 290 / 322 );
+    height: percentage( 194 / 235 );
+    left: percentage( 175 / 322 );
+    top: percentage( 126 / 235 );
+}

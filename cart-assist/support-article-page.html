@@ -1,0 +1,169 @@
+<nr:content placeholderid="head">
+    <title><%Article.MetaTitle%></title>
+    <script src="//<%Site.nanoRepDomain%>/sdk/index.repo?bundles=channeling.modern,sharing.modern,feedback.modern,arrowpopup,stickyblock"></script>
+    <link href='//cdn-customers.nanorep.com/common/css/articlewsdk.css' rel='stylesheet' type='text/css'/>
+    <meta description="<%Article.MetaDescription%>"/>
+</nr:content>
+
+<nr:content placeholderid="content">
+
+    <div id="articlePage" class="nr-modern-article modern-default column-child-expander--double medium-column-child-collapse" data-nr-sharing-viewport data-nr-arrow-popup-viewport>  <!-- sharing popup should not leave area of the answer -->
+
+        <script>
+            var sdkSessionOptions = {
+                host: '<%Site.nanoRepDomain%>',
+                account: '<%Site.Account%>',
+                kb: '<%Site.KBID%>',
+                articleId: '<%Article.ID%>',
+                text: null,
+                context: nanoRep.SDK.Channeling.detectContext()
+            };
+        </script>
+
+        <div class="nr-modern-article-header">
+            <h1 class="nr-modern-article-title"><%Article.Title%></h1>
+
+            <div id="articleSharing">
+                <script>
+                  new nanoRep.SDK.Sharing({
+                    element: '#articleSharing',
+                    url: location.href,        // optional (default value)
+                    text: document.title,  // optional (default value)
+                    popupWidth: 600,      // optional (default value)
+                    popupHeight: 400,     // optional (default value)
+                    events: {
+                      popupVisibilityChanged: function(isVisible) {
+                        if (isVisible) {
+                          nanoRep.SDK.ArrowPopup.dismiss();
+                        }
+                      }
+                    }
+                  });
+                </script>
+            </div>
+        </div>
+
+        <div class="nr-modern-article-body">
+            <%Article.Body%>
+            <ul class="nr-modern-article-attachments">
+                <nR:Repeater type='attachment'>
+                    <li><a href ="<%Article.Attachment.URL %>"><%Article.Attachment.Name %></a></li>
+                </nR:Repeater>
+            </ul>
+            <div id="inlineArticleFormContainer"></div>
+            <div id="escalateText" class="nr-modern-article-channeling-hint" style="display:none;">Can't find an answer to your question?</div>
+        </div>
+
+        <div class="nr-modern-article-footer">
+            <div class="nr-modern-article-feedback">
+                <!-- Feedback SDK: Dislike Dialog -->
+                <div style="display:none">
+                    <div id="articleFeedbackDislike">
+                        <script>
+                            var feedbackChoicesDialog = new nanoRep.SDK.Feedback.ChoicesDialog({
+                                element: '#articleFeedbackDislike',
+                                hasContext: !!sdkSessionOptions.context, /* dialog has different choices when context is active) */
+                                events: {
+                                    submit: function(reason) {
+                                        // hide feedback dialog and send like
+                                        nanoRep.SDK.ArrowPopup.hide();
+                                        nanoRep.SDK.Feedback.send(sdkSessionOptions, reason);
+                                    },
+                                    cancel: function() {
+                                        // hide feedback dialog and restore thumbs state
+                                        nanoRep.SDK.ArrowPopup.hide();
+                                        feedbackThumbs.setState(nanoRep.SDK.Feedback.Thumbs.StateEnum.NONE);
+                                        feedbackThumbs.enable();
+                                    }
+                                }
+                            });
+                        </script>
+                    </div>
+                </div>
+
+                <!-- Feedback SDK: Thumbs -->
+                <div id="articleFeedback">
+                    <script>
+                        var feedbackThumbs = new nanoRep.SDK.Feedback.Thumbs({
+                            element: '#articleFeedback',
+                            events: {
+                                like: function() {
+                                    feedbackThumbs.disable();
+                                    nanoRep.SDK.Feedback.send(sdkSessionOptions, nanoRep.SDK.Feedback.ActionEnum.POSITIVE);
+                                },
+                                dislike: function() {
+                                    feedbackThumbs.disable();
+                                    nanoRep.SDK.ArrowPopup.show(feedbackChoicesDialog.getContainer(), feedbackThumbs.getDislikeButton(), function(isDismissed) {
+                                        if (isDismissed) {
+                                            feedbackThumbs.enable();
+                                            feedbackThumbs.setState(nanoRep.SDK.Feedback.Thumbs.StateEnum.NONE);
+                                        }
+                                    });
+                                }
+                            }
+                        });
+                    </script>
+                </div>
+            </div>
+
+
+            <div class="nr-modern-article-channeling">
+
+                <!-- Channeling SDK -->
+                <div id="articleChanneling">
+                    <script>
+                        var actionBar = new nanoRep.SDK.Channeling.ActionBar({
+                            element: '#articleChanneling',
+                            session: sdkSessionOptions, /* this global variable is declared above */
+                            useCustomChatUI: false,
+                            events: {
+                                channelDeactivated: function(channel, instance, domNode) {
+                                    // hide active popup
+                                    nanoRep.SDK.ArrowPopup.hide();
+                                },
+                                channelActivated: function(channel, instance, domNode) {
+                                    // show phone dialog and contact form in popup
+
+                                    if (domNode) {
+                                        nanoRep.SDK.ArrowPopup.show(domNode, this.getOpener(channel), function(isDismissed) {
+                                            if (isDismissed) {
+                                                actionBar.setActiveChannel(null);
+                                            }
+                                        });
+                                    }
+                                },
+                                channelsChanged: function(channels) {
+                                    // display escalation hint if channels are available:
+                                    // document.getElementById('escalateText').style.display = channels.length > 0 ? 'block' : 'none';
+
+                                    // add support for "show form in article body"
+                                    for (var i = 0; i < channels.length; i++) {
+                                        if (channels[i].showInArticle) {
+
+                                            // remove ticket channel from the list of available channels
+                                            var articleFormChannel = channels[i];
+                                            channels.splice(i, 1);
+                                            this.setChannels(channels);
+
+                                            // display this channel in article body
+                                            var contactForm = new nanoRep.SDK.Channeling.ContactForm({
+                                                element: '#inlineArticleFormContainer',
+                                                allowCancelForm: false,
+                                                session: sdkSessionOptions,
+                                                channel: articleFormChannel
+                                            });
+
+                                        }
+                                    }
+
+                                }
+                            }
+                        });
+                    </script>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</nr:content>

@@ -1,0 +1,139 @@
+// These values are negative margins which move the layout box of the container to the edges of the actual text in the
+// image, making page layout easier. The key name should match the name of an image within /public/images/titles and
+// a class matching the name will be output as follows .image-title__image--{IMAGE_NAME}
+// eg. image-title__image--directions
+$image-miscs: (
+		underline: (-24, -49, -20, -64),
+		leftbear: (-24, -49, -20, -64),
+		rightbear: (-24, -49, -20, -64),
+		bear-top-right: (-24, -49, -20, -64),
+		headertoplabel: (-24, -49, -20, -64),
+		steps1: (-24, -49, -20, -64),
+		steps2: (-24, -49, -20, -64),
+		steps3: (-24, -49, -20, -64),
+		steps4: (-24, -49, -20, -64),
+		bottombear: (-24, -49, -20, -64),
+		backarrow: (0, 0, 0, 0),
+		cross: (0, 0, 0, 0),
+		arrowdown: (0, 0, 0, 0),
+		longhoverbg: (0, 0, 0, 0),
+		timerbox: (0, 0, 0, 0),
+		mobiletimerbox: (0, 0, 0, 0),
+		largehourglass: (0, 0, 0, 0),
+		mobilehourglass: (0, 0, 0, 0),
+		extraplaceholder: (0, 0, 0, 0),
+		removeextra: (0, 0, 0, 0),
+		removeextrainverse: (0, 0, 0, 0),
+		creditcard: (0, 0, 0, 0),
+		cards: (0, 0, 0, 0),
+		verifiedbyvisa: (0, 0, 0, 0),
+		completecircle: (0, 0, 0, 0),
+		eeko: (0, 0, 0, 0),
+		eekofull: (0, 0, 0, 0),
+		explore: (0, 0, 0, 0),
+		mmb-banner: (0, 0, 0, 0),
+		right-horse: (0, 0, 0, 0),
+		left-horse: (0, 0, 0, 0),
+		additional-tickets-box: (0, 0, 0, 0),
+		mobile-additional-tickets-box: (0, 0, 0, 0),
+		down-arrow: (0, 0, 0, 0),
+		child-details-box: (0, 0, 0, 0),
+		adult-details-box: (0, 0, 0, 0),
+		chevron-down: (0, 0, 2, 0),
+		mobile-mmb-banner: (0, 0, 0, 0),
+		mobile-explore: (0, 0, 0, 0),
+		verified-by-visa: (0, 0, 0, 0),
+		mastercard-secure-code: (0, 0, 0, 0),
+		extra-timer-bg-new: (0, 0, 0, 0),
+		extra-timer-left-corner: (0, 0, 0, 0),
+		extra-timer-right-corner: (0, 0, 0, 0)
+);
+
+// These are used to automatically scale the image dimensions for different breakpoints
+$image-misc-scales: (
+		small: 90 / 126,
+		medium: 106 / 126,
+		large: 112 / 126,
+		xlarge: 1
+);
+
+.image-misc {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	text-align: center;
+	margin-bottom: rem(90);
+
+	@include breakpoint(medium) {
+		margin-bottom: rem(90);
+	}
+
+	@include breakpoint(large) {
+		margin-bottom: rem(50);
+	}
+
+	@include breakpoint(xlarge) {
+		margin-bottom: rem(64);
+	}
+}
+
+.image-misc__image {
+	flex: 0 0 auto;
+}
+
+@each $image-misc, $image-margins in $image-miscs {
+	.image-misc__image--#{$image-misc} {
+		@extend .image-misc__image;
+		@include image-misc($image-misc, $image-margins, $image-misc-scales);
+		@if $image-misc == 'underline' {
+			margin: rem(30) auto rem(40) auto !important;
+			@include breakpoint (small) {
+				width: 100%;
+			}
+		}
+		@if $image-misc == 'leftbear' {
+
+			position: absolute;
+			margin-top: rem(12) !important;
+			margin-left: rem(-40) !important;
+		}
+
+		@if $image-misc == 'rightbear' {
+			position: absolute;
+			right: rem(-49);
+			top: rem(-40);
+		}
+
+		@if $image-misc == 'bear-top-right' {
+			position: absolute;
+			right: rem(-49);
+			top: rem(-40);
+		}
+
+		@if $image-misc == 'headertoplabel' {
+			position: absolute;
+			right: rem(300);
+			top: rem(-72);
+		}
+
+		@if $image-misc == 'steps1' {
+			margin-bottom: rem(25) !important;
+		}
+
+		@if $image-misc == 'bottombear' {
+			position: absolute;
+			right: rem(-49);
+			bottom: rem(200);
+		}
+
+        @if $image-misc == 'down-arrow' {
+            background-repeat: no-repeat;
+        }
+
+		@if $image-misc == 'cards' {
+			background-repeat: no-repeat;
+		}
+
+	}
+
+}

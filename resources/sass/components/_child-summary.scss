@@ -1,0 +1,15 @@
+.child-summary__edit-details {
+	max-width: 60%;
+	a {
+		height: rem( 50 );
+		margin-bottom: 0!important;
+		@include breakpoint(medium down) {
+			height: rem( 40 );
+		}
+	}
+	.button__text {
+		@include breakpoint(medium down) {
+			@include font( $font-doves-type, $font-weight-regular, 22 );
+		}
+	}
+}

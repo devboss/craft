@@ -1,0 +1,22 @@
+{% import "_macros.twig" as macros %}
+
+{% extends "_blueprint-layout" %}
+
+{% block blueprint_content %}
+	<div class="blueprint__container">
+		{{ macros.worksheet }}
+
+		{{ macros.title( 'Terms and Conditions' ) }}
+
+		<div class="row">
+			<div class="column large-8 offset-large-2">
+                {% for block in entry.termsAndConditions %}
+                    {% if block.heading %}
+						<h3>{{ block.heading }}</h3>
+                    {% endif %}
+					{{ block.text }}
+                {% endfor %}
+			</div>
+		</div>
+	</div>
+{% endblock %}

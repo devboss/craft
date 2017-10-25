@@ -1,0 +1,79 @@
+.polaroid-carousel {
+    position: relative;
+    font-size: 100px;
+    width: calc( 100% + 22px );
+    margin-left: -11px;
+
+    @include breakpoint( small only ) {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    @include breakpoint( medium ) {
+        width: auto;
+        margin-left: auto;
+    }
+}
+
+.polaroid-carousel__container {
+    position: relative;
+    padding: 48px 0;
+    width: 100%;
+
+    @include breakpoint( medium ) {
+        width: 75%;
+        padding: 48px 16px;
+
+        &:before {
+            @include background-image( "blueprints/polaroid-carousel-fade.png" );
+            @include background-image-dimensions( "blueprints/polaroid-carousel-fade.png" );
+
+            content: '';
+            position: absolute;
+            top: 50%;
+            margin-top: -153px;
+            z-index: z-index( polaroid-fade );
+            left: -1px;
+            transform: scaleX( -1 );
+        }
+
+        &:after {
+            @include background-image( "blueprints/polaroid-carousel-fade.png" );
+            @include background-image-dimensions( "blueprints/polaroid-carousel-fade.png" );
+
+            content: '';
+            position: absolute;
+            top: 50%;
+            margin-top: -153px;
+            z-index: z-index( polaroid-fade );
+            right: -1px;
+        }
+    }
+}
+
+.polaroid-carousel__button {
+    @include carousel-button( 32, 100 );
+
+    @include breakpoint( medium down ) {
+        top: auto;
+        bottom: em( -54, 100 );
+
+        &.-previous {
+            left: percentage( 2 / 12 );
+
+            &:before {
+                top: auto;
+                bottom: em( -50, 32 );
+                left: em( -20, 32 );
+            }
+        }
+
+        &.-next {
+            right: percentage( 2 / 12 );
+
+            &:before {
+                right: em( -20, 32 );
+            }
+        }
+    }
+}

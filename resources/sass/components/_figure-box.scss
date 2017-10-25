@@ -1,0 +1,66 @@
+.figure-box {
+    position: relative;
+    width: em( 214, 16 );
+    padding: 1em;
+    text-align: left;
+    font-size: 16px;
+}
+
+.figure-box--directions {
+    @extend .figure-box;
+
+    position: absolute;
+    top: 0;
+    right: -20px;
+    font-size: 14px;
+
+    @include breakpoint( large ) {
+        right: -10px;
+    }
+
+    @include breakpoint( xlarge ) {
+        font-size: 16px;
+    }
+}
+
+.figure-box__vertical-lines {
+    @include sketch-lines-vertical-container();
+
+    &:before {
+        @include sketch-line-vertical( em( -20 ), 0, calc( 60% + #{em( 20 )} ), -215, 0.4 );
+    }
+
+    &:after {
+        @include sketch-line-vertical( em( -15 ), 100%, calc( 100% + #{em( 30 )} ), -122, 0.8 );
+    }
+}
+
+.figure-box__horizontal-lines {
+    @include sketch-lines-horizontal-container();
+
+    &:before {
+        @include sketch-line-horizontal( 0, em( -30 ), calc( 100% + #{em( 60 )} ), -420, 0.6 );
+    }
+
+    &:after {
+        @include sketch-line-horizontal( 100%, em( -10 ), calc( 100% + #{em( 45 )} ), -4, 0.5 );
+    }
+}
+
+.figure-box__content {
+    p {
+        @include font( $font-face-gill-sans, $font-weight-light, 1em );
+        line-height: line-height( 44, 32 );
+    }
+}
+
+.figure-box__arrow--bottom-left {
+    @include background-image( "blueprints/figure-box-arrow-bottom-left.png" );
+    @include background-image-dimensions-ems(  "blueprints/figure-box-arrow-bottom-left.png", 16 );
+
+    position: absolute;
+    top: calc( 100% + #{em( 1 )} );
+    left: em( 12 );
+    pointer-events: none;
+    z-index: z-index( background );
+}

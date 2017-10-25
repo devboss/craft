@@ -1,0 +1,6 @@
+{% if craft.config.siteUrl matches '/^\\/{2}.*/' %}
+    {% set redirectUrl = 'https:' ~ craft.config.siteUrl ~ '/shop/checkout/addresses'|url_encode %}
+{% else %}
+    {% set redirectUrl = craft.config.siteUrl ~ '/shop/checkout/addresses'|url_encode %}
+{% endif %}
+{% redirect "https://api.laplanduk.co.uk/auth/login?redirectUrl=" ~ redirectUrl %}

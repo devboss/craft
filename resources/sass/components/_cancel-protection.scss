@@ -1,0 +1,46 @@
+.heading-2--cancel-protection {
+	@include font($font-doves-type, $font-weight-regular, 42);
+	margin-top: rem(50);
+}
+
+.cancel-protection__copy {
+	p {
+		@include font($font-gill-sans, $font-weight-light, 18);
+	}
+}
+
+.cancel-protection__price {
+	@include font($font-gill-sans, $font-weight-regular, 26);
+	margin-top: rem(30);
+	margin-bottom: rem(30);
+}
+
+.cancel-protection__choice {
+	@include font($font-gill-sans, $font-weight-regular, 18);
+	input {
+		display: none;
+	}
+	margin-bottom: rem(20);
+}
+
+.cancel-protection__termsandconds {
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.cancel-protection__radio-outer {
+	width: 20px;
+	height: 20px;
+	border: 1px solid white;
+	border-radius: 100%;
+	background: transparent;
+	display: inline-block;
+	padding: 4px;
+}
+
+.cancel-protection__radio-inner {
+	width: 10px;
+	height: 10px;
+	background: white;
+	border-radius: 100%;
+}

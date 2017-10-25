@@ -1,0 +1,79 @@
+.directions-map {
+    position: relative;
+    text-align: center;
+    width: 100%; // IE fix
+
+    @include breakpoint( large ) {
+        padding-top: 0;
+        padding-right: percentage( 100 / 1281 );
+    }
+
+    @include breakpoint( xlarge ) {
+        margin-top: -46px;
+    }
+}
+
+.directions-map__image-link {
+    display: block;
+    margin-bottom: 24px;
+}
+
+.directions-map__click-scribble {
+    @include font( $font-just-lovely, $font-weight-regular, 28 );
+
+    line-height: line-height( 23, 32 );
+    position: absolute;
+    color: rgba( $color-white, 0.65 );
+    pointer-events: none;
+    width: 90px;
+    top: -20px;
+    right: -10px;
+    padding: 0 0 em( 10, 32 );
+
+    &:before {
+        @include background-image( "blueprints/directions-click-arrow-top-left.png" );
+        @include background-image-dimensions-ems( "blueprints/directions-click-arrow-top-left.png", 32 );
+
+        content: '';
+        position: absolute;
+        right: 50%;
+        bottom: 100%;
+
+        @include breakpoint( small only ) {
+            transform: scaleX( -1 ) rotate( -142deg );
+            top: 128%;
+            bottom: auto;
+            right: 20%;
+        }
+    }
+
+    &:after {
+        @include background-image( "blueprints/directions-click-arrow-bottom-left.png" );
+        @include background-image-dimensions-ems( "blueprints/directions-click-arrow-bottom-left.png", 32 );
+
+        content: '';
+        position: absolute;
+        right: 50%;
+        top: 100%;
+
+        @include breakpoint( small only ) {
+            display: none;
+        }
+    }
+
+    @include breakpoint( medium ) {
+        font-size: 32px;
+        width: auto;
+        top: 73%;
+        right: -32px;
+        padding-top: em( 20, 32 );
+    }
+
+    @include breakpoint( large ) {
+        right: -18px;
+    }
+
+    @include breakpoint( xlarge ) {
+        right: 14px;
+    }
+}

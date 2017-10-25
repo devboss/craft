@@ -1,0 +1,40 @@
+.what-is-lapland-quote {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.what-is-lapland-quote__quote {
+    @include font( $font-just-lovely, $font-weight-regular, 30, 30 );
+    text-align: right;
+
+    @include breakpoint( medium ) {
+        font-size: rem( 80 );
+    }
+
+    &.-small {
+        font-size: rem( 34 );
+
+        @include breakpoint( medium ) {
+            font-size: rem( 60 );
+        }
+    }
+}
+
+.what-is-lapland-quote__source {
+    @include font( $font-gill-sans, $font-weight-regular, 18, 19 );
+    display: block;
+
+    @include breakpoint( medium ) {
+        font-size: rem( 32 );
+    }
+
+    &.-small {
+        font-size: rem( 18 );
+
+        @include breakpoint( medium ) {
+            font-size: rem( 20 );
+        }
+    }
+}

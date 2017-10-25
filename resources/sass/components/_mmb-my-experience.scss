@@ -1,0 +1,131 @@
+.heading-2--my-experience-booked-time {
+	@include font( $font-face-doves-type, $font-weight-regular, 44);
+}
+
+.image-title__image--your-time {
+	margin-left: rem(35);
+	margin-top: rem(30);
+}
+
+.image-title__image--your-party {
+	margin-left: rem(15);
+}
+
+.small-bottom-margin {
+	margin-bottom: rem(15);
+}
+
+.my-experience__subtitle--actual-booking-reference {
+	@include font( $font-face-gill-sans, $font-weight-light, 18);
+}
+
+.my-experience__subtitle--booking-reference {
+	@include font( $font-face-gill-sans, $font-weight-regular, 18);
+}
+
+.image-misc__image--additional-tickets-box,
+.image-misc__image--mobile-additional-tickets-box {
+	background-repeat: no-repeat;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	text-align: center;
+	@include font( $font-face-gill-sans, $font-weight-regular, 20);
+	margin: rem(30) auto;
+}
+
+.my-experience__change-your-date {
+	max-width: rem(300);
+	margin: 0 auto;
+}
+
+.my-experience__group-comp {
+	display: flex;
+	justify-content: space-around;
+	margin: rem(30) auto;
+	max-width: 70%;
+
+	@include breakpoint(medium down) {
+		flex-wrap: wrap;
+		& > div {
+			width: 33.3333333333%;
+			margin-top: rem(30);
+		}
+	}
+
+	.my-experience__group-number-label {
+		@include font( $font-face-gill-sans, $font-weight-regular, 18);
+	}
+}
+
+.my-experience__group-number {
+	@include font( $font-just-lovely, $font-weight-regular, 82, 60);
+}
+
+.my-experience__total-price {
+	margin-top: rem(20);
+	margin-bottom: rem(30);
+}
+
+.image-title__image--your-address {
+	margin-left: -1.05rem;
+}
+
+.my-experience__full-name {
+	@include font( $font-just-lovely, $font-weight-regular, 42);
+}
+
+.my-experience__address {
+	display: flex;
+	justify-content: center;
+	margin-bottom: rem(30);
+
+	& > div {
+		margin: rem(10);
+	}
+
+	.my-experience__address-labels,
+	.my-experience__address-values {
+		margin-top: rem(10);
+		margin-bottom: rem(10);
+	}
+}
+
+.my-experience__address-labels {
+	@include font( $font-face-gill-sans, $font-weight-regular, 18);
+}
+
+.my-experience__address-values {
+	@include font( $font-face-gill-sans, $font-weight-light, 18);
+}
+
+
+.image-misc__image--down-arrow {
+	float: right;
+	margin-top: rem(-17);
+	margin-right: rem(-25);
+}
+
+.my-experience__booking-dropdown {
+	background: white;
+	width: 25%;
+	z-index: 4;
+	margin-right: rem(-6);
+	margin-top: rem(-2);
+	cursor: pointer;
+	position: absolute;
+	right: rem(24);
+	border: 1px solid #8895A9;
+	@include breakpoint(1200px down) {
+		right: rem(19);
+	}
+}
+
+.my-experience__booking-dropdown--booking {
+	@include font( $font-face-gill-sans, $font-weight-regular, 18);
+	color: #3D4C63;
+	padding: rem(8);
+	&:hover {
+		background-color: #E9EAEE;
+	}
+}

@@ -1,0 +1,56 @@
+%draw-animation {
+    position: absolute;
+    display: block;
+
+    //.-invisible > & {
+    //    display: none;
+    //}
+}
+
+.draw-animation--eeko {
+    @extend %draw-animation;;
+    left: percentage( 173 / $book-page-max-width );
+    top: percentage( 62 / $book-page-max-height );
+    width: percentage( 144 / $book-page-max-width );
+    height: percentage( 412 / $book-page-max-height );
+}
+
+.draw-animation--sage {
+    @extend %draw-animation;;
+    left: percentage( 108 / $book-page-max-width );
+    top: percentage( 57 / $book-page-max-height );
+    width: percentage( 283 / $book-page-max-width );
+    height: percentage( 409 / $book-page-max-height );
+}
+
+.draw-animation--compass-name {
+    @extend %draw-animation;;
+    left: percentage( 89 / $book-page-max-width );
+    top: percentage( 57 / $book-page-max-height );
+    width: percentage( 253 / $book-page-max-width );
+    height: percentage( 72 / $book-page-max-height );
+}
+
+.draw-animation--wish {
+    @extend %draw-animation;;
+    left: percentage( 162 / $book-page-max-width );
+    top: percentage( 138 / $book-page-max-height );
+    width: percentage( 162 / $book-page-max-width );
+    height: percentage( 369 / $book-page-max-height );
+}
+
+.draw-animation--whittle-name {
+    @extend %draw-animation;;
+    left: percentage( 59 / $book-page-max-width );
+    top: percentage( 68 / $book-page-max-height );
+    width: percentage( 273 / $book-page-max-width );
+    height: percentage( 83 / $book-page-max-height );
+}
+
+.draw-animation--pixie-mixie {
+    @extend %draw-animation;;
+    left: percentage( 141 / $book-page-max-width );
+    top: percentage( 116 / $book-page-max-height );
+    width: percentage( 170 / $book-page-max-width );
+    height: percentage( 371 / $book-page-max-height );
+}

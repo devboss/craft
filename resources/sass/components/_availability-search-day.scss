@@ -1,0 +1,6 @@
+.availability-search-day__title {
+	margin-top: rem(10);
+	@include breakpoint(medium) {
+		margin-top: rem(50);
+	}
+}

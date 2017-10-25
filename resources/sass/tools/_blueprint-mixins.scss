@@ -1,0 +1,131 @@
+$blueprint-title-padding-left: (
+    xsmall: 12,
+    small: 16,
+    medium: 32,
+    large: 48,
+    xlarge: 64
+);
+
+$blueprint-text-section-padding-horizontal: (
+    xsmall: 4%,
+    small: 8%,
+    medium: 12%,
+    large: 16%,
+    xlarge: 20%
+);
+
+$blueprint-text-section-margin-bottom: (
+    small: 18,
+    medium: 36,
+    large: 46
+);
+
+@mixin blueprint-text-box () {
+    position: relative;
+    z-index: z-index( content );
+    margin-bottom: rem( map-get( $blueprint-text-section-margin-bottom, medium ) );
+
+    @each $size, $margin in $blueprint-text-section-margin-bottom {
+        // medium is default
+        @if $size != medium {
+            &.-margin-bottom-#{$size} {
+                margin-bottom: rem( $margin );
+            }
+        }
+    }
+
+    @each $size, $padding in $blueprint-text-section-padding-horizontal {
+        &.-padding-left-#{$size} {
+            padding-left: $padding;
+        }
+
+        &.-padding-right-#{$size} {
+            padding-right: $padding;
+        }
+    }
+
+    @each $size, $padding in $blueprint-title-padding-left {
+        &.-title-padding-left-#{$size} {
+            h2 {
+                padding-left: rem( $padding );
+            }
+        }
+    }
+}
+
+@function background-sketch-value ( $size-data, $key, $scale ) {
+    $value: if( map-has-key( $size-data, $key ), map-get( $size-data, $key ), false );
+
+    // TODO: make positions fall back!
+    //@if $value != false and unit( $value ) != '%' {
+    //    @return $value * $scale;
+    //}
+
+    @return $value;
+}
+
+@mixin background-sketch-position ( $size-data, $scale ) {
+    $top: background-sketch-value( $size-data, top, $scale );
+    $right: background-sketch-value( $size-data, right, $scale );
+    $bottom: background-sketch-value( $size-data, bottom, $scale );
+    $left: background-sketch-value( $size-data, left, $scale );
+
+    @if ( $top ) {
+        top: px-or-existing-unit( $top );
+    }
+    @if ( $right ) {
+        right: px-or-existing-unit( $right );
+    }
+    @if ( $bottom ) {
+        bottom: px-or-existing-unit( $bottom );
+    }
+    @if ( $left ) {
+        left: px-or-existing-unit( $left );
+    }
+}
+
+@mixin background-sketch ( $name, $data: () ) {
+    $position: if( map-has-key( $data, position ), map-get( $data, position ), absolute );
+
+    position: $position;
+    pointer-events: none;
+
+    @if $position != static {
+        $z-index: if( map-has-key( $data, z-index ), map-get( $data, z-index ), z-index( background ) );
+        z-index: $z-index;
+    }
+
+    @include background-image( "blueprints/#{$name}.png" );
+    background-repeat: no-repeat;
+
+    $wasVisible: true;
+    $isVisible: true;
+    $default-center: if( map-has-key( $data, center ), map-get( $data, center ), true );
+
+    @each $size in $breakpoint-classes {
+        @include breakpoint( $size ) {
+            $size-data: if( map-has-key( $data, $size ), map-get( $data, $size ), () );
+            $size-center: if( map-has-key( $size-data, center ), map-get( $size-data, center ), $default-center );
+            $size-transform: if( map-has-key( $size-data, transform ), map-get( $size-data, transform ), false );
+
+            // default to scale from $image-title-scales map
+            $scale: if( map-has-key( $size-data, scale ), map-get( $size-data, scale ), map-get( $image-title-scales, $size ) );
+            $isVisible: $scale > 0;
+
+            @if ( $isVisible != $wasVisible ) {
+                display: if( $isVisible, block, none );
+            }
+            @if ( $isVisible ) {
+                @include background-image-dimensions( "blueprints/#{$name}.png", auto, auto, $scale, $size-center );
+            }
+
+            $wasVisible: $isVisible;
+
+            @include background-sketch-position( $size-data, $scale );
+
+            @if ( $size-transform ) {
+                transform: $size-transform;
+            }
+        }
+    }
+}

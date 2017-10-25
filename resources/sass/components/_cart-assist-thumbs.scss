@@ -1,0 +1,49 @@
+.nr-feedback-thumbs {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    border: none;
+    margin: 0;
+
+    .nr-feedback-thumbs-like, .nr-feedback-thumbs-dislike {
+        @include answer-thumbs-button();
+
+        .nr-svg-icon {
+            display: block;
+            margin: 0;
+        }
+    }
+
+    .nr-feedback-thumbs-like {
+        .nr-svg-icon {
+            @include icon-sprite( $thumbs-up );
+        }
+
+        &.nr-feedback-thumbs-active {
+            background: transparent;
+
+            .nr-svg-icon {
+                @include icon-sprite( $thumbs-up-active );
+            }
+        }
+    }
+
+    .nr-feedback-thumbs-dislike {
+        .nr-svg-icon {
+            @include icon-sprite( $thumbs-up );
+            transform: rotate( 180deg );
+        }
+
+        &.nr-feedback-thumbs-active {
+            background: transparent;
+
+            .nr-svg-icon {
+                @include icon-sprite( $thumbs-up-active );
+            }
+        }
+    }
+
+    .nr-feedback-thumbs-counter {
+        display: none;
+    }
+}

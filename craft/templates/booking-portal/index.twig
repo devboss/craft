@@ -1,0 +1,74 @@
+{#
+ # Event info entry template
+ # -------------------
+ #
+ # This template gets loaded whenever a Event info entry’s URL is
+ # requested. That’s because the Event info section’s Template setting is
+ # set to “event-info/_entry”, the path to this template.
+ #
+ # When this template is loaded, it will already have an ‘entry’
+ # variable, set to the requested Event info entry.
+ #
+ # See this page for more details on how Craft routes requests:
+ # http://craftcms.com/docs/routing
+ #}
+
+{% extends "_layout" %}
+
+{% block content %}
+    <div id="booking-portal" class="container-fluid wooden-background">
+        <div class="blueprint">
+            <div class="blueprint__container">
+                <div class="worksheet-box">
+                    <span class="worksheet-box__title">Worksheet</span>
+                    <span class="worksheet-box__text">Toy Maker’s Blueprint</span>
+                </div>
+                <router-view></router-view>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block preScripts %}
+    <script type="text/x-template" id="offline">
+        <div class="error-page error-page--404">
+            <h1 class="image-title image-title--coming-soon">
+                <span class="image-title__image--coming-soon">Coming soon...</span>
+            </h1>
+            <div class="error-page__summary">
+                {% if siteStatus.bookingPortalOfflineSummary %}
+                    {{ siteStatus.bookingPortalOfflineSummary }}
+                {% else %}
+                    <p>The booking portal will open soon.</p>
+                {% endif %}
+            </div>
+            <div class="error-page__suggestion">
+                {% if siteStatus.bookingPortalOfflineSuggestion %}
+                    {{ siteStatus.bookingPortalOfflineSuggestion }}
+                {% else %}
+                    <p>Until then, you can head back to the <a href="/">homepage</a>.</p>
+                {% endif %}
+            </div>
+        </div>
+    </script>
+    <script type="text/javascript">
+        window.baseApiUrl = '{{ craft.config.environmentVariables.baseApiUrl }}';
+        {% if (siteStatus.bookingPortalLive is defined and siteStatus.bookingPortalLive) %}
+        window.bookingPortalLive = true;
+        {% else %}
+        window.bookingPortalLive = false;
+        {% endif %}
+        {% if (siteStatus.bookingPortalPrivateAccessLive and siteStatus.bookingPortalAccessToken) %}
+        window.bookingPortalAccessToken = '{{ siteStatus.bookingPortalAccessToken }}';
+        {% endif %}
+        {% if (siteStatus.bookingPortalPremiumTickets is defined and siteStatus.bookingPortalPremiumTickets) %}
+        window.bookingPortalPremiumTickets = true;
+        {% else %}
+        window.bookingPortalPremiumTickets = false;
+        {% endif %}
+    </script>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ craft.aurora.mix('js/booking-portal.js') }}"></script>
+{% endblock %}

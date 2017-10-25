@@ -1,0 +1,113 @@
+@mixin polaroid () {
+    position: relative;
+    background: linear-gradient( 175deg, #cacbcd 45%, #e7e8ea 55% );
+
+    &.-drop-shadow {
+        box-shadow: 5px 5px 25px 3px rgba( $color-black, 0.8 );
+    }
+}
+
+.polaroid {
+    @include polaroid();
+
+    font-size: 100px;
+    width: em( 575, 100 );
+    height: em( 495, 100 );
+    padding: em( 40, 100 ) em( 40, 100 ) 0;
+    transition: transform $transition-xslow $ease-in-out-quart;
+
+    &.-small-drop-shadow {
+        box-shadow: 5px 5px 25px 0 rgba( $color-black, 0.4 );
+    }
+
+    &.-in-camera {
+        position: absolute;
+        left: percentage( 40 / 700 );
+        top: 0;
+        transform: rotate( -3.9deg ) translate3d( 0, -113%, 0 ) scale( 1.05 );
+        z-index: z-index( content );
+
+        // get font-size from parent container
+        font-size: inherit;
+
+        &.-visible {
+            transform: rotate( -3.9deg ) translate3d( 0, -4.4%, 0 ) scale( 1 );
+        }
+    }
+}
+
+.polaroid__image-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: em( 3, 100 );
+    background: $color-black;
+    width: 100%;
+    height: em( 366, 100 );
+    margin-bottom: em( 15, 100 );
+}
+
+.polaroid--slide {
+    @include polaroid();
+
+    display: block;
+    z-index: z-index( polaroid );
+    width: 100%;
+    padding: percentage( 495 / 575 ) percentage( 40 / 575 ) 0;
+
+    .swiper-slide:nth-child( 4n+1 ) > & {
+        transform: rotate( 4.5deg );
+    }
+
+    .swiper-slide:nth-child( 4n+2 ) > & {
+        transform: rotate( -4.5deg );
+    }
+
+    .swiper-slide:nth-child( 4n+3 ) > & {
+        transform: rotate( 15.5deg );
+    }
+
+    .swiper-slide:nth-child( 4n+4 ) > & {
+        transform: rotate( -7deg );
+    }
+
+    .polaroid__image-container {
+        position: absolute;
+        top: percentage( 40 / 495 );
+        width: percentage( ( 575 - 80 ) / 575 );
+        height: percentage( 366 / 495 );
+        margin-bottom: percentage( 15 / 575 );
+        border-radius: 1px;
+    }
+}
+
+.polaroid__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    .-in-camera & {
+        opacity: 0;
+        transition: opacity $transition-xxxslow linear;
+    }
+
+    .-in-camera.-visible &.-loaded {
+        opacity: 1;
+    }
+}
+
+.polaroid__expand-button {
+    position: absolute;
+
+    @include background-image( "blueprints/gallery-expand.png" );
+    @include background-image-dimensions-ems( "blueprints/gallery-expand.png", 100 );
+    right: em( 20, 100 );
+    bottom: em( 20, 100 );
+}
+
+.polaroid__text {
+    @include font( $font-just-lovely, $font-weight-regular, em( 32, 100 ) );
+    line-height: 1;
+    display: block;
+    text-align: right;
+    color: $color-black;
+}

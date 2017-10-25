@@ -1,0 +1,65 @@
+{% import "_macros.twig" as macros %}
+
+{% extends "_blueprint-layout" %}
+
+{% block blueprint_content %}
+	<div class="blueprint__container">
+		<div class="worksheet-box">
+			<span class="worksheet-box__title">Worksheet</span>
+			<span class="worksheet-box__text">Toy Maker’s Blueprint</span>
+		</div>
+
+		<div class="row">
+			<div class="column">
+				<h1 class="image-title">
+					<span class="image-title__image--directions">Directions</span>
+				</h1>
+
+				<h2>Please select ticket type, time slot, Congratulations,<br>etc Donec ullamcorper nulla non metus auctor. 0123456789 <span class="font-variant-numeric-tabular">0123456789</span></h2>
+				<h2 class="heading-2--gill-sans">Ticket type, you’ve selected, maecenas<br>faucibus mollis interdum curabitur blandit.</h2>
+				<h3>This can be a default H3 style. Maecenas sed diam eget risus varius<br>blandit sit amet non magna cum sociis natoque penatibus. 0123456789 <span class="font-variant-numeric-tabular">0123456789</span></h3>
+				<p>Nullam id dolor id nibh <a class="text-link">this is a link</a> ut id elit. Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Cras mattis <a class="text-link">this is another text</a> link amet fermentum. Sed posuere consectetur est at lobortis. Maecenas faucibus mollis interdum.</p>
+
+				<h2 class="heading-2--doves">Elf Jingles!, Cancellation, Wheelchairs, etc, Saturday 25th November, etc 0123456789 <span class="font-variant-numeric-tabular">0123456789</span></h2>
+
+				<span class="bulleted-list-title">Bulleted list:</span>
+				<ul class="bulleted-list">
+					<li class="bulleted-list__item">Donec id elit non mi porta gravida at eget metust kopte kotp kwotp kwopt</li>
+					<li class="bulleted-list__item">Nulla vitae elit libero a pharetra augue</li>
+					<li class="bulleted-list__item">Lorem ipsum dolor sit amet consectetur adipiscing elit</li>
+				</ul>
+
+				{{ macros.button( 'Full size button', '', false, 'margin-bottom-large' ) }}
+
+				{{ macros.button( '55px high button', '', false, 'margin-bottom-large' ) }}
+
+				{{ macros.button( '50px high button', '', false, '-input margin-bottom-large' ) }}
+
+				{{ macros.button( 'Full size button', '', false, '-inverse margin-bottom-large' ) }}
+
+				{{ macros.button( '55px high button', '', false, '-inverse margin-bottom-large' ) }}
+
+				{{ macros.button( '50px high button', '', false, '-input -inverse margin-bottom-large' ) }}
+
+				<label class="input-container">
+					<span class="input-container__text">First name</span>
+					<input type="text" placeholder="First name">
+				</label>
+			</div>
+		</div>
+
+		<a class="signed-off-box">
+			<span class="signed-off-box__cta">Click to learn more about the Elf Travel Master</span>
+
+			<div class="signed-off-box__icon--elf-travel-master"></div>
+			<div class="signed-off-box__line">
+				<span class="signed-off-box__title">Signed off by:</span>
+				<span class="signed-off-box__text--signed-off">Elf travel Master</span>
+			</div>
+			<div class="signed-off-box__line--two">
+				<span class="signed-off-box__title">Position:</span>
+				<span class="signed-off-box__text">In charge of all the magical pathways</span>
+			</div>
+		</a>
+	</div>
+{% endblock %}

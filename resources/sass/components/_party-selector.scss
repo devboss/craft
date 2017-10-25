@@ -1,0 +1,162 @@
+.party-selector__selector-block {
+	margin-bottom: 30px;
+}
+
+.party-selector--center {
+	margin: 0 auto;
+}
+
+.party-selector__label {
+	text-transform: uppercase;
+	font-family: $font-face-gill-sans, serif;
+	font-weight: $font-weight-semi-bold;
+}
+
+.party-selector__help-text {
+	@include font($font-gill-sans, $font-weight-bold, 13, false);
+	font-weight: $font-weight-semi-bold;
+}
+
+.party_selector__multiselect {
+	margin-top: 10px;
+}
+
+.party-selector__more-info {
+
+}
+
+.party-selector__desc, .multiselect__single {
+	font-size: rem(18);
+	font-weight: $font-weight-regular;
+	font-family: $font-face-gill-sans, serif;
+	line-height: line-height(22, 18);
+}
+
+.party-selector--age-row {
+	margin-top: -10px;
+}
+
+#party-selector-carer {
+	-webkit-appearance: none;
+	background: transparent;
+	height: 20px;
+	width: 20px;
+	border: 1px solid white;
+	position: relative;
+
+	&:checked {
+		@include background-image('misc/checkbox.png', auto);
+		background-size: rem(23) rem(22);
+		background-position: 0 rem(-5);
+
+	}
+}
+
+.party-selector__carer-box {
+	margin-bottom: rem(30);
+}
+
+.party-selector--checkbox-label {
+	margin-top: rem(3);
+
+	@include breakpoint (small) {
+		p {
+			margin-left: rem(10);
+		}
+	}
+}
+
+.party-selector__groups {
+	margin-top: rem(30);
+}
+
+.party-selector__superstar {
+	.multiselect {
+		width: auto;
+	}
+	margin-bottom: rem(30);
+
+	.input-container {
+		display: inline-block;
+		label {
+			max-width: rem(130);
+			float: left;
+			margin-top: rem(15);
+		}
+		.multiselect {
+			max-width: rem(80);
+			float: left;
+			@include breakpoint(small down) {
+				margin-left: rem(20)
+			}
+		}
+	}
+}
+
+.party_selector__premium-standard-radio {
+	text-align: right;
+}
+
+.party_selector__premium-premium-radio {
+	text-align: left;
+}
+
+.party-selector--premium-radio-label {
+	margin-right: rem(30);
+}
+
+@include breakpoint(medium down) {
+	.party_selector__premium-standard-radio,
+	.party_selector__premium-premium-radio {
+		text-align: center !important;
+	}
+
+	.party_selector__premium-standard-radio {
+		margin-bottom: rem(25);
+	}
+}
+
+@include breakpoint(large up) {
+	.party-selector--from-price-left {
+		padding-right: rem(30);
+	}
+
+	.party-selector--from-price-right {
+		padding-left: rem(80);
+	}
+
+	.party-selector__more-information-right {
+		//padding-left: rem(55);
+	}
+}
+
+.party-selector__more-information-wrapper {
+	position: absolute;
+	width: 335px;
+	height: auto;
+	top: 20px;
+	@include background-image( "misc/longhoverbg.png", 335 );
+	padding: rem(20);
+	z-index: 9;
+	text-align: left!important;
+	left: 50%;
+	margin-left: -245px;
+}
+
+.party-selector__more-information-wrapper--right {
+	margin-left: -168px!important;
+}
+
+.party-selector__more-information-wrapper--left {
+	right: 0;
+	left: 0;
+	margin: 0 auto;
+}
+@include breakpoint(medium down) {
+
+	.party-selector__more-information-wrapper--left {
+		right: 0!important;
+		left: -47px!important;
+		margin: 0 auto!important;
+	}
+}

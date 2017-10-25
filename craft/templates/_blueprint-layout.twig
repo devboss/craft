@@ -1,0 +1,14 @@
+{% import "_macros.twig" as macros %}
+
+{% extends "_layout" %}
+
+{% block content %}
+	<div class="wooden-background">
+		<div class="{{ blueprint_class | default( 'blueprint' ) }}">
+			{% block blueprint_content %}
+			{% endblock %}
+
+			<p class="{{ copyright_class | default( 'copyright' ) }}">&copy; Copyright Lapland<sup>UK</sup> 2017. All right reserved.</p>
+		</div>
+	</div>
+{% endblock %}

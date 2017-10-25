@@ -1,0 +1,25 @@
+.wooden-background {
+    min-height: 100vh;
+    padding-top: 79px;
+
+    @include breakpoint( medium ) {
+        padding-top: 122px;
+    }
+
+    @include breakpoint( large ) {
+        padding-top: 106px;
+    }
+
+    @include breakpoint( xlarge ) {
+        @include background-image( "wood/directions.jpg", auto );
+        background-color: #7f482c;
+        background-repeat: repeat;
+        background-position: center top;
+
+        padding: 176px px( $wooden-background-padding-large ) px( $wooden-background-padding-large );
+    }
+
+    @include breakpoint($breakpoint-nav-xlxxl) {
+        padding: 206px px( $wooden-background-padding-xlarge ) px( $wooden-background-padding-xlarge );
+    }
+}

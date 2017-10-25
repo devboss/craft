@@ -1,0 +1,8 @@
+.mmb-nav__container {
+	display: flex;
+	justify-content: space-around;
+	a {
+		@include font( $font-face-doves-type, $font-weight-regular, 26);
+		color: #46566D;
+	}
+}

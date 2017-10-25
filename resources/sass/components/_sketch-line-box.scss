@@ -1,0 +1,61 @@
+.sketch-line-box {
+    @include blueprint-text-box();
+
+    position: relative;
+
+    @include breakpoint( medium ) {
+        padding: rem( 30 );
+    }
+}
+
+.sketch-line-box__contents {
+    position: relative;
+    z-index: z-index( content );
+}
+
+// TODO: maybe this could be broken out to a separate component if .show-for-medium was used too
+.sketch-line-box__vertical-lines {
+    @include sketch-lines-vertical-container();
+
+    display: none;
+
+    @include breakpoint( medium ) {
+        display: block;
+    }
+
+    &:before {
+        @include sketch-line-vertical( -15, 0, 100%, -560 );
+    }
+
+    &:after {
+        @include sketch-line-vertical( -30, 100%, 85%, -122 );
+    }
+}
+
+.sketch-line-box__horizontal-lines {
+    @include sketch-lines-horizontal-container();
+
+    &:before {
+        @include sketch-line-horizontal( 0, -15, calc( 100% + 40px ), -123 );
+    }
+}
+
+.sketch-line-box__vertical-lines--v1 {
+    @extend .sketch-line-box__vertical-lines;
+
+    &:before {
+        @include sketch-line-vertical( -15, 0, 80%, -232 );
+    }
+
+    &:after {
+        @include sketch-line-vertical( -20, 100%, 90%, -584, 0.7 );
+    }
+}
+
+.sketch-line-box__horizontal-lines--v1 {
+    @extend .sketch-line-box__horizontal-lines;
+
+    &:before {
+        @include sketch-line-horizontal( 0, -15, calc( 100% + 40px ) );
+    }
+}

@@ -1,0 +1,207 @@
+.main-nav {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: z-index( main-nav );
+    opacity: 0;
+    transition: opacity $transition-fast linear;
+
+    .-app-ready & {
+        opacity: 1;
+    }
+
+    @include background-image( "nav/shelf-small.png", auto );
+    @include background-image-dimensions( "nav/shelf-small.png", false );
+
+    background-repeat: no-repeat;
+    background-position: center top;
+
+    @include breakpoint( $breakpoint-xsmall down ) {
+        @include background-image( "nav/shelf-xsmall.png", auto );
+        @include background-image-dimensions( "nav/shelf-xsmall.png", false );
+    }
+
+    @include breakpoint( medium ) {
+        @include background-image( "nav/shelf-medium.png", auto );
+        @include background-image-dimensions( "nav/shelf-medium.png", false );
+    }
+
+    @include breakpoint( large ) {
+        @include background-image( "nav/shelf-large.png", auto );
+        @include background-image-dimensions( "nav/shelf-large.png", false );
+    }
+
+    @include breakpoint( xlarge ) {
+        @include background-image( "nav/shelf-xlarge.png", auto );
+        @include background-image-dimensions( "nav/shelf-xlarge.png", false );
+    }
+}
+
+.main-nav__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 0 0 20px;
+
+    @include breakpoint( large ) {
+        padding: 0 16px;
+    }
+
+    @include breakpoint( xlarge ) {
+        padding: 0 13px 0 22px;
+    }
+
+    @include breakpoint($breakpoint-nav-xlxxl) {
+        padding: 0 40px 0 46px;
+    }
+
+    & > * {
+        flex: 0 0 auto;
+    }
+}
+
+.main-nav__scroll-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    // TODO: remove this altogether but be careful about margins!
+    // @include background-image( "nav/blueprints-shadow.png" );
+    @include background-image-dimensions( "nav/blueprints-shadow.png", 726 );
+    @include background-image-spacing( 18, 118, 0, 8 );
+
+    background-repeat: no-repeat;
+    margin-top: -20px;
+    margin-left: -20px;
+
+    @include breakpoint( xlarge ) {
+        margin-top: 2px;
+        margin-left: -22px;
+    }
+
+    @include breakpoint( xxlarge ) {
+        @include background-image-dimensions( "nav/blueprints-shadow.png" );
+        @include background-image-spacing( 19, 109, 0, 8 );
+
+        margin-top: 0;
+        margin-left: -19px;
+    }
+}
+
+.nav-book-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+
+    @include font( $font-doves-type, $font-weight-regular, 20 );
+    @include link-color( $color-white );
+    @include background-image( "nav/book-small.png" );
+    @include background-image-dimensions( "nav/book-small.png" );
+    @include background-image-spacing( 8, 20, 15, 20, $nav-book-button-scale-small );
+
+    background-repeat: no-repeat;
+    margin-top: 10px;
+
+    @include breakpoint( $breakpoint-xxsmall down ) {
+        font-size: 1rem;
+        @include background-image-dimensions( "nav/book-small.png", auto, auto, 138 / 158 );
+        @include background-image-spacing( 8, 20, 15, 20, $nav-book-button-scale-xsmall );
+    }
+
+    @include breakpoint( medium ) {
+        @include background-image( "nav/book.png" );
+        @include background-image-dimensions( "nav/book.png" );
+        @include background-image-spacing( 8, 20, 15 );
+
+        font-size: rem( 20 );
+        margin-top: 16px;
+    }
+
+    @include breakpoint( large ) {
+        @include background-image-dimensions( "nav/book.png", 192 );
+        @include background-image-spacing( 8, 20, 15, 20, $nav-book-button-scale-large );
+
+        margin-top: 5px;
+    }
+
+    @include breakpoint( xlarge ) {
+        margin-top: 28px;
+        margin-right: -38px;
+    }
+
+    @include breakpoint( xxlarge ) {
+        @include background-image-dimensions( "nav/book.png" );
+        @include background-image-spacing( 8, 20, 15 );
+
+        margin-top: 16px;
+        margin-right: -54px;
+    }
+}
+
+.nav-log {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    margin: -1px -42px 10px -11px;
+    padding: 26px 0 11px 11px;
+
+    @include background-image( "nav/logs.png" );
+    @include background-image-dimensions( "nav/logs.png" );
+    background-repeat: no-repeat;
+
+    @include breakpoint($breakpoint-nav-xlxxl) {
+        margin-right: -15px;
+    }
+}
+
+%nav-log__button {
+    @include font( $font-doves-type, $font-weight-regular, 20, 14 );
+    @include link-color( $color-indian-tan );
+
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+}
+
+.nav-log__button--login {
+    @extend %nav-log__button;
+    width: 66px;
+}
+
+.nav-log__button--signup {
+    @extend %nav-log__button;
+    width: 56px;
+    padding: 6px 8px 0;
+}
+
+.nav-log__button-text {
+    display: block;
+    flex: 0 1 auto;
+}
+
+.burger-button {
+    width: 70px;
+    height: 54px;
+
+    @include background-image( "nav/burger.png", 37px );
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin-left: -24px;
+
+    @include breakpoint( $breakpoint-xxsmall down ) {
+        width: 54px;
+        margin-left: -15px;
+    }
+
+    @include breakpoint( medium ) {
+        height: 70px;
+    }
+}

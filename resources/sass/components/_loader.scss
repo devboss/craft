@@ -1,0 +1,15 @@
+.loader {
+    position: absolute;
+    z-index: z-index( overlay__background );
+    width: 98px;
+    height: 98px;
+    margin: -49px;
+    left: 50%;
+    top: 50%;
+    opacity: 0;
+    transition: opacity $transition-fast linear;
+
+    &.-visible {
+        opacity: 1;
+    }
+}

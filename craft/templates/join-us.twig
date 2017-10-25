@@ -1,0 +1,116 @@
+{% import "_macros.twig" as macros %}
+{% set blueprint_class = 'blueprint -overflow-visible' %}
+
+{% extends "_blueprint-layout" %}
+
+{% block blueprint_content %}
+	<div class="background-sketch--join-us-cogs-1 show-for-medium"></div>
+	<div class="background-sketch--join-us-cogs-2 show-for-medium"></div>
+
+	<div class="blueprint__container">
+		{{ macros.worksheet }}
+
+		{{ macros.title( 'Join Us' ) }}
+
+		<div class="background-text--join-us-our-wish">Our Wish: LaplandUK honours &amp; celebrates the wonderment of childhood through our magical world, rich story telling &amp; immersive memory making experiences.</div>
+
+		<div class="row margin-bottom-small">
+			<div class="column large-6">
+                {% set block0 = entry.joinUsContent.type('paragraph').nth(0) %}
+                {% if block0 %}
+                    {{ block0.text }}
+                {% endif %}
+			</div>
+			<div class="column large-6 large-padding-top-large">
+                {% set block1 = entry.joinUsContent.type('paragraph').nth(1) %}
+                {% if block1 %}
+                    {{ block1.text }}
+                {% endif %}
+			</div>
+		</div>
+
+		<div class="row -align-items-center">
+			<div class="column large-6 offset-large-1">
+                {% set block0 = entry.joinUsQuotes.nth(0) %}
+                {% if block0 %}
+					<div class="join-quote -top-right -bottom-left">
+						<div class="join-quote__text">{{ block0.quoteText }}</div>
+						<span class="join-quote__cite -squiggle-1">
+						<span class="join-quote__person">{{ block0.authorName }}</span> <span class="join-quote__position">- {{ block0.authorDescription }}</span>
+					</span>
+					</div>
+                {% endif %}
+			</div>
+
+			<div class="column large-5">
+				<div class="background-sketch--join-us-cogs-3 show-for-large"></div>
+
+                {% set block1 = entry.joinUsQuotes.nth(1) %}
+                {% if block1 %}
+					<div class="join-quote -top-right">
+						<div class="join-quote__text">{{ block1.quoteText }}</div>
+						<span class="join-quote__cite -squiggle-2 -squiggle-hide-for-large">
+							<span class="join-quote__person">{{ block1.authorName }}</span> <span class="join-quote__position">- {{ block1.authorDescription }}</span>
+						</span>
+					</div>
+				{% endif %}
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="column large-5 offset-large-3">
+                {% set block2 = entry.joinUsQuotes.nth(2) %}
+                {% if block2 %}
+					<div class="join-quote -bottom-right">
+						<div class="join-quote__text">{{ block2.quoteText }}</div>
+						<span class="join-quote__cite -squiggle-3 -squiggle-hide-for-large">
+							<span class="join-quote__person">{{ block2.authorName }}</span> <span class="join-quote__position">- {{ block2.authorDescription }}</span>
+						</span>
+					</div>
+				{% endif %}
+			</div>
+		</div>
+
+		<img class="join-us-cogs margin-bottom-medium large-margin-bottom-none" src="/images/static/join-us-cogs-2596w.png">
+
+		<div class="row -align-items-center">
+			<div class="column large-7">
+                {% set block2 = entry.joinUsContent.type('paragraph').nth(2) %}
+                {% if block2 %}
+                    {{ block2.text }}
+                {% endif %}
+			</div>
+
+			<div class="column large-4 offset-large-1">
+				{% set image = entry.joinUsImages.nth(0).image.first() %}
+                {% if image %}
+					<img class="column-child-expander" src="{{ image.getUrl() }}">
+                {% endif %}
+			</div>
+		</div>
+
+		<div class="row -align-items-center">
+			<div class="column large-6">
+                {% set image = entry.joinUsImages.nth(1).image.first() %}
+                {% if image %}
+					<img class="column-child-expander margin-bottom-small large-margin-bottom-none" src="{{ image.getUrl() }}">
+                {% endif %}
+			</div>
+
+			<div class="column large-6 text-center flex-center-horizontal">
+				<p class="font-weight-regular">Play your part in making this Christmas one families will remember forever... and guess what, so will you!</p>
+
+				<div class="column large-9">
+                    {% set image = entry.joinUsImages.nth(2).image.first() %}
+                    {% if image %}
+						<img class="margin-bottom-small column-child-expander--double large-column-child-collapse" src="{{ image.getUrl() }}">
+                    {% endif %}
+				</div>
+
+				<p class="font-weight-regular">The Lapland<sup>UK</sup> Wardrobe team with ‘Alice’ the wannabe husky.</p>
+			</div>
+		</div>
+
+		{{ macros.sign_off_box( 'Wish', 'Collector of wishes' ) }}
+	</div>
+{% endblock %}

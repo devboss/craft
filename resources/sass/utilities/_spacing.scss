@@ -1,0 +1,67 @@
+$sizes: (
+    auto: auto,
+    none: 0,
+    small: 10,
+    medium: 25,
+    large: 50,
+    xlarge: 75,
+    xxlarge: 100
+);
+
+$positions: ( top, right, bottom, left );
+$types: ( margin, padding );
+
+@each $size in $breakpoint-classes {
+    $prefix: if( $size != small, $size + '-', '' );
+
+    @include breakpoint( $size ) {
+        @each $size, $value in $sizes {
+            @each $type in $types {
+                $val: if( type-of( $value ) == string, $value, px( $value ) );
+                $val-neg: if( type-of( $value ) == string, $value, px( -$value ) );
+
+                .#{$prefix}#{$type}-#{$size} {
+                    #{$type}: $val !important;
+                }
+
+                .#{$prefix}#{$type}-#{$size}-negative {
+                    #{$type}: $val-neg !important;
+                }
+
+                .#{$prefix}#{$type}-horizontal-#{$size} {
+                    #{$type}-left: $val !important;
+                    #{$type}-right: $val !important;
+                }
+
+                .#{$prefix}#{$type}-horizontal-#{$size}-negative {
+                    #{$type}-left: $val-neg !important;
+                    #{$type}-right: $val-neg !important;
+                }
+
+                .#{$prefix}#{$type}-vertical-#{$size} {
+                    #{$type}-top: $val !important;
+                    #{$type}-top: $val !important;
+                }
+
+                .#{$prefix}#{$type}-vertical-#{$size}-negative {
+                    #{$type}-top: $val-neg !important;
+                    #{$type}-top: $val-neg !important;
+                }
+
+                @each $position in $positions {
+                    .#{$prefix}#{$type}-#{$position}-#{$size} {
+                        #{$type}-#{$position}: $val !important;
+                    }
+
+                    .#{$prefix}#{$type}-#{$position}-#{$size}-negative {
+                        #{$type}-#{$position}: $val-neg !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.nopadding {
+    padding: 0!important;
+}

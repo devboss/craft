@@ -1,0 +1,130 @@
+$background-text-absolute: (
+    gallery-step-1: (
+        small: (
+            scale: 0.676,
+            left: 32%,
+            top: -52
+        ),
+        medium: (
+            top: -61
+        ),
+        large: (
+            left: percentage( 80 / $camera-max-width ),
+            top: percentage( -63 / $camera-max-height )
+        ),
+        xlarge: (
+            left: percentage( 24 / $camera-max-width ),
+            top: percentage( -23 / $camera-max-height )
+        )
+    ),
+    gallery-press-button: (
+        small: (
+            right: percentage( 52 / $camera-max-width ),
+            top: percentage( 0 / $camera-max-height )
+        )
+    ),
+    gallery-click-to-enlarge: (
+        large: (
+            scale: 0.67,
+            right: percentage( 40 / $camera-max-width ),
+            bottom: percentage( 158 / $camera-max-height )
+        ),
+        xlarge: (
+            right: percentage( -12 / $camera-max-width ),
+            bottom: percentage( 148 / $camera-max-height )
+        )
+    ),
+    gallery-step-2: (
+        small: (
+            scale: 1,
+            left: 50%,
+            bottom: -82
+        ),
+        medium: (
+            scale: 1,
+            bottom: -82
+        ),
+        large: (
+            scale: 0.7,
+            left: percentage( 70 / $camera-max-width ),
+            bottom: percentage( 65 / $camera-max-height )
+        ),
+        xlarge: (
+            left: percentage( 0 / $camera-max-width ),
+            bottom: percentage( 80 / $camera-max-height )
+        )
+    ),
+    join-us-our-wish: (
+        position: relative,
+        center: false,
+        medium: (
+            scale: 553 / 801
+        )
+    )
+);
+
+@each $name, $data in $background-text-absolute {
+    .background-text--#{$name} {
+        @include image-text-replacement();
+        @include background-sketch( $name, $data );
+    }
+}
+
+$background-text-fluid: (
+    history-it-began: (),
+    history-family: (),
+    history-see-you: (),
+    history-2017: (),
+    what-is-lapland-elf-travel-master: (),
+    premium-plus-tour-details: ()
+);
+
+@each $name, $data in $background-text-fluid {
+    .background-text--#{$name} {
+        $width: if( map-has-key( $data, width ), map-get( $data, width ), 100% );
+        $margins: if( map-has-key( $data, margins ), map-get( $data, margins ), 0 );
+
+        @include image-text-replacement();
+        @include background-image( "blueprints/#{$name}.png" );
+        @include background-image-aspect-ratio( "blueprints/#{$name}.png", $width );
+        margin: $margins;
+    }
+}
+
+.background-text--gallery-step-1 {
+    @include breakpoint( $breakpoint-xsmall down ) {
+        left: 50%;
+    }
+}
+
+.background-text--history-family {
+    @include breakpoint( medium down ) {
+        @include background-image( "blueprints/history-family-small.png" );
+        @include background-image-aspect-ratio( "blueprints/history-family-small.png", 100% );
+    }
+}
+
+.background-text--history-see-you {
+    @include breakpoint( medium down ) {
+        @include background-image( "blueprints/history-see-you-small.png" );
+        @include background-image-aspect-ratio( "blueprints/history-see-you-small.png", 100% );
+    }
+}
+
+.background-text--join-us-our-wish {
+    @include breakpoint-scaled-margins( ( -115, auto, 0, auto ), $image-title-scales );
+
+    @include breakpoint( small down ) {
+        @include background-image( "blueprints/join-us-our-wish-small.png" );
+        @include background-image-aspect-ratio( "blueprints/join-us-our-wish-small.png", 100% );
+
+        margin: percentage( -18 / 619 ) auto percentage( 30 / 619 );
+    }
+}
+
+.background-text--premium-plus-tour-details {
+    @include breakpoint( small down ) {
+        @include background-image( "blueprints/premium-plus-tour-details-mobile.png" );
+        @include background-image-aspect-ratio( "blueprints/premium-plus-tour-details-mobile.png", 100% );
+    }
+}

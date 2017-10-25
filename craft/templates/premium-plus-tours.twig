@@ -1,0 +1,86 @@
+{% import "_macros.twig" as macros %}
+
+{% extends "_blueprint-layout" %}
+
+{% set copyright_class = 'copyright--premium-plus' %}
+
+{% block blueprint_content %}
+	<div class="background-sketch--premium-plus-border-top">
+		<div class="premium-plus-star--1 show-for-large"></div>
+
+		<div class="premium-plus-bell--1"></div>
+		<div class="premium-plus-bell--2 show-for-large"></div>
+	</div>
+	<div class="background-sketch--premium-plus-border-bottom show-for-large"></div>
+
+	<div class="premium-plus-star--2"></div>
+	<div class="premium-plus-star--3 show-for-large"></div>
+	<div class="premium-plus-star--4 show-for-large"></div>
+	<div class="premium-plus-star--5 show-for-large"></div>
+	<div class="premium-plus-star--6 show-for-large"></div>
+	<div class="premium-plus-star--7 show-for-large"></div>
+	<div class="premium-plus-star--8 show-for-large"></div>
+	<div class="premium-plus-star--9 show-for-large"></div>
+	<div class="premium-plus-star--10 show-for-large"></div>
+
+	<div class="blueprint__container--premium-plus">
+		{{ macros.title( 'Premium Plus Tours' ) }}
+
+		<div class="row">
+			<div class="column large-7">
+				<div class="-leader margin-bottom-medium">{{ entry.premiumPlusLead }}</div>
+
+                {% if entry.bookingEnabled %}
+                    {{ macros.button( 'Book now', '/booking-portal', 'premium-plus', 'rotate-ccw-small margin-bottom-medium large-margin-left-xlarge' ) }}
+				{% else %}
+                    {{ macros.button( 'Sold out', false, 'premium-plus', '-no-arrow rotate-ccw-small margin-bottom-medium large-margin-left-xlarge' ) }}
+                {% endif %}
+
+				<div class="premium-plus-tour-details">
+					<div class="background-text--premium-plus-tour-details">
+						{# For SEO purposes only, the text is actually in the background image #}
+						<h2>Each Tour includes:</h2>
+						<ul>
+							<li>Conker Hats for everybody A copy of Mother Christmas’ Puzzoodles book for every child</li>
+							<li>Freedom to spend as long in the Elven village as you please, before your visit to Father Christmas </li>
+							<li>Front row seats in The Glade</li>
+							<li>A private meet & greet with The Elf Travel Master</li>
+							<li>A personal audience with Sage, the oldest Elf in the Enchanted Forest</li>
+							<li>Reserved table and meal in the Elven Restaurant</li>
+							<li>Receive a Hand Painted 2017 collectable Bauble (from Father Christmas) and a commorative scrapbook with all the photos with Father Christmas to treasure </li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="column large-5">
+				<div class="row collapse -align-items-start">
+					<img class="column column-child-expander--quadruple margin-bottom-small" src="{{ entry.premiumPlusImages.nth(0).url() }}">
+
+					<div class="column large-10 offset-large-1 margin-bottom-medium">
+						<div class="margin-bottom-medium">{{ entry.premiumPlusBody }}</div>
+
+                        {% if entry.bookingEnabled %}
+                            {{ macros.button( 'Book now', '/booking-portal', 'premium-plus', 'rotate-ccw-small' ) }}
+                        {% else %}
+                            {{ macros.button( 'Sold out', false, 'premium-plus', '-no-arrow rotate-ccw-small' ) }}
+                        {% endif %}
+
+						<div class="background-sketch--premium-plus-buy-tickets-here show-for-large"></div>
+					</div>
+
+					<div class="column">
+						<img class="premium-plus-postcard-2 column-child-expander--double" src="{{ entry.premiumPlusImages.nth(1).url() }}">
+
+						<div class="background-sketch--zauber-illustration"></div>
+
+						<div class="premium-plus-bell--3"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		{{ macros.sign_off_box( 'Zauber', 'Most magical of the Elves', 'premium-plus' ) }}
+	</div>
+{% endblock %}
+

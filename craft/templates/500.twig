@@ -1,0 +1,48 @@
+{#
+ # 500 template
+ # ------------
+ #
+ # This template is loaded whenever Craft cannot figure out how to
+ # respond to an incoming request. No setup is involved to get your
+ # 500 page working; you just need to call it 500.html and put it
+ # at the root of your craft/templates/ folder.
+ #
+ # You can also create 400.html, 403.html, 500.html, and 503.html
+ # templates if you’d like. If Craft can’t find an error template
+ # to match the error code, it will just use the one in
+ # craft/app/templates/ instead.
+ #
+ # See this page for more details on how Craft routes requests:
+ # http://craftcms.com/docs/routing
+ #}
+
+{% extends "_layout" %}
+{% set title = "500 Server Error" %}
+
+{% block content %}
+    <div id="booking-portal" class="container-fluid wooden-background">
+        <div class="blueprint">
+            <div class="blueprint__container">
+                <div class="worksheet-box">
+                    <span class="worksheet-box__title">Worksheet</span>
+                    <span class="worksheet-box__text">Toy Maker’s Blueprint</span>
+                </div>
+                <div class="error-page error-page--500">
+                    <h1 class="image-title image-title--500">
+                        <span class="image-title__image--500">500 Server Error</span>
+                    </h1>
+                    <div class="error-page__summary">
+                        <p>
+                            Oops! Something went wrong!
+                            <br>
+                            Conker has probably been sleeping on the job again.
+                        </p>
+                    </div>
+                    <div class="error-page__suggestion">
+                        <p>Not to worry, you can just head back to the <a href="/">homepage</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

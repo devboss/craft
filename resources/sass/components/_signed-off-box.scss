@@ -1,0 +1,229 @@
+$elf-names: (
+    conker,
+    wish,
+    zauber,
+    elf-travel-master,
+    compass
+);
+
+$signed-off-box-padding-vertical: 13;
+$signed-off-box-padding-horizontal: 8;
+
+@mixin signed-off-box-font-size () {
+    // everything sized in ems so we can scale with font-size
+    font-size: px( $signed-off-box-font-small );
+
+    @include breakpoint( medium ) {
+        font-size: px($signed-off-box-font-medium);
+    }
+
+    @include breakpoint( large ) {
+        font-size: 10px;
+    }
+}
+
+@mixin signed-off-box-dimensions () {
+    display: block;
+    position: absolute;
+    bottom: em( -$signed-off-box-padding-vertical, 10 );
+    right: em( -$signed-off-box-padding-horizontal + 1, 10 );
+    padding: em( $signed-off-box-padding-vertical, 10 ) em( $signed-off-box-padding-horizontal, 10 );
+
+    @include background-image-dimensions-ems( "blueprints/sign-off-box.png", 10 );
+}
+
+@mixin signed-off-box-horizontal-line ( $top: $signed-off-box-padding-vertical, $offset: false ) {
+    position: absolute;
+    width: em( 445, 10 );
+    height: em( 2, 10 );
+    left: em( $signed-off-box-padding-horizontal, 10 );
+    top: em-or-existing-unit( $top, 10 );
+    opacity: 0.6;
+
+    @include horizontal-line-background( $offset );
+}
+
+.signed-off-box {
+    @include signed-off-box-font-size();
+    @include signed-off-box-dimensions();
+
+    @include background-image( "blueprints/sign-off-box.png" );
+}
+
+.signed-off-box__horizontal-line-1 {
+    @include signed-off-box-horizontal-line();
+
+    display: none;
+}
+
+.signed-off-box__horizontal-line-2 {
+    @include signed-off-box-horizontal-line( 50%, -100 );
+
+    display: none;
+}
+
+.signed-off-box__cta {
+    @include font( $font-just-lovely, $font-weight-regular, em( 41, 10 ) );
+    line-height: 1;
+
+    position: absolute;
+    color: $color-white;
+    text-align: center;
+    pointer-events: none;
+    width: em( 264, 41 );
+    height: 100%;
+    left: em( -57, 41 );
+    bottom: em( 85, 41 );
+
+    @include breakpoint( $breakpoint-signed-off-ml ) {
+        left: 0;
+        top: em( 22, 41 );
+        padding: 0;
+        transform: translate( -100%, 0 );
+    }
+
+    &:before {
+        @include background-image( "blueprints/signed-off-arrow.png" );
+        @include background-image-dimensions-ems(  "blueprints/signed-off-arrow.png", 41 );
+
+        content: '';
+        position: absolute;
+        top: em( 27, 41 );
+        right: em( -57, 41 );
+        transform: rotate( 45deg );
+
+        @include breakpoint($breakpoint-signed-off-ml) {
+            top: em( -20, 41 );
+            right: em( 2, 32 );
+            transform: none;
+        }
+    }
+
+    &.-conker {
+        width: em( 240, 41 );
+    }
+
+    &.-wish, &.-zauber, &.-compass {
+        width: em( 218, 41 );
+    }
+}
+
+.signed-off-box__cta-highlight {
+    color: $color-alizarin-crimson;
+}
+
+.signed-off-box__icon {
+    position: absolute;
+    pointer-events: none;
+    right: em( 76, 10 );
+    top: 50%;
+
+    @each $name in $elf-names {
+        &.-#{$name} {
+            $blueprint-path: "blueprints/sign-off-box-icon-#{$name}.png";
+
+            @include background-image( $blueprint-path );
+            @include background-image-dimensions-ems( $blueprint-path, 10, true );
+        }
+    }
+}
+
+.signed-off-box__line {
+    position: relative;
+    width: 100%;
+    height: 50%;
+    line-height: em( 62, 10 );
+    padding-left: em( 8, 10 );
+}
+
+.signed-off-box__title {
+    @include font( $font-gill-sans, $font-weight-regular, em( 20, 10 ) );
+    color: rgba( $color-chathams-blue, 0.79 );
+}
+
+.signed-off-box__text {
+    @include font( $font-just-lovely, $font-weight-regular, em( 39, 10 ) );
+
+    position: relative;
+    display: inline-block;
+    margin-left: em( 12, 39 );
+    bottom: em( -10, 39 );
+    white-space: nowrap;
+    transform-origin: 0 100%;
+    transform: rotate( -2deg );
+    color: rgba( $color-chathams-blue, 0.89 );
+}
+
+.signed-off-box__text--name {
+    @extend .signed-off-box__text;
+
+    font-size: em( 83, 10 );
+    margin-left: em( 2, 83 );
+    bottom: em( -31, 83 );
+    transform: rotate( -5deg );
+
+    &.-wish {
+        margin-left: em( 60, 83 );
+    }
+
+    &.-zauber {
+        margin-left: em( 62, 83 );
+    }
+}
+
+.signed-off-box--premium-plus {
+    @include signed-off-box-font-size();
+    @include signed-off-box-dimensions();
+
+    &:before {
+        content: '';
+        position: absolute;
+        left: em( $signed-off-box-padding-horizontal - 1, 10 );
+        top: em( $signed-off-box-padding-vertical, 10 );
+        bottom: em( $signed-off-box-padding-vertical, 10 );
+        width: em( 2, 10 );
+        opacity: 0.6;
+
+        @include vertical-line-background( -126 );
+    }
+
+    .signed-off-box__horizontal-line-1 {
+        display: block;
+    }
+
+    .signed-off-box__horizontal-line-2 {
+        display: block;
+    }
+
+    .signed-off-box__cta {
+        color: #dbb83d;
+    }
+
+    .signed-off-box__cta-highlight {
+        color: $color-white;
+    }
+
+    .signed-off-box__title {
+        color: $color-white;
+    }
+
+    .signed-off-box__text {
+        color: rgba( $color-white, 0.89 );
+    }
+
+    .signed-off-box__text--name {
+        bottom: em( -16, 83 );
+    }
+
+    .signed-off-box__icon {
+        right: em( 102, 10 );
+        top: em( 58, 10 );
+
+        &.-zauber {
+            $blueprint-path: "blueprints/sign-off-box-icon-gold-zauber.png";
+
+            @include background-image( $blueprint-path );
+            @include background-image-dimensions-ems( $blueprint-path, 10, true );
+        }
+    }
+}

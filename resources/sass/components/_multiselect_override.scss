@@ -1,0 +1,46 @@
+.multiselect__select, .multiselect__tags {
+  height: 50px;
+}
+
+.multiselect__tags {
+  border-radius: 0;
+  padding-top: 13px!important;
+}
+
+.multiselect__tags, .multiselect__single {
+  background-color: transparent;
+}
+
+.multiselect__select {
+  &:before {
+    color: white;
+    border-color: white transparent transparent;
+  }
+}
+
+
+.multiselect__single {
+  @include multiselect-font();
+  color: white;
+  text-align: center;
+  padding-left: 31px;
+}
+
+.multiselect__option {
+  text-align: center;
+}
+
+.multiselect__option:hover, .multiselect__option--selected, .multiselect__option--highlight {
+  background: #ECEDEF;
+  color: #40525D;
+  font-weight: bold;
+  &.multiselect__option--highlight {
+    background: #ECEDEF;
+    color: #40525D;
+  }
+}
+
+.multiselect__content {
+  border-radius: 0!important;
+  left: 0 !important;
+}

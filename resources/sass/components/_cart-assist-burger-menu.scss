@@ -1,0 +1,51 @@
+.burger-menu {
+    margin-bottom: 44px;
+}
+
+.burger-button {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    border: 1px solid $color-white;
+    height: px( $cart-assist-input-height-small );
+    padding-left: 15px;
+}
+
+.burger-button__burger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 26px;
+    height: 16px;
+    margin-right: 17px;
+
+    &:before, &:after {
+        content: '';
+    }
+
+    &:before, &:after, .burger-button__patty {
+        display: block;
+        width: 100%;
+        height: 2px;
+        padding: 0;
+        background-color: $color-white;
+    }
+}
+
+.burger-button__text {
+    @include paragraph( 0, true );
+
+    display: block;
+    padding-top: 3px;
+}
+
+.burger-topics {
+    @include autocomplete-list();
+    display: none;
+}
+
+.burger-topic {
+    @include autocomplete-list-item( $font-weight-regular );
+}
+

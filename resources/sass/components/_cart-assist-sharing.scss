@@ -1,0 +1,61 @@
+.nr-sharing {
+    display: block;
+    float: none;
+    width: 50px;
+    height: 50px;
+    margin: -10px -11px -11px 0;
+
+    @include breakpoint( large ) {
+        margin: -2px -11px;
+    }
+
+    .nr-sharing-opener {
+        .nr-sharing-icon {
+            @include icon-sprite( $share );
+
+            margin: -13px;
+            top: 50%;
+            left: 50%;
+        }
+    }
+
+    .nr-sharing-drop {
+        @include sharing-drop();
+
+        .nr-sharing-drop-corner:before {
+            @include sharing-corner();
+        }
+
+        ul {
+            @include sharing-buttons-container();
+        }
+
+        li {
+            display: block;
+        }
+
+        a {
+            @include sharing-button();
+        }
+
+        .nr-sharing-icon {
+            @include sharing-icon();
+
+            &.nr-sharing-icon-clipboard {
+                @include icon-sprite( $copy );
+            }
+
+            &.nr-sharing-icon-mail {
+                @include icon-sprite( $email );
+            }
+
+            &.nr-sharing-icon-facebook {
+                @include icon-sprite( $facebook );
+            }
+
+            &.nr-sharing-icon-twitter {
+                @include icon-sprite( $twitter );
+            }
+        }
+    }
+}

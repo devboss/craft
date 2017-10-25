@@ -1,0 +1,243 @@
+// these are based on the iframe's width not the screen width, it isn't perfect but will have to do
+$breakpoints: (
+    small: 0,
+    medium: 513px,
+    large: 740px,
+    xlarge: 775px,
+    xxlarge: 883px,
+);
+
+@import "settings/cart-assist-variables";
+@import "settings/variables";
+@import "settings/fonts";
+@import "settings/colors";
+@import "settings/image-data";
+@import "settings/sprity";
+@import "settings/animations";
+
+@import "tools/functions";
+@import "tools/mixins";
+@import "tools/cart-assist-mixins";
+@import "tools/image-mixins";
+@import "tools/typography-mixins";
+@import "tools/media-queries";
+
+@import "generic/fix";
+@import "generic/typography";
+
+@import "components/cart-assist-sharing";
+@import "components/cart-assist-thumbs";
+@import "components/cart-assist-scroller-pager";
+@import "components/cart-assist-scrollbar";
+@import "components/cart-assist-channeling-actionbar";
+
+#widgetContainer {
+    background-color: transparent;
+}
+
+div#widgetTitleWrapper {
+    display: none;
+}
+
+#searchContainerWrapper {
+    background-color: transparent;
+    box-shadow: none;
+    height: px( $cart-assist-input-height-small );
+
+    @include breakpoint( large ) {
+        height: px( $cart-assist-input-height-large );
+    }
+}
+
+.nr-autocomplete.nr-autocomplete-default {
+
+    .nr-autocomplete-area {
+        height: px( $cart-assist-input-height-small );
+
+        @include breakpoint( large ) {
+            height: px( $cart-assist-input-height-large );
+        }
+    }
+
+    .nr-autocomplete-placeholder, .nr-autocomplete-input {
+        @include autocomplete-search();
+    }
+
+    .nr-autocomplete-input {
+        border: 1px solid $color-white;
+    }
+
+    .nr-autocomplete-drop {
+        @include autocomplete-list();
+
+        li {
+            @include autocomplete-list-item();
+        }
+    }
+
+    .nr-autocomplete-buttons {
+        width: auto;
+        line-height: px( $cart-assist-input-height-small );
+        margin-right: 6px;
+
+        @include breakpoint( large ) {
+            line-height: px( $cart-assist-input-height-large );
+            margin-right: 15px;
+        }
+    }
+
+    .nr-autocomplete-reset, .nr-autocomplete-speech {
+        width: 26px;
+        height: 26px;
+
+        @include breakpoint( large ) {
+            width: 30px;
+            height: 30px;
+        }
+
+        path {
+            fill: $color-white;
+        }
+    }
+}
+
+.nr-answering-list[data-hover-accordion] {
+    .nr-answering-answer {
+        @include answer();
+        box-shadow: none !important;
+    }
+}
+
+.nr-answering-list[nr-no-results] .nr-answering-answer,
+.nr-answering-list[nr-no-results][data-hover-accordion] .nr-answering-answer:first-child {
+    @include answer( true );
+    box-shadow: none !important;
+}
+
+.nr-answering-answer-header-wrapper {
+    display: block;
+    padding: 0;
+
+    &:after {
+        display: none;
+    }
+}
+
+.nr-answering-answer-header {
+    padding: px( $answer-padding-vertical-small ) 0 0;
+
+    @include breakpoint( large ) {
+        padding-top: px( $answer-padding-vertical-large );
+    }
+}
+
+.nr-answering-answer-top-menu {
+    @include answer-header();
+}
+
+.nr-answering-answer-title {
+    display: block;
+    padding: 0;
+
+    .nr-answering-answer-title-text {
+        @include answer-header-text();
+
+        > span {
+            display: block;
+        }
+    }
+}
+
+.nr-answering-answer-buttons-wrapper {
+    display: block;
+    padding: 0;
+}
+
+.nr-answering-answer-buttons-align {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: auto !important;
+    margin: 0 !important;
+
+    &:before {
+        content: none;
+    }
+}
+
+.nr-answering-sharing-wrapper {
+    display: block;
+    margin-top: 0;
+}
+
+.nr-answering-answer-body, .nr-answering-answer-footer {
+    background-color: transparent;
+}
+
+.nr-answering-answer-content {
+    padding: 0;
+}
+
+.nr-answering-bodycontent {
+    @include answer-body();
+}
+
+.nr-answering-answer-footer {
+    box-shadow: none;
+    padding: 0 0 px( $answer-padding-vertical-small );
+
+    @include breakpoint( large ) {
+        padding-bottom: px( $answer-padding-vertical-large );
+    }
+}
+
+.nr-answering-answer-bottom-menu {
+    @include answer-footer();
+}
+
+.nr-answering-feedback-wrapper {
+    @include answer-feedback();
+
+    span {
+        display: block;
+    }
+}
+
+.nr-channeling-actionbar li .nr-channeling-actionbar-textwrapper {
+    margin: 0;
+}
+
+.nr-channeling-actionbar-buttontext {
+    position: static;
+    display: block;
+    width: auto;
+}
+
+.nr-channeling-actionbar {
+    i.nr-svg-icon {
+        display: block;
+        margin: 0;
+
+        @include icon-sprite( $email );
+    }
+}
+
+.nr-channeling-actionbar-textmask, .nr-channeling-actionbar-textcopy {
+    display: none;
+}
+
+#contentAreaWrapper {
+    background-color: transparent;
+}
+
+#contentArea {
+    padding: 0;
+}
+
+#widgetFooterWrapper {
+    display: none;
+}
+
+.content {
+    background-color: transparent;
+}

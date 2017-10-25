@@ -1,0 +1,26 @@
+.premium-plus-tour-details {
+    position: relative;
+    z-index: z-index( blueprint-object );
+
+    @include child-expander( 62 );
+    @include child-expander-margin( -31, -31 );
+
+    @include breakpoint( medium ) {
+        @include child-expander( 69 );
+    }
+
+    @include breakpoint( large ) {
+        margin-left: -70px;
+    }
+}
+
+.premium-plus-postcard-2 {
+    position: relative;
+    z-index: z-index( content );
+    margin-bottom: -14%;
+
+    @include breakpoint( large ) {
+        margin-left: -75px;
+        margin-bottom: 0;
+    }
+}

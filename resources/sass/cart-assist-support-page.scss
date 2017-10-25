@@ -1,0 +1,205 @@
+// these are based on the iframe's width not the screen width, it isn't perfect but will have to do
+$breakpoints: (
+    small: 0,
+    medium: 618px,
+    large: 931px,
+    xlarge: 995px,
+    xxlarge: 1125px,
+);
+
+@import "settings/cart-assist-variables";
+@import "settings/variables";
+@import "settings/fonts";
+@import "settings/colors";
+@import "settings/image-data";
+@import "settings/sprity";
+
+@import "tools/functions";
+@import "tools/mixins";
+@import "tools/cart-assist-mixins";
+@import "tools/typography-mixins";
+@import "tools/media-queries";
+@import "tools/image-mixins";
+
+@import "generic/fix";
+@import "generic/typography";
+
+@import "objects/flex-grid";
+@import "objects/column-child-expander";
+
+@import "components/cart-assist-sharing";
+@import "components/cart-assist-thumbs";
+@import "components/cart-assist-scrollbar";
+@import "components/cart-assist-burger-menu";
+@import "components/cart-assist-channeling-actionbar";
+
+.addthis_default_style .at300b, .addthis_default_style .at300bo, .addthis_default_style .at300m
+{
+    padding: 0 10px 0 0;
+}
+
+header, footer {
+    display: none;
+}
+
+#widgetContainer {
+    width: 100%;
+    min-height: px( $cart-assist-input-height-small );
+    margin-bottom: 30px;
+
+    @include breakpoint( large ) {
+        min-height: px( $cart-assist-input-height-large );
+        margin-bottom: 40px;
+    }
+}
+
+.nav-icons {
+    margin-bottom: 40px;
+}
+
+.nav-icon {
+    display: block;
+}
+
+@for $i from 1 through 6 {
+    .nav-icon__image--#{$i} {
+        $image: "blueprints/cart-assist-label-#{$i}.png";
+
+        @include background-image( $image );
+        @include background-image-dimensions( $image );
+
+        background-position: center;
+        background-repeat: no-repeat;
+        max-width: 100%;
+        min-height: 92px;
+        display: block;
+        margin: 0 auto 14px;
+    }
+}
+
+.nav-icon__text {
+    @include paragraph( 0, true );
+
+    display: block;
+    text-align: center;
+}
+
+.label-title {
+    @include font( $font-just-lovely, $font-weight-regular, 48, 48 );
+
+    margin-bottom: 8px;
+    text-transform: none;
+    color: $color-white;
+}
+
+.faqs-section {
+    margin-bottom: 26px;
+
+    @include breakpoint( large ) {
+        margin-bottom: 60px;
+    }
+}
+
+.faqs-list__item {
+    font-weight: $font-weight-regular;
+    @include chevron();
+}
+
+.breadcrumbs {
+    @include paragraph( 8, true );
+    color: $color-white;
+}
+
+.breadcrumbs__link {
+    @include chevron();
+    display: inline-block;
+    margin-right: 6px;
+}
+
+.nav__item {
+    @include font( $font-doves-type, 42, 48 );
+
+    margin-bottom: 20px;
+    color: $color-white;
+}
+
+.subnav__item {
+    font-weight: $font-weight-regular;
+    @include chevron();
+}
+
+.label-title--article {
+    @extend .label-title;
+    margin-bottom: 18px;
+}
+
+.article-summary {
+    margin-bottom: 30px;
+}
+
+.nr-modern-article {
+
+    &.modern-default {
+        @include answer( false, 74, 30 );
+        @include answer-box-shadow();
+
+        position: relative;
+
+        &:before {
+            @extend .icon;
+
+            content: '';
+            position: absolute;
+            display: block;
+            left: 50%;
+
+            // have to do this way as can't extend within media
+            @include breakpoint( medium down ) {
+                @include background-image( "blueprints/cart-assist-wishipedia.png" );
+                @include background-image-dimensions( "blueprints/cart-assist-wishipedia.png" );
+                top: 10px;
+                margin-left: -66px;
+            }
+
+            @include breakpoint( large ) {
+                @include sprite( $drawing-pin );
+                top: -10px;
+                margin-left: -26px;
+            }
+        }
+    }
+
+    .nr-modern-article-header {
+        @include answer-header();
+    }
+
+    .nr-modern-article-title {
+        @include answer-header-text();
+    }
+
+    .nr-modern-article-body {
+        @include answer-body();
+    }
+
+    .nr-modern-article-footer {
+        @include answer-footer();
+    }
+}
+
+.nr-modern-article-feedback {
+    @include answer-feedback();
+}
+
+.nr-modern-article-channeling {
+    float: none;
+}
+
+#nrBottomOfPage {
+    clear: both
+}
+
+@import "utilities/display";
+@import "utilities/spacing";
+@import "utilities/visibility";
+
+@include foundation-visibility-classes();

@@ -1,0 +1,45 @@
+@mixin carousel-button ( $font-size-em, $base-size: 100 ) {
+    position: absolute;
+    top: 50%;
+    transform: translate( 0, -50% );
+    z-index: z-index( content );
+    opacity: 1;
+    transition: opacity $transition-fast linear;
+
+    &:before {
+        @include font( $font-just-lovely, $font-weight-regular, em( $font-size-em, $base-size ) );
+        position: absolute;
+    }
+
+    &.-previous {
+        @include background-image( "blueprints/polaroid-carousel-left.png" );
+        @include background-image-dimensions-ems( "blueprints/polaroid-carousel-left.png", $base-size );
+
+        left: em( 15, $base-size );
+
+        &:before {
+            content: 'This way?';
+            transform: rotate( 2deg );
+            top: em( -40, $font-size-em );
+            left: em( -10, $font-size-em );
+        }
+    }
+
+    &.-next {
+        @include background-image( "blueprints/polaroid-carousel-right.png" );
+        @include background-image-dimensions-ems( "blueprints/polaroid-carousel-right.png", $base-size );
+
+        right: em( 15, $base-size );
+
+        &:before {
+            content: 'That way?';
+            transform: rotate( -8deg );
+            bottom: em( -50, $font-size-em );
+            right: em( -10, $font-size-em );
+        }
+    }
+
+    &.swiper-button-disabled {
+        opacity: 0.2;
+    }
+}

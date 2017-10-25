@@ -1,0 +1,23 @@
+.nr-channeling-actionbar {
+
+    li .nr-channeling-actionbar-textwrapper {
+        margin: 0;
+    }
+
+    i.nr-svg-icon {
+        display: block;
+        margin: 0;
+
+        @include icon-sprite( $email );
+    }
+}
+
+.nr-channeling-actionbar-buttontext {
+    position: static;
+    display: block;
+    width: auto;
+}
+
+.nr-channeling-actionbar-textmask, .nr-channeling-actionbar-textcopy {
+    display: none;
+}

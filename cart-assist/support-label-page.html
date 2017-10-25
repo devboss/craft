@@ -1,0 +1,15 @@
+<nr:content placeholderid="head">
+    <title><%Label.Name%></title>
+    <meta description="Support Center"/>
+</nr:content>
+
+<nr:content placeholderid="content">
+    <h1 class="label-title--article"><%Label.Name%></h1>
+
+    <nR:Repeater type="article" sort="faq" labelId="<%Label.ID%>">
+        <div class="article-summary">
+            <h3><a href="<%Article.Link%>"><%Article.Title%></a></h3>
+            <p><%Article.MetaDescription%>... <a class="text-link" href="<%Article.Link%>" data-translation-key="readMore">Read more...</a></p>
+        </div>
+    </nR:Repeater>
+</nr:content>

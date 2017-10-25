@@ -1,0 +1,75 @@
+{% import "_macros.twig" as macros %}
+
+{% extends "_blueprint-layout" %}
+
+{% block blueprint_content %}
+	<div class="background-sketch--hotel-partners-house-sketch"></div>
+	<div class="background-sketch--hotel-partners-chaise"></div>
+
+	<div class="blueprint__container--hotel-partners">
+		{{ macros.worksheet }}
+
+		{{ macros.title( 'Hotel partners' ) }}
+
+		<div class="row large-collapse margin-bottom-small large-margin-bottom-medium">
+			<h2 class="column large-8 offset-large-2 hotel-partners-intro">Get the most out of your visit to Lapland<sup>UK</sup> by staying at one of our partner hotels</h2>
+		</div>
+
+        {% for partnerHotel in entry.hotelPartners %}
+            {% set frame = ((loop.index % 6) == 0 ? 6 : loop.index % 6) %}
+        	{% if loop.index is divisible by(2) %}
+				<div class="row margin-bottom-large">
+					<div class="column large-2">
+                        {% if loop.index == 2 %}
+							<div class="background-sketch--hotel-partners-rocking-horse show-for-large"></div>
+						{% elseif loop.index % 6 == 4 %}
+							<div class="background-sketch--hotel-partners-house-2 show-for-large"></div>
+						{% elseif loop.last %}
+							<div class="background-sketch--hotel-partners-wardrobe show-for-large"></div>
+                        {% endif %}
+					</div>
+
+					<div class="column large-5 margin-bottom-small large-margin-bottom-none">
+                        {% set image = partnerHotel.image.first() %}
+                        {% if image %}
+							<img class="column-child-expander--quadruple large-column-child-collapse" src="{{ image.getUrl() }}">
+                        {% endif %}
+					</div>
+
+					<div class="column large-5">
+						<h2>{{ partnerHotel.heading }}</h2>
+						{{ partnerHotel.body }}
+                        {% if partnerHotel.externalLink %}
+							<p><a class="text-link" href="{{ partnerHotel.externalLink }}">Go to website</a></p>
+                        {% endif %}
+					</div>
+				</div>
+			{% else %}
+				<div class="row margin-bottom-large">
+					<div class="column large-2 large-order-2">
+                		{% if loop.index == 1 %}
+							<div class="background-sketch--hotel-partners-house-1 show-for-large"></div>
+                        {% endif %}
+					</div>
+
+					<div class="column large-5 large-order-1 margin-bottom-small large-margin-bottom-none">
+                        {% set image = partnerHotel.image.first() %}
+                        {% if image %}
+							<img class="column-child-expander--quadruple large-column-child-collapse" src="{{ image.getUrl() }}">
+                        {% endif %}
+					</div>
+
+					<div class="column large-5">
+						<h2>{{ partnerHotel.heading }}</h2>
+                        {{ partnerHotel.body }}
+                        {% if partnerHotel.externalLink %}
+							<p><a class="text-link" href="{{ partnerHotel.externalLink }}">Go to website</a></p>
+                        {% endif %}
+					</div>
+				</div>
+			{% endif %}
+        {% endfor %}
+
+		{{ macros.sign_off_box( 'Wish', 'Collector of wishes' ) }}
+	</div>
+{% endblock %}

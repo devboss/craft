@@ -1,0 +1,167 @@
+// These values are negative margins which move the layout box of the container to the edges of the actual text in the
+// image, making page layout easier. The key name should match the name of an image within /public/images/titles and
+// a class matching the name will be output as follows .image-title__image--{IMAGE_NAME}
+// eg. image-title__image--directions
+$image-titles: (
+    gallery: ( -54, -240, -28, -12 ),
+    reviews: ( -24, -234, -26, -232 ),
+    history: ( -58, -215, -67, -93 ),
+    what-is-lapland-uk: ( -58, -105, -24, -48 ),
+    cookies: ( -5, -76, -24, -52 ),
+    privacy-policy: ( -10, -38, 0, 0 ),
+    terms-and-conditions: ( -8, -116, -24, -102 ),
+    our-famous-friends: ( -16, -53, -27, -9 ),
+    superstar-days: ( -81, -137, -58, -17),
+    join-us: ( -17, -146, -70, -225 ),
+    hotel-partners: ( -23, -262, -63, -6 ),
+    faqs: ( -22, -146, -70, -92 ),
+    login: ( -1, -140, -23, -134 ),
+    directions: ( -60, -214, -20, -64 ),
+    booktickets: ( -24, -49, -20, -64 ),
+    your-time: ( -24, -49, -20, -64 ),
+    your-party: ( -24, -49, -20, -64 ),
+    your-address: ( -24, -49, -20, -64 ),
+    change-your-date: ( -24, -49, -20, -64 ),
+    childs-details: ( -24, -49, -20, -64 ),
+    adult-details: ( -24, -49, -20, -64 ),
+    add-people: ( 24, -49, -20, -64 ),
+    magical-extras: ( 24, -49, -20, -64 ),
+    my-account: ( 24, 30, -20, -64 ),
+    oops: ( 0, -70, 0, -64 ),
+    404: ( -24, -49, -20, -64 ),
+    500: ( -24, 0, -20, -96 ),
+	coming-soon: ( -24, -49, -20, -64 ),
+    premium-plus-tours: ( -82, -134, -106, -232 )
+);
+
+.image-title {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: center;
+    margin-bottom: rem( 50 );
+    z-index: z-index( content );
+    pointer-events: none;
+
+    @include breakpoint( xlarge ) {
+        margin-bottom: rem( 64 );
+    }
+}
+
+.image-title--reviews {
+    justify-content: flex-start;
+    margin-left: percentage( 16 / 320 );
+
+    @include breakpoint( medium ) {
+        justify-content: center;
+        margin-left: 0;
+        margin-bottom: rem( 142 );
+    }
+}
+
+.image-title--faqs {
+    margin-bottom: rem( 112 );
+
+    @include breakpoint( large ) {
+        margin-bottom: rem( 108 );
+    }
+}
+
+.image-title--gallery {
+    @include breakpoint( medium down ) {
+        margin-bottom: rem( 16 );
+    }
+}
+
+.image-title--history {
+    @include breakpoint( small down ) {
+        margin-bottom: rem( 219 );
+    }
+}
+
+.image-title--what-is-lapland-uk {
+    margin-bottom: rem( 32 );
+}
+
+.image-title--superstar-days {
+    @include breakpoint( large ) {
+        margin-bottom: rem( 80 );
+    }
+}
+
+.image-title--party-selector {
+    @include breakpoint ( small ) {
+        margin-bottom: rem( 45 );
+    }
+}
+
+.image-title--superstar-days {
+    @include breakpoint( small only ) {
+        margin-bottom: 0;
+    }
+}
+
+.image-title--hotel-partners {
+    margin-bottom: 0;
+}
+
+.image-title__image {
+    position: relative;
+    flex: 0 0 auto;
+}
+
+@each $image-title, $image-margins in $image-titles {
+    .image-title__image--#{$image-title} {
+        @extend .image-title__image;
+        @include image-title( $image-title, $image-margins, $image-title-scales );
+    }
+}
+
+.image-title__image--superstar-days {
+    @include breakpoint( small only ) {
+        @include background-image( "titles/superstar-days-small.png" );
+        @include background-image-aspect-ratio( "titles/superstar-days-small.png", percentage( 375 / $blueprint-inner-width-small ) );
+        margin: 0;
+    }
+}
+
+.image-title__image--hotel-partners {
+    @include breakpoint( medium down ) {
+        @include background-image( "titles/hotel-partners-small.png" );
+        @include background-image-dimensions( "titles/hotel-partners-small.png" );
+        margin: -19px -88px -56px -34px;
+    }
+}
+
+.image-title__image--our-famous-friends {
+    @include breakpoint( small only ) {
+        @include background-image( "titles/our-famous-friends-small.png" );
+        @include background-image-aspect-ratio( "titles/our-famous-friends-small.png", percentage( 345 / $blueprint-inner-width-small ) );
+
+        margin-top: percentage( -14 / $blueprint-inner-width-small );
+        margin-right: percentage( -66 / $blueprint-inner-width-small );
+        margin-bottom: percentage( -2 / $blueprint-inner-width-small );
+        margin-left: percentage( -8 / $blueprint-inner-width-small );
+    }
+}
+
+.image-title__image--premium-plus-tours {
+    @include breakpoint( small down ) {
+        @include background-image( "titles/premium-plus-tours-mobile.png" );
+        @include background-image-dimensions( "titles/premium-plus-tours-mobile.png" );
+        margin: 4px -38px -26px -36px;
+    }
+
+    @include breakpoint( medium only ) {
+        margin-top: 4px;
+    }
+}
+
+.error-page--404 {
+    .image-title__image--coming-soon {
+        max-width: 200%;
+        background-repeat: no-repeat;
+        margin: -1.0625rem -2.1875rem -0.875rem -1.75rem;
+    }
+}

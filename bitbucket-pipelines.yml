@@ -1,0 +1,60 @@
+image:
+  name: resharmonics/pipelines-docker-aurora-image:aurora
+  username: $DOCKER_HUB_USERNAME
+  password: $DOCKER_HUB_PASSWORD
+  email: $DOCKER_EMAIL
+pipelines:
+  custom: # Pipelines that are triggered manually
+    build-staging:
+      - step:
+          caches:
+            - node
+#            - yarn
+#            - composer
+          script:
+            - export TARGET_ENVIRONMENT=staging
+            - nvm use 7.1.0
+            - apt-get install php7.0-cli -y --force-yes
+            - cd $BITBUCKET_CLONE_DIR/build/scripts
+            - chmod +x build.sh
+            - ./build.sh
+    build-production:
+      - step:
+          caches:
+            - node
+#            - yarn
+#            - composer
+          script:
+            - export TARGET_ENVIRONMENT=production
+            - nvm use 7.1.0
+            - apt-get install php7.0-cli -y --force-yes
+            - cd $BITBUCKET_CLONE_DIR/build/scripts
+            - chmod +x build.sh
+            - ./build.sh
+    deploy:
+      - step:
+          script:
+            - aws ecs update-service --cluster "lluk-craft-cluster" --service "test-craft" --desired-count 0
+            - aws ecs wait services-stable --cluster "lluk-craft-cluster" --services "test-craft"
+            - aws ecs update-service --cluster "lluk-craft-cluster" --service "test-craft" --desired-count 1
+            - aws ecs wait services-stable --cluster "lluk-craft-cluster" --services "test-craft"
+  tags:
+    '**':
+      - step:
+          caches:
+            - node
+#            - yarn
+#            - composer
+          script:
+            - export TARGET_ENVIRONMENT=production
+            - nvm use 7.1.0
+            - apt-get install php7.0-cli -y --force-yes
+            - cd $BITBUCKET_CLONE_DIR/build/scripts
+            - chmod +x build.sh
+            - ./build.sh
+options:
+  docker: true
+definitions:
+  caches:
+    yarn: $YARN_CACHE_FOLDER
+    composer: $COMPOSER_CACHE_DIR

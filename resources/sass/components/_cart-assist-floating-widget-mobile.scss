@@ -1,0 +1,92 @@
+.widget-mobile__header {
+    @include background-image( "cart-assist/floating-widget-mobile-background.png" );
+
+    position: relative;
+    height: 45px;
+    z-index: 2;
+
+    &:before {
+        @include background-image( "cart-assist/wishipedia-title.png" );
+        @include background-image-dimensions( "cart-assist/wishipedia-title.png" );
+
+        display: block;
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 9px;
+        margin-left: -69px;
+        opacity: 0;
+        pointer-events: none;
+
+        transition: opacity $transition-fast linear;
+
+        .widget-mobile--expanded & {
+            opacity: 1;
+        }
+    }
+}
+
+.widget-mobile__opener {
+    @include font( $font-doves-type, $font-weight-regular, 24 );
+    color: $color-cocoa-bean;
+    padding: 0 10px;
+    height: 45px;
+    opacity: 1;
+    transition: opacity $transition-fast linear;
+
+    .widget-mobile--expanded & {
+        opacity: 0;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.widget-mobile__icon {
+    position: absolute;
+    right: 9px;
+    top: 9px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: auto;
+    height: auto;
+    margin: 0;
+    background: transparent !important;
+    opacity: 0;
+    transition: opacity $transition-fast linear;
+    pointer-events: none;
+
+    .widget-mobile--expanded & {
+        opacity: 1;
+    }
+
+    &:before {
+        @include font( $font-gill-sans, $font-weight-regular, 16, 16, normal );
+
+        content: 'Close';
+        display: block;
+        margin-right: 6px;
+        color: $color-cocoa-bean;
+    }
+
+    &:after {
+        content: '';
+        display: block;
+        @include icon-sprite-el( $close );
+    }
+}
+
+.widget-mobile__main {
+    @include background-image( "cart-assist/floating-widget-mobile-background.png" );
+
+    background-position: left -45px;
+    background-repeat: repeat-y;
+    z-index: 1;
+}
+
+.widget-mobile__content {
+    padding-top: 6px;
+    box-sizing: border-box;
+}

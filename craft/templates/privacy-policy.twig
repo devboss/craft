@@ -1,0 +1,20 @@
+{% import "_macros.twig" as macros %}
+
+{% extends "_blueprint-layout" %}
+
+{% block blueprint_content %}
+	<div class="blueprint__container">
+		{{ macros.worksheet }}
+
+		{{ macros.title( 'Privacy Policy' ) }}
+
+        {% for privacyPolicy in entry.privacyPolicies %}
+			<div class="row">
+				<div class="column large-8 offset-large-2">
+					<h3>{{ privacyPolicy.heading }}</h3>
+					{{ privacyPolicy.text }}
+				</div>
+			</div>
+        {% endfor %}
+	</div>
+{% endblock %}

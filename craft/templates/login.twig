@@ -1,0 +1,44 @@
+{% import "_macros.twig" as macros %}
+
+{% extends "_blueprint-layout" %}
+
+{% block blueprint_content %}
+	<div class="background-sketch--login-cogs-1"></div>
+	<div class="background-sketch--login-cogs-2"></div>
+	<div class="background-sketch--login-cogs-3"></div>
+	<div class="background-sketch--login-cogs-4 show-for-large"></div>
+
+	<div class="blueprint__container--login">
+		{{ macros.worksheet }}
+
+		{{ macros.title( 'Login' ) }}
+
+		<div class="row -justify-content-center">
+			<div class="column large-6 text-center -no-grow">
+				<p class="font-weight-regular margin-bottom-medium">Please help us create a personalised and truly magical experience for your family by providing the requested information.</p>
+				<p class="margin-bottom-medium">To continue please enter your email address and password as advised in your Booking Confirmation.</p>
+
+				<form>
+					<label class="input-container--flex-start margin-bottom-medium">
+						<span class="input-container__text--login">Username</span>
+						<input class="input-container__input--login" type="email">
+					</label>
+
+					<label class="input-container--flex-start margin-bottom-medium">
+						<span class="input-container__text--login">Password</span>
+						<input class="input-container__input--login" type="password">
+					</label>
+
+					<button type="submit" class="button--login">
+						<span class="button__inner">
+							<span class="button__text">Login</span>
+							<svg class="button__arrow">
+								<use xlink:href="/images/svg/sprite.svg#button-arrow" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+							</svg>
+						</span>
+					</button>
+				</form>
+			</div>
+		</div>
+	</div>
+{% endblock %}

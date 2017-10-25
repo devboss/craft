@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width">
+
+	<link rel="home" href="{{ siteUrl }}" />
+	<link rel="stylesheet" href="/css/vue-multiselect.min.css">
+	<link rel="stylesheet" href="{{ craft.aurora.mix('css/styles.css') }}">
+    {% block styles %}
+    {% endblock %}
+
+    {% hook 'seomaticRender' %}
+</head>
+
+<body style="background-color: #250e01">
+	<div class="wrapper">
+		<div id="account">
+		<nav class="main-nav">
+			<div class="main-nav__container">
+				<h1 class="lapland-sign" data-class="LaplandSign">
+					<a class="lapland-sign__link" href="/">Lapland</a>
+				</h1>
+
+				<div class="main-nav__scroll-container show-for-large">
+					<div class="nav-scroll" data-class="NavScroll">
+						<div class="nav-scroll__body">
+							<span class="nav-scroll__title">About Lapland<sup>UK</sup></span>
+						</div>
+						<div class="nav-scroll__container">
+							<ul class="nav-scroll__menu">
+								<li class="nav-scroll__menu-item"><a class="nav-scroll__link" href="/what-is-lapland-uk">What Is Lapland<sup>UK</sup>?</a></li>
+								<li class="nav-scroll__menu-item"><a class="nav-scroll__link" href="/gallery">Gallery</a></li>
+								<li class="nav-scroll__menu-item"><a class="nav-scroll__link" href="/reviews">Reviews</a></li>
+								<li class="nav-scroll__menu-item"><a class="nav-scroll__link" href="/history">History</a></li>
+								<li class="nav-scroll__menu-item"><a class="nav-scroll__link" href="/our-famous-friends">Our Famous Friends</a></li>
+								<li class="nav-scroll__menu-item"><a class="nav-scroll__link" href="/join-us">Join Us</a></li>
+								<li class="nav-scroll__menu-item">
+									<ul class="social-menu">
+										<li class="social-menu__item">
+											<a class="social-menu__link" href="{{ seomaticHelper.facebookUrl }}">
+												<svg class="fit">
+													<use xlink:href="/images/svg/sprite.svg#social-facebook"
+													     xmlns:xlink="http://www.w3.org/1999/xlink" />
+												</svg>
+											</a>
+										</li>
+										<li class="social-menu__item">
+											<a class="social-menu__link" href="{{ seomaticHelper.instagramUrl }}">
+												<svg class="fit">
+													<use xlink:href="/images/svg/sprite.svg#social-instagram"
+													     xmlns:xlink="http://www.w3.org/1999/xlink" />
+												</svg>
+											</a>
+										</li>
+										<li class="social-menu__item">
+											<a class="social-menu__link" href="{{ seomaticHelper.twitterUrl }}">
+												<svg class="fit">
+													<use xlink:href="/images/svg/sprite.svg#social-twitter"
+													     xmlns:xlink="http://www.w3.org/1999/xlink" />
+												</svg>
+											</a>
+										</li>
+										<li class="social-menu__item">
+											<a class="social-menu__link" href="https://www.youtube.com/channel/UC-ozYp1nCqVmxDpvW4vt5sQ"	>
+												<svg class="fit">
+													<use xlink:href="/images/svg/sprite.svg#social-youtube"
+													     xmlns:xlink="http://www.w3.org/1999/xlink" />
+												</svg>
+											</a>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="nav-scroll" data-class="NavScroll">
+						<div class="nav-scroll__body">
+							<span class="nav-scroll__title">Visit Lapland<sup>UK</sup></span>
+						</div>
+						<div class="nav-scroll__container">
+                            {% if currentUser %}
+								<account-links class="nav-scroll__menu" :logs="false" :logged-in="true">
+							{% else %}
+								<account-links class="nav-scroll__menu" :logs="false">
+							{% endif %}
+								{#<li class="nav-scroll__menu-item"><a class="nav-scroll__link">Visit Lapland<sup>UK</sup></a></li>#}
+								<li class="nav-scroll__menu-item"><a class="nav-scroll__link" href="/manage-my-booking">Personalise My Visit</a></li>
+								<li class="nav-scroll__menu-item"><a class="nav-scroll__link" href="/superstar-days">Superstar Days</a></li>
+								<li class="nav-scroll__menu-item"><a class="nav-scroll__link" href="/premium-plus-tours">Premium+ Tours</a></li>
+								<li class="nav-scroll__menu-item"><a class="nav-scroll__link" href="/directions">Directions</a></li>
+								{% if craft.entries.section('hotelPartners').first().enabled %}<li class="nav-scroll__menu-item"><a class="nav-scroll__link" href="/hotel-partners">Partner Hotels</a></li>{% endif %}
+								<li class="nav-scroll__menu-item"><a class="nav-scroll__link" href="/faqs">FAQs</a></li>
+								<li class="nav-scroll__menu-item" slot="after"><a class="nav-scroll__link" href="/privacy-policy">Privacy Policy</a></li>
+							</account-links>
+						</div>
+					</div>
+
+					<div class="nav-scroll" data-class="NavScroll">
+						<div class="nav-scroll__body">
+							<span class="nav-scroll__title">The Elf Emporium</span>
+						</div>
+						<div class="nav-scroll__container">
+							<ul class="nav-scroll__menu">
+								<li class="nav-scroll__menu-item"><span class="nav-scroll__link">Coming soon...</span></li>
+								{% if craft.plugins.getPlugin('commerce', false).isEnabled() %}
+								<li class="nav-scroll__menu-item">
+                                    {% if currentUser %}
+										<a href="{{ logoutUrl }}" class="nav-scroll__link">Log-out</a>
+									{% else %}
+										<a href="{{ craft.social.loginUrl('aurora') }}" class="nav-scroll__link">Log-in</a>
+									{% endif %}
+								</li>
+								{% endif %}
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<a class="nav-book-button" href="/booking-portal">Book Now</a>
+
+				<div class="show-for-xlarge">
+                    {% if currentUser %}
+						<account-links :logged-in="true"></account-links>
+					{% else %}
+						<account-links></account-links>
+					{% endif %}
+				</div>
+
+				<a class="burger-button hide-for-large" data-class="LinkDispatcher" data-action="toggleMobileMenu"></a>
+			</div>
+		</nav>
+
+		<div class="burger-menu hide-for-large" data-class="BurgerMenu">
+			<div class="burger-menu__section">
+				<span class="burger-menu__section-title">About Lapland<sup>UK</sup></span>
+				<ul class="burger-menu__links">
+					<li class="burger-menu__link-item"><a class="burger-menu__link" href="/what-is-lapland-uk">What Is Lapland<sup>UK</sup>?</a></li>
+					<li class="burger-menu__link-item"><a class="burger-menu__link" href="/gallery">Gallery</a></li>
+					<li class="burger-menu__link-item"><a class="burger-menu__link" href="/reviews">Reviews</a></li>
+					<li class="burger-menu__link-item"><a class="burger-menu__link" href="/history">History</a></li>
+					<li class="burger-menu__link-item"><a class="burger-menu__link" href="/our-famous-friends">Our Famous Friends</a></li>
+					<li class="burger-menu__link-item"><a class="burger-menu__link" href="/join-us">Join Us</a></li>
+					<li class="burger-menu__link-item">
+						<ul class="social-menu -burger-menu">
+							<li class="social-menu__item">
+								<a class="social-menu__link -burger-menu" href="{{ seomaticHelper.facebookUrl }}">
+									<svg class="fit">
+										<use xlink:href="/images/svg/sprite.svg#social-facebook"
+										     xmlns:xlink="http://www.w3.org/1999/xlink" />
+									</svg>
+								</a>
+							</li>
+							<li class="social-menu__item">
+								<a class="social-menu__link -burger-menu" href="{{ seomaticHelper.instagramUrl }}">
+									<svg class="fit">
+										<use xlink:href="/images/svg/sprite.svg#social-instagram"
+										     xmlns:xlink="http://www.w3.org/1999/xlink" />
+									</svg>
+								</a>
+							</li>
+							<li class="social-menu__item">
+								<a class="social-menu__link -burger-menu" href="{{ seomaticHelper.twitterUrl }}">
+									<svg class="fit">
+										<use xlink:href="/images/svg/sprite.svg#social-twitter"
+										     xmlns:xlink="http://www.w3.org/1999/xlink" />
+									</svg>
+								</a>
+							</li>
+							<li class="social-menu__item">
+								<a class="social-menu__link -burger-menu" href="https://www.youtube.com/channel/UC-ozYp1nCqVmxDpvW4vt5sQ"	>
+									<svg class="fit">
+										<use xlink:href="/images/svg/sprite.svg#social-youtube"
+										     xmlns:xlink="http://www.w3.org/1999/xlink" />
+									</svg>
+								</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+
+			<div class="burger-menu__section">
+				<span class="burger-menu__section-title">Visit Lapland<sup>UK</sup></span>
+                {% if currentUser %}
+					<account-links class="burger-menu__links" item-class="burger-menu__link-item" link-class="burger-menu__link" :logs="false" :logged-in="true">
+                {% else %}
+					<account-links class="burger-menu__links" item-class="burger-menu__link-item" link-class="burger-menu__link" :logs="false">
+                {% endif %}
+					{#<li class="burger-menu__link-item"><a class="burger-menu__link">Visit Lapland<sup>UK</sup></a></li>#}
+					<li class="burger-menu__link-item"><a class="burger-menu__link" href="/manage-my-booking">Personalise My Visit</a></li>
+					<li class="burger-menu__link-item"><a class="burger-menu__link" href="/superstar-days">Superstar Days</a></li>
+					<li class="burger-menu__link-item"><a class="burger-menu__link" href="/premium-plus-tours">Premium+ Tours</a></li>
+					<li class="burger-menu__link-item"><a class="burger-menu__link" href="/directions">Directions</a></li>
+                    {% if craft.entries.section('hotelPartners').first().enabled %}<li class="burger-menu__link-item"><a class="burger-menu__link" href="/hotel-partners">Partner Hotels</a></li>{% endif %}
+					<li class="burger-menu__link-item"><a class="burger-menu__link" href="/faqs">FAQs</a></li>
+					<li class="burger-menu__link-item" slot="after"><a class="burger-menu__link" href="/privacy-policy">Privacy Policy</a></li>
+				</account-links>
+			</div>
+
+			<div class="burger-menu__section">
+				<span class="burger-menu__section-title">The Elf Emporium</span>
+				<ul class="burger-menu__links">
+					<li class="burger-menu__link-item"><span class="burger-menu__link">Coming soon...</span></li>
+				</ul>
+			</div>
+		</div>
+		</div>
+		{% block content %}
+		{% endblock %}
+	</div>
+
+	{# not used at the moment #}
+	{#<div class="overlay" data-class="Overlay" data-name="video">#}
+		{#<div class="overlay__background overlay__background--video">#}
+			{#<div class="overlay__content overlay__content--video" data-class="OverlayVideo"></div>#}
+		{#</div>#}
+	{#</div>#}
+
+	{% block overlays %}
+	{% endblock %}
+
+	<div class="overlay overlay--loader" data-class="Overlay" data-name="loader">
+		<div class="loader" data-class="Loader"></div>
+	</div>
+
+	<div class="cookie-message" data-class="CookieMessage">
+		<a class="cookie-message__close svg-link-fix">
+			<svg>
+				<use xlink:href="/images/svg/sprite.svg#cookie-close"
+				     xmlns:xlink="http://www.w3.org/1999/xlink" />
+			</svg>
+		</a>
+		<p class="cookie-message__text">We use cookies to give you the best possible experience on our site. View our <a class="text-link" href="/cookies">cookie policy</a>.</p>
+	</div>
+
+	<script type="text/javascript">
+		var ie10 = false;
+		/*@cc_on
+		 if (/^10/.test(@_jscript_version)) {
+		    ie10 = true;
+		 }
+		 @*/
+
+		window.ie10 = ie10;
+	</script>
+    {% block preScripts %}
+    {% endblock %}
+
+    {% if (siteStatus.mmbLive is defined and siteStatus.mmbLive) %}
+		<script type="text/javascript">
+            window.baseApiUrl = '{{ craft.config.environmentVariables.baseApiUrl }}';
+		</script>
+    {% endif %}
+	<script src="{{ craft.aurora.mix('js/manifest.js') }}"></script>
+	<script src="{{ craft.aurora.mix('js/vendor.js') }}"></script>
+	<script src="{{ craft.aurora.mix('js/main.js') }}"></script>
+	<script src="{{ craft.aurora.mix('js/account.js') }}"></script>
+	<script src="{{ craft.aurora.mix('js/ga-actions.js') }}"></script>
+	{% block scripts %}
+    {% endblock %}
+    {% if ((entry is defined and entry != 'FAQs') or entry is not defined) and cartAssist is defined and cartAssist.cartAssistEnabled is defined and cartAssist.cartAssistEnabled %}
+	<!-- nanorep floating widget -->
+	<script>
+		setTimeout(() => {
+			!function(t,e,o,c,n,a){var s=this.nanorep=this.nanorep||{};s=s[e]=s[e]||{},s.apiHost=a,s.host=n,s.path=c,s.account=t,s.protocol="https:"===location.protocol?"https:":"http:",s.on=s.on||function(){s._calls=s._calls||[],s._calls.push([].slice.call(arguments))};var p=s.protocol+"//"+n+c+o+"?account="+t,l=document.createElement("script");l.async=l.defer=!0,l.setAttribute("src",p),document.getElementsByTagName("head")[0].appendChild(l)}("laplanduk","floatingWidget","floating-widget.js","/web/","laplanduk.nanorep.co");
+			nanorep.floatingWidget.on({
+				init: function() {
+					this.setConfigId('1025874012');
+				}
+			});
+		}, 30000);
+	</script>
+
+    {% endif %}
+</body>
+</html>

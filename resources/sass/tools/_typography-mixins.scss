@@ -1,0 +1,36 @@
+@mixin heading-2( $variation: false, $margin-bottom: false ) {
+	@if $variation == doves {
+		@include font($font-doves-type, $font-weight-regular, 42, 48);
+		margin-bottom: if(is-number($margin-bottom), rem-or-existing-unit($margin-bottom), rem(26));
+	} @else if $variation == gill-sans {
+		@include font($font-gill-sans, $font-weight-regular, 32, 38);
+		margin-bottom: if(is-number($margin-bottom), rem-or-existing-unit($margin-bottom), rem(16));
+	} @else if $variation == small-doves {
+		@include font($font-doves-type, $font-weight-regular, 36, 48);
+		margin-bottom: if(is-number($margin-bottom), rem-or-existing-unit($margin-bottom), 30px);
+	} @else {
+		@include font($font-just-lovely, $font-weight-regular, 48, 52);
+		margin-bottom: if(is-number($margin-bottom), rem-or-existing-unit($margin-bottom), rem(14));
+	}
+}
+
+@mixin heading-3( $margin-bottom: false ) {
+	@include font($font-gill-sans, $font-weight-regular, 22, 26);
+	margin-bottom: if(is-number($margin-bottom), rem-or-existing-unit($margin-bottom), rem(10));
+}
+
+@mixin paragraph( $margin-bottom: false, $bolder: false ) {
+	$weight: if($bolder, $font-weight-regular, $font-weight-light);
+
+	@include font($font-gill-sans, $weight, 20, 26);
+	margin-bottom: if(is-number($margin-bottom), rem-or-existing-unit($margin-bottom), rem(10));
+}
+
+@mixin multiselect-font( $margin-bottom: false) {
+	@include font($font-gill-sans, $font-weight-medium, 20, 24);
+	margin-bottom: if(is-number($margin-bottom), rem-or-existing-unit($margin-bottom), 18px);
+}
+
+@mixin sans-18-light() {
+	@include font($font-gill-sans, $font-weight-light, 20);
+}

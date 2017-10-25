@@ -1,0 +1,222 @@
+@mixin icon-sprite-el ( $sprite ) {
+    @extend .icon;
+    @include sprite( $sprite );
+}
+
+@mixin icon-sprite ( $sprite ) {
+    @include sprite-width( $sprite );
+    @include sprite-height( $sprite );
+
+    svg, .nr-svg-fallback {
+        display: none;
+    }
+
+    &:before {
+        @include icon-sprite-el( $sprite );
+        content: '';
+    }
+}
+
+@mixin chevron ( $left: 0, $top: 0, $font-weight: $font-weight-regular ) {
+    position: relative;
+    padding-left: 0.9em;
+
+    &:before {
+        content: '›';
+        font-weight: $font-weight;
+        position: absolute;
+        display: inline-block;
+        left: px( $left );
+        top: px( $top );
+        width: 0.9em;
+    }
+}
+
+@mixin autocomplete-search () {
+    background-color: transparent;
+    color: $color-white;
+    margin: 0;
+
+    @include font( $font-gill-sans, $font-weight-regular, 20, $cart-assist-input-height-small );
+    height: px( $cart-assist-input-height-small );
+    padding: 0 16px;
+
+    @include breakpoint( large ) {
+        @include font-size-line-height( 32, $cart-assist-input-height-large );
+        height: px( $cart-assist-input-height-large );
+        padding: 0 26px;
+    }
+}
+
+@mixin autocomplete-list () {
+    @include background-image( "blueprints/faqs-paper.png", auto );
+    background-repeat: repeat;
+    background-position: center top;
+    box-shadow: none;
+    border: 0;
+}
+
+@mixin autocomplete-list-item ( $default-weight: $font-weight-light ) {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 46px;
+    padding: 0 16px;
+    color: $color-cocoa-bean;
+
+    &.nr-autocomplete-active {
+        background-color: rgba( $color-cocoa-bean, 0.1 );
+    }
+
+    span {
+        @include font( $font-gill-sans, $default-weight, 20, 26 );
+        display: inline-block;
+
+        b {
+            font-family: inherit;
+            font-weight: $font-weight-regular;
+            font-size: inherit;
+        }
+    }
+
+    @include breakpoint( large ) {
+        min-height: 60px;
+        padding: 0 27px;
+
+        span {
+            @include font-size-line-height( 32, 42 );
+        }
+    }
+}
+
+@mixin answer ( $important: false, $padding-top-small: 0, $padding-top-large: 0 ) {
+    @include background-image( "blueprints/faqs-paper.png", auto, $important );
+
+    $important: if( $important, !important, null );
+    background-repeat: repeat $important;
+    background-position: center top $important;
+    padding: px( $padding-top-small ) 20px;
+
+    @include breakpoint( large ) {
+        padding: px( $padding-top-large ) 40px;
+    }
+}
+
+@mixin answer-box-shadow () {
+    box-shadow: 0 4px 24px 0 rgba( 0, 0, 0, 0.5 );
+}
+
+@mixin answer-header () {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 0 0 18px;
+    padding: 0;
+    border: none;
+
+    &:after {
+        content: none;
+    }
+}
+
+@mixin answer-header-text () {
+    @include font( $font-doves-type, $font-weight-regular, 26, 29 );
+    color: $color-cocoa-bean;
+
+    @include breakpoint( large ) {
+        @include font-size-line-height( 42, 46 );
+    }
+}
+
+@mixin answer-footer () {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    background-color: transparent;
+    box-shadow: none;
+
+    &:before, &:after {
+        content: none;
+    }
+}
+
+@mixin answer-body () {
+    margin: 0 0 16px;
+    padding: 0;
+    min-height: 0;
+    color: $color-cocoa-bean;
+
+    p, ul, ol {
+        @include font( $font-gill-sans, $font-weight-light, 16, 22 );
+        margin-bottom: 10px;
+
+        @include breakpoint( large ) {
+            @include font-size-line-height( 20, 26 );
+        }
+    }
+}
+
+@mixin answer-feedback-text ( $font-size: 20 ) {
+    @include font( $font-gill-sans, $font-weight-regular, $font-size );
+
+    display: block;
+    color: $color-cocoa-bean;
+    margin-right: 12px;
+}
+
+@mixin answer-feedback ( $withPseudoText: true ) {
+    display: flex !important;
+    justify-content: flex-start;
+    align-items: center;
+    float: none;
+    border-bottom: none !important;
+    padding: 0;
+
+    @if $withPseudoText {
+        &:before {
+            content: 'Was this helpful?';
+            @include answer-feedback-text();
+        }
+    }
+}
+
+@mixin answer-thumbs-button () {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+}
+
+@mixin sharing-drop () {
+    @include background-image( "blueprints/faqs-paper.png", auto );
+    background-position: center;
+    box-shadow: 0 4px 12px 0 rgba( 0, 0, 0, 0.53 );
+    padding: 0 4px;
+}
+
+@mixin sharing-buttons-container () {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin sharing-corner () {
+    @include background-image( "blueprints/faqs-paper.png", auto );
+    background-position: center;
+}
+
+@mixin sharing-button () {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: 45px;
+    margin: 0;
+}
+
+@mixin sharing-icon () {
+    display: block;
+    margin: 0 6px;
+}

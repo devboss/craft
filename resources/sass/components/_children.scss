@@ -1,0 +1,24 @@
+.children__boxes-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.children__box {
+	width: 50%;
+	@include breakpoint(medium down) {
+		width: 100%
+	}
+}
+
+.image-misc__image--child-details-box {
+	margin: rem(50) auto 0 auto;
+	padding: rem(15);
+	@include breakpoint(medium) {
+		padding: rem(30);
+	}
+
+}
+
+.heading-2__child-name {
+	@include font( $font-gill-sans, $font-weight-regular, 32 );
+}

@@ -1,0 +1,40 @@
+.copyright {
+    @include font( $font-doves-type, $font-weight-regular, 15, 15 );
+    padding: 15px 0 5px;
+
+    @include breakpoint( large ) {
+        position: absolute;
+        left: px( $blueprint-outer-padding-large );
+        bottom: 4px;
+        padding: 0;
+        color: rgba( $color-white, 0.8 );
+    }
+
+    @include breakpoint( xlarge ) {
+        left: px( $blueprint-outer-padding-xlarge );
+        bottom: 7px;
+    }
+}
+
+.copyright--home {
+    @include font( $font-doves-type, $font-weight-regular, 15, 15 );
+
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    z-index: z-index( content );
+}
+
+.copyright--premium-plus {
+    @extend .copyright;
+
+    @include breakpoint( large ) {
+        left: auto;
+        right: px( $blueprint-outer-padding-large );
+    }
+
+    @include breakpoint( xlarge ) {
+        left: auto;
+        right: px( $blueprint-outer-padding-xlarge );
+    }
+}

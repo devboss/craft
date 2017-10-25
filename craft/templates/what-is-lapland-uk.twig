@@ -1,0 +1,114 @@
+{% import "_macros.twig" as macros %}
+
+{% extends "_blueprint-layout" %}
+
+{% block blueprint_content %}
+	<div class="blueprint__container">
+		{{ macros.worksheet }}
+
+		{{ macros.title( 'What is Lapland UK' ) }}
+
+		<div class="row">
+			<div class="column small-12 margin-bottom-medium large-margin-bottom-none">
+                {% if entry.image.first() %}
+					<span class="show-for-sr">{{ entry.image.first().title }}</span>
+					<img class="column-child-expander--quadruple large-column-child-expander--double" src="{{ entry.image.first().getUrl('whatIsLaplandUkHeader') }}">
+                {% endif %}
+			</div>
+		</div>
+
+		<div class="row -align-items-center large-collapse margin-bottom-medium">
+			<div class="column small-6 large-3 offset-large-2 padding-left-none">
+				<img src="/images/static/what-is-lapland-award-560w.png">
+			</div>
+			<div class="column small-6 large-5">
+				{% set quote0 = entry.quotes.nth(0) %}
+                {% if quote0 %}
+					<div class="what-is-lapland-quote">
+						<p class="what-is-lapland-quote__quote -small">“{{ quote0.quoteText }}”</p>
+						<span class="what-is-lapland-quote__source -small text-right">
+							{% if quote0.authorDescription %}
+								<span class="font-weight-light">{{ quote0.authorDescription }}</span>
+                            {% endif %}
+							<br>{{ quote0.authorName }}
+						</span>
+					</div>
+                {% endif %}
+			</div>
+		</div>
+
+        {% set video0 = entry.videos.nth(0) %}
+        {% if video0 and video0.placeholderImage.first() %}
+			<div class="row margin-bottom-large large-margin-bottom-xxlarge">
+				<div class="column small-12 large-11 offset-large-1">
+					{{ macros.inline_video( video0.videoId, video0.placeholderImage.first().getUrl('videoPlaceholder'), '-invitation', 'rotate-cw-3 column-child-expander--quadruple large-column-child-collapse' ) }}
+				</div>
+			</div>
+        {% endif %}
+
+        {% if entry.text %}
+			<div class="row margin-bottom-large large-margin-bottom-xxlarge">
+				<div class="column small-12 large-7 offset-large-1">
+					<div class="heading-2--doves -what-is-lapland-uk">{{ entry.text }}</div>
+				</div>
+				<div class="column small-12 large-4 show-for-large">
+					<div class="background-sketch--what-is-lapland-bell"></div>
+				</div>
+			</div>
+        {% endif %}
+
+        {% set video1 = entry.videos.nth(1) %}
+        {% if video1 and video1.placeholderImage.first() %}
+			<div class="row margin-bottom-large large-margin-bottom-xxlarge">
+				<div class="column small-12 large-11 offset-large-1">
+					{{ macros.inline_video( video1.videoId, video1.placeholderImage.first().getUrl('videoPlaceholder'), '-sneak-peak', 'rotate-ccw-3 transform-origin-bottom-right column-child-expander--quadruple large-column-child-collapse' ) }}
+
+					<div class="background-sketch--what-is-lapland-pinecone"></div>
+				</div>
+			</div>
+        {% endif %}
+
+		<div class="row margin-bottom-medium">
+			<div class="column small-12 large-10 xlarge-9 margin-bottom-large large-margin-bottom-xlarge">
+                {% set quote1 = entry.quotes.nth(1) %}
+                {% if quote1 %}
+					<div class="what-is-lapland-quote">
+						<p class="what-is-lapland-quote__quote rotate-ccw-5 transform-origin-bottom-right">“{{ quote1.quoteText }}”</p>
+						<span class="what-is-lapland-quote__source">
+							{% if quote1.authorDescription %}
+								<span class="font-weight-light">{{ quote1.authorDescription }}</span>
+                            {% endif %}
+							<br>{{ quote1.authorName }}
+						</span>
+					</div>
+                {% endif %}
+			</div>
+
+			<div class="column small-12 large-11 xlarge-10 offset-large-1">
+                {% set quote2 = entry.quotes.nth(2) %}
+                {% if quote2 %}
+					<div class="what-is-lapland-quote">
+						<p class="what-is-lapland-quote__quote">“{{ quote2.quoteText }}”</p>
+						<span class="what-is-lapland-quote__source">
+							{% if quote2.authorDescription %}
+								<span class="font-weight-light">{{ quote2.authorDescription }}</span>
+                            {% endif %}
+							<br>{{ quote2.authorName }}
+						</span>
+					</div>
+                {% endif %}
+			</div>
+		</div>
+
+		<div class="row collapse -justify-content-center -align-items-center large-margin-bottom-medium">
+			<div class="column small-12 large-9 margin-bottom-medium large-margin-bottom-none">
+				<div class="background-text--what-is-lapland-elf-travel-master">“Be ready to have the most memorable, magical, magnificent and Elftastic day of your life” - The Elf Travel Master</div>
+			</div>
+			<div class="column small-6 large-3">
+				<div class="background-sketch--what-is-lapland-elf"></div>
+			</div>
+		</div>
+
+		{{ macros.sign_off_box( 'Wish', 'Collector of wishes' ) }}
+	</div>
+{% endblock %}

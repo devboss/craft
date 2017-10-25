@@ -1,0 +1,57 @@
+.accordion {
+}
+
+.accordion__item {
+    position: relative;
+    border: 1px solid $color-white;
+    margin-bottom: 25px;
+    padding: 32px 15px;
+
+    @include breakpoint( large ) {
+        margin-bottom: 30px;
+        padding: 25px percentage( 2 / 10 ) 25px 25px;
+    }
+}
+
+.accordion__arrow {
+    @include svg-dimensions-fixed-artwork( faqs-arrow, 28, true );
+
+    display: block;
+    position: absolute;
+    top: 44px;
+    transform: rotateZ(0deg);
+    transition: transform $transition-medium $ease-in-out-quart;
+    right: 36px;
+
+    @include breakpoint( large ) {
+        right: 40px;
+    }
+
+    .-active > & {
+        transform: rotateZ(180deg);
+    }
+}
+
+.accordion__link {
+    cursor: pointer;
+    margin-bottom: 0;
+    padding-right: 72px;
+
+    @include breakpoint( medium down ) {
+        font-size: rem( 20 );
+    }
+}
+
+.accordion__content {
+    overflow: hidden;
+    height: 0;
+
+    .-accordion-ready & {
+        transition: height $transition-medium $ease-in-out-quart;
+    }
+}
+
+.accordion__content-inner {
+    padding-top: 16px;
+    height: auto;
+}

@@ -1,0 +1,41 @@
+{% import "_macros.twig" as macros %}
+
+{% extends "_blueprint-layout" %}
+
+{% block blueprint_content %}
+    <div class="blueprint__container">
+        {{ macros.worksheet }}
+
+        {{ macros.title( 'Cookies' ) }}
+
+        <div class="row">
+            <div class="column large-8 offset-large-2">
+                <h3>Cookies</h3>
+                <p>"We may collect information about your computer, including your IP address, operating system and
+                    browser type, for system administration and in order to create reports. This is statistical data
+                    about our users’ browsing actions and patterns, and does not identify any individual.</p>
+
+                <p>The only cookies in use on our site are for Google Analytics. Google Analytics is a web analytics
+                    tool that helps website owners understand how visitors engage with their website. Google Analytics
+                    customers can view a variety of reports about how visitors interact with their website so that they
+                    can improve it.</p>
+
+                <p>Like many services, Google Analytics uses first-party cookies to track visitor interactions as in our
+                    case, where they are used to collect information about how visitors use our site. We then use the
+                    information to compile reports and to help us improve our site.</p>
+
+                <p>Cookies contain information that is transferred to your computer’s hard drive. These cookies are used
+                    to store information, such as the time that the current visit occurred, whether the visitor has been
+                    to the site before and what site referred the visitor to the web page.</p>
+
+                <p>
+                    Google Analytics collects information anonymously. It reports website trends without identifying
+                    individual visitors. You can opt out of Google Analytics without affecting how you visit our site–
+                    for more information on opting out of being tracked by Google Analytics across all websites you use,
+                    visit this Google page:
+                    <a class="text-link" href="https://tools.google.com/dlpage/gaoptout" target="_blank">https://tools.google.com/dlpage/gaoptout</a>
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

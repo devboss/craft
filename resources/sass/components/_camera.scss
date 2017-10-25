@@ -1,0 +1,60 @@
+.camera {
+    position: relative;
+    margin-bottom: -18px;
+    padding: 108px 0 140px;
+    width: 140%;
+    left: -20%;
+
+    @include breakpoint( medium ) {
+        padding: 127px 0 140px;
+    }
+
+    @include breakpoint( large ) {
+        width: 100%;
+        left: auto;
+        padding: 0;
+    }
+}
+
+.camera__body-container {
+    position: relative;
+    max-width: px( $camera-max-width );
+    margin: 0 auto;
+}
+
+.camera__button {
+    @include background-image( "blueprints/camera-button.png" );
+    @include background-image-dimensions-fluid( "blueprints/camera-button.png", $camera-max-width, $camera-max-height );
+
+    position: absolute;
+    left: percentage( 173 / $camera-max-width );
+    bottom: percentage( ( $camera-max-height - 3 ) / $camera-max-height );
+    transform: translate( -50%, 0 );
+    z-index: z-index( background );
+
+    &.-active {
+        height: percentage( 18 / $camera-max-height );
+    }
+}
+
+.camera__body {
+    @include background-image( "blueprints/camera.png" );
+    background-repeat: no-repeat;
+
+    position: relative;
+    width: 100%;
+    margin-left: percentage( -94 / $camera-max-width );
+    padding-top: percentage( $camera-max-height / $camera-max-width );
+    z-index: z-index( content );
+}
+
+.camera__polaroid-container {
+    position: absolute;
+    top: percentage( 499 / $camera-max-height );
+    width: percentage( 700 / $camera-max-width );
+    padding-top: percentage( 514 / $camera-max-width );
+    left: percentage( 218 / $camera-max-width );
+    transform: rotate( -1.1deg );
+    margin: 0 auto;
+    overflow: hidden;
+}

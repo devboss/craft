@@ -1,0 +1,443 @@
+$background-sketches: (
+    gallery-accordion: (
+        small: (
+            right: percentage( 74 / $camera-max-width ),
+            top: percentage( 186 / $camera-max-height )
+        )
+    ),
+    gallery-ratchet: (
+        small: (
+            right: percentage( -12 / $camera-max-width ),
+            top: percentage( 604 / $camera-max-height )
+        )
+    ),
+    gallery-cog: (
+        small: (
+            left: 12.5%,
+            top: 130%
+        )
+    ),
+    history-sage: (
+        small: (
+            top: -20,
+            right: 30%
+        )
+    ),
+    history-eeko: (
+        small: (
+            top: 45%,
+            left: 50%
+        )
+    ),
+    history-shoes: (
+        small: (
+            scale: 0.9,
+            left: 44%,
+            top: 240
+        ),
+        medium: (
+            scale: 0.7,
+            left: 12%,
+            top: 170
+        ),
+        large: (
+            left: 16%,
+            top: 190
+        )
+    ),
+    history-tools: (
+        small: (
+            right: 10%,
+            top: 100
+        )
+    ),
+    what-is-lapland-pinecone: (
+        small: (
+            scale: 0.5,
+            left: 1%,
+            bottom: 1%
+        ),
+        medium: (
+            scale: 0.6
+        )
+    ),
+    what-is-lapland-bell: (
+        small: (
+            right: 30%,
+            top: 58%
+        )
+    ),
+    superstar-days-sagittarius: (
+        small: (
+            left: 19%,
+            top: 188
+        )
+    ),
+    superstar-days-bear: (
+        small: (
+            left: 50%,
+            top: 18%
+        )
+    ),
+    login-cogs-1: (
+        center: false,
+        small: (
+            top: -93,
+            right: -128,
+            transform: scaleX(-1) rotate(292deg)
+        ),
+        large: (
+            top: 82,
+            right: 0,
+            bottom: auto,
+            transform: none
+        )
+    ),
+    login-cogs-2: (
+        center: false,
+        small: (
+            top: 64,
+            left: -57,
+            transform: rotate(-99deg)
+        ),
+        large: (
+            left: percentage( 17 / $blueprint-max-width ),
+            top: 176
+        )
+    ),
+    login-cogs-3: (
+        center: false,
+        small: (
+            left: 0,
+            bottom: 0
+        )
+    ),
+    login-cogs-4: (
+        small: (
+            left: percentage( 695 / $blueprint-max-width ),
+            top: 147
+        )
+    ),
+    reviews-leg: (
+        small: (
+            left: percentage( 180 / $blueprint-max-width ),
+            top: 190
+        )
+    ),
+    reviews-pedalling-cyclist: (
+        center: false,
+        small: (
+            bottom: 11,
+            right: 0,
+            transform: scaleX(-1)
+        ),
+        large: (
+            center: true,
+            bottom: 238,
+            left: percentage( 140 / $blueprint-max-width ),
+            right: auto,
+            transform: none
+        )
+    ),
+    reviews-pen: (
+        medium: (
+            left: percentage( -28 / 513 ),
+            top: 342
+        ),
+        large: (
+            left: percentage( -72 / 457 ),
+            top: 342
+        )
+    ),
+    reviews-oil-well: (
+        center: false,
+        medium: (
+            right: percentage( -112 / 513 ),
+            top: 50
+        ),
+        large: (
+            right: percentage( -229 / 457 ),
+            top: -56
+        )
+    ),
+    reviews-pen-lid: (
+        medium: (
+            right: percentage( -30 / 513 ),
+            top: 250
+        ),
+        large: (
+            right: percentage( -59 / 457 ),
+            top: 214
+        )
+    ),
+    reviews-penny-farthing-champion: (
+        center: false,
+        small: (
+            right: -111,
+            top: -56,
+            transform: rotate(73deg)
+        ),
+        medium: (
+            right: 0,
+            top: 0,
+            transform: none
+        )
+    ),
+    join-us-cogs-1: (
+        medium: (
+            left: percentage( 10 / $blueprint-max-width ),
+            top: 330,
+            scale: 550 / 801
+        ),
+        large: (
+            left: percentage( 140 / $blueprint-max-width ),
+            top: 435,
+            scale: 0.8
+        ),
+        xlarge: (
+            left: percentage( 163 / $blueprint-max-width ),
+            top: 425,
+            scale: 0.8
+        )
+    ),
+    join-us-cogs-2: (
+        center: false,
+        medium: (
+            right: -30,
+            top: 70,
+            scale: 550 / 801
+        ),
+        large: (
+            right: 0,
+            top: 40,
+            scale: 0.8
+        ),
+        xlarge: (
+            scale: 0.82
+        )
+    ),
+    join-us-cogs-3: (
+        position: relative,
+        center: false,
+        small: (
+            left: 15,
+            top: 0
+        )
+    ),
+    hotel-partners-house-sketch: (
+        small: (
+            scale: 0.5074,
+            left: 50%,
+            top: 420
+        ),
+        medium: (
+            scale: 0.5074
+        ),
+        large: (
+            left: percentage( 350 / $blueprint-max-width ),
+            top: 314
+        ),
+        xlarge: (
+            top: 292
+        )
+    ),
+    hotel-partners-chaise: (
+        small: (
+            scale: 0.4798,
+            left: 71%,
+            top: 100
+        ),
+        medium: (
+            scale: 0.4798
+        ),
+        large: (
+            left: auto,
+            right: percentage( 340 / $blueprint-max-width ),
+            top: 350
+        ),
+        xlarge: (
+            top: 330
+        )
+    ),
+    hotel-partners-house-1: (
+        large: (
+            top: 50%,
+            right: 17%
+        )
+    ),
+    hotel-partners-rocking-horse: (
+        large: (
+            top: 54%,
+            left: 75%
+        )
+    ),
+    hotel-partners-house-2: (
+        large: (
+            top: 50%,
+            left: 17%
+        )
+    ),
+    hotel-partners-wardrobe: (
+        large: (
+            top: 65%,
+            left: 102%
+        )
+    ),
+    faqs-books: (
+        small: (
+            scale: 0.438,
+            left: 135,
+            top: 220
+        ),
+        medium: (
+            left: percentage( 272 / $blueprint-max-width ),
+        ),
+        large: (
+            top: 236
+        )
+    ),
+    faqs-globe: (
+        center: false,
+        small: (
+            scale: 0.484,
+            right: 0,
+            top: 28
+        ),
+        large: (
+            top: 16
+        )
+    ),
+    faqs-magnifying-glass: (
+        small: (
+            scale: 0.547,
+            top: 276,
+            right: 17
+        ),
+        medium: (
+            top: 460
+        ),
+        large: (
+            right: percentage( 120 / $blueprint-max-width ),
+        )
+    ),
+    premium-plus-border-top: (
+        center: false,
+        z-index: z-index( blueprint-object ),
+        small: (
+            left: -10,
+            top: -3,
+            scale: 0.782
+        ),
+        medium: (
+            left: 0,
+            top: 0
+        )
+    ),
+    premium-plus-border-bottom: (
+        center: false,
+        z-index: z-index( blueprint-object ),
+        small: (
+            left: 0,
+            bottom: 0
+        )
+    ),
+    zauber-illustration: (
+        large: (
+            position: absolute,
+            center: true,
+            right: 7%,
+            top: 43%,
+            transform: none
+        )
+    ),
+    premium-plus-buy-tickets-here: (
+        center: false,
+        large: (
+            left: 70%,
+            bottom: -10
+        ),
+        xlarge: (
+            left: 66%,
+            bottom: -25
+        )
+    )
+);
+
+@each $name, $data in $background-sketches {
+    .background-sketch--#{$name} {
+        @include background-sketch( $name, $data );
+    }
+}
+
+.background-sketch--gallery-90deg {
+    @include background-sketch( gallery-90deg );
+    left: calc( 62.8% + 15px);
+    top: 91%;
+    z-index: 0;
+}
+
+.background-sketch--reviews-pen,
+.background-sketch--reviews-pen-lid {
+    z-index: z-index( blueprint-object );
+}
+
+.background-sketch--join-us-cogs-1 {
+    z-index: z-index( blueprint-object );
+
+    @include breakpoint( xxlarge ) {
+        @include background-image-dimensions( "blueprints/join-us-cogs-1.png", auto, auto, 1, true );
+        left: percentage( 180 / $blueprint-max-width );
+    }
+}
+
+.background-sketch--join-us-cogs-2 {
+    @include breakpoint( xxlarge ) {
+        @include background-image-dimensions( "blueprints/join-us-cogs-2.png", auto, auto, 1 );
+    }
+}
+
+.background-sketch--hotel-partners-chaise {
+    @include breakpoint( medium down ) {
+        transform: rotate( 2.5deg );
+    }
+}
+
+.background-sketch--faqs-magnifying-glass {
+    @include breakpoint( medium down ) {
+        transform-origin: percentage( 96 / 234 ) percentage( 96 / 388 );
+        transform: rotate( 14deg );
+    }
+}
+
+.background-sketch--zauber-illustration {
+    @include breakpoint( medium down ) {
+        position: static;
+        margin: 0 auto 5%;
+        transform: rotate( -17deg );
+    }
+}
+
+$background-sketches-fluid: (
+    what-is-lapland-elf: ()
+);
+
+@each $name, $data in $background-sketches-fluid {
+    .background-sketch--#{$name} {
+        $width: if( map-has-key( $data, width ), map-get( $data, width ), 100% );
+        $margins: if( map-has-key( $data, margins ), map-get( $data, margins ), 0 );
+
+        @include background-image( "blueprints/#{$name}.png" );
+        @include background-image-aspect-ratio( "blueprints/#{$name}.png", $width );
+        margin: $margins;
+    }
+}
+
+// static for small, absolute for large
+.background-sketch--superstar-days-bear {
+    @include breakpoint( medium down ) {
+        @include background-image-aspect-ratio( "blueprints/superstar-days-bear.png", 100% );
+
+        position: static;
+        margin: 0;
+    }
+}

@@ -1,0 +1,381 @@
+.image-misc__image--timerbox {
+    background-size: 100% 100% !important;
+    margin: 0 auto;
+    padding: rem(20);
+    @include breakpoint(770px down) {
+        display: none;
+    }
+}
+
+.image-misc__image--mobiletimerbox {
+    margin: 0 auto;
+    display: none;
+    @include breakpoint(770px down) {
+        width: rem(315) !important;
+        height: rem(115) !important;
+        padding: rem(20) rem(5);
+        display: block !important;
+    }
+    @include breakpoint(small down) {
+        max-width: 100% !important;
+        background-repeat: no-repeat;
+    }
+
+    @include breakpoint(374px down) {
+        padding: rem(5) !important;
+    }
+}
+
+.extra-selector__content {
+    margin: rem(45) auto;
+
+    .overlay__background {
+        background: rgba(16,43,81, 0.7)!important;
+    }
+}
+
+.image-misc__image--largehourglass {
+    display: inline-block;
+}
+
+.extra-selector__large-time-text {
+    @include font($font-gill-sans, $font-weight-regular, 18);
+    @include breakpoint(1200px down) {
+        @include font($font-gill-sans, $font-weight-regular, 16);
+    }
+}
+
+.extra-selector__time {
+    @include font($font-gill-sans, $font-weight-regular, 26);
+}
+
+.extra-selector__small-time-text {
+    @include font($font-gill-sans, $font-weight-light, 16);
+}
+
+.image-misc__image--mobilehourglass {
+    width: rem(35) !important;
+    height: rem(50) !important;
+}
+
+.extra-selector__time-small {
+    margin-top: rem(10);
+    @include font($font-gill-sans, $font-weight-semi-bold, 16);
+}
+
+.extra-selector__extras-wrapper {
+    margin-top: rem(55);
+}
+
+.heading-4__extra-title {
+    @include font($font-doves-type, $font-weight-regular, 42);
+}
+
+.heading-4__extra-title-price {
+    @include font($font-gill-sans, $font-weight-regular, 26);
+}
+
+.extra-selector__extra-content {
+    p {
+        @include font($font-gill-sans, $font-weight-light, 18);
+    }
+    @include font($font-gill-sans, $font-weight-light, 18);
+}
+
+.extra-selector__add-cta {
+    margin-top: rem(20);
+}
+
+
+.extra-selector__extras-wrapper {
+    .multiselect {
+        max-width: rem(95) !important;
+    }
+}
+
+.extra-selector__image-wrapper {
+    .button__text {
+        @include font($font-doves-type, $font-weight-regular, 20);
+    }
+}
+
+.extra-selector__small-booking-summary {
+    @include background-image("misc/longhoverbg.png", auto);
+    background-size: 100% !important;
+    padding: rem(20);
+    color: #40516a;
+}
+
+.extra-selector__responsive-selected {
+    color: #38475F;
+}
+
+.extra-selector__more-info {
+    text-decoration: underline;
+    .image-misc__image--chevron-down {
+        transition: transform 300ms;
+    }
+}
+
+.extra-selector__more-info--open {
+    .image-misc__image--chevron-down {
+        transform: rotate(180deg);
+    }
+}
+
+.extra-selector__carousel-input {
+    display: none;
+}
+
+.extra-selector__image-thumb {
+    width: rem(70);
+    height: rem(80);
+    border: 1px solid grey;
+    background-size: cover;
+    background-position: center;
+    @include breakpoint(small down) {
+        width: rem(50);
+        height: rem(60);
+    }
+}
+
+.extra-selector__main-image {
+    position: absolute;
+    opacity: 0;
+    /*transition: opacity .05s ease-in-out;
+    -moz-transition: opacity .05s ease-in-out;
+    -webkit-transition: opacity .05s ease-in-out;*/
+    right: 0;
+    bottom: 0;
+
+    @include breakpoint(medium down) {
+        height: auto;
+        max-height: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+        bottom: auto;
+    }
+}
+
+.extra-selector__carousel-input:nth-of-type(1):checked ~ .extra-selector__image-wrapper .extra-selector__main-image:nth-of-type(1),
+.extra-selector__carousel-input:nth-of-type(2):checked ~ .extra-selector__image-wrapper .extra-selector__main-image:nth-of-type(2),
+.extra-selector__carousel-input:nth-of-type(3):checked ~ .extra-selector__image-wrapper .extra-selector__main-image:nth-of-type(3),
+.extra-selector__carousel-input:nth-of-type(4):checked ~ .extra-selector__image-wrapper .extra-selector__main-image:nth-of-type(4){
+    opacity: 1;
+    position: relative;
+}
+.extra-selector__carousel-input:nth-of-type(1):checked ~ .extra-selector__image-wrapper .extra-selector__image-thumb:nth-of-type(1),
+.extra-selector__carousel-input:nth-of-type(2):checked ~ .extra-selector__image-wrapper .extra-selector__image-thumb:nth-of-type(2),
+.extra-selector__carousel-input:nth-of-type(3):checked ~ .extra-selector__image-wrapper .extra-selector__image-thumb:nth-of-type(3),
+.extra-selector__carousel-input:nth-of-type(4):checked ~ .extra-selector__image-wrapper .extra-selector__image-thumb:nth-of-type(4){
+    border: 1px solid rgba(#ddd, 1);
+}
+
+.extra-selector__carousel {
+    margin-bottom: rem(5);
+    min-height: rem(364);
+    position: relative;
+
+    img {
+        border: 1px solid rgba(#ddd, 1);
+    }
+
+}
+/*.extra-selector__carousel {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: rem(5);
+    min-height: rem(400);
+    overflow: hidden;
+
+    @include breakpoint(small down) {
+        min-height: rem(350);
+    }
+
+    @include breakpoint(medium) {
+        margin-bottom: rem(30);
+    }
+}*/
+
+.extra-selector__carousel-expand {
+    position: absolute;
+
+    @include background-image( "blueprints/gallery-expand.png" );
+    width: rem( 42 );
+    height: rem( 42 );
+    right: rem( 20 );
+    bottom: 1.75rem;
+
+}
+
+.extra-selector__overlay-button-expander-wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top:0;
+}
+
+.extra-selector__overlay-button-expander-wrapper--overlay {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    top:0;
+    .-previous.-extra-overlay {
+        left: rem(20);
+        background-repeat: no-repeat;
+    }
+    .-next.-extra-overlay {
+        right: rem(20);
+        background-repeat: no-repeat;
+    }
+    
+    @include breakpoint(small down) {
+        .-previous.-extra-overlay,
+        .-next.-extra-overlay {
+            display: none;
+        }
+    }
+    
+    @include breakpoint(medium down) {
+        position: absolute;
+    }
+    
+    
+}
+
+.extra-selector__carousel-thumbs {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@include breakpoint(790px down) {
+    .extra-selector__image-wrapper,
+    .extra-selector__description-wrapper {
+        width: 100% !important;
+    }
+    .image-misc__image--extraplaceholder {
+        margin: 0 auto !important;
+    }
+    .extra-selector__add-cta {
+        .multiselect {
+            margin: 0 auto !important;
+        }
+    }
+}
+
+@include breakpoint(1023px down) {
+    .extra-selector__booking-summary {
+        margin-top: rem(50) !important;
+    }
+}
+
+@include breakpoint(small down) {
+    .extra-selector__add-cta {
+        .small-6 {
+            width: 100% !important;
+        }
+
+        .small-6:last-child {
+            margin-top: rem(30);
+        }
+    }
+
+    .extra-selector__extras-wrapper {
+        .multiselect {
+            max-width: rem(300) !important;
+        }
+
+        .extra-selector__tooltip-included {
+            margin: 0 auto;
+        }
+    }
+}
+
+.vdp-datepicker__calendar {
+    .cell.disabled {
+        background-color: #ddd;
+    }
+}
+
+.extra-selector__extra-timer-bg {
+
+    &:before,
+    &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        height: 185px;
+        width: 245px;
+        background-repeat: no-repeat;
+        background-size: 245px 185px;
+    }
+
+    &:before {
+        bottom: 0;
+        left: 0;
+        background-image: url('/images/backgrounds/misc/extra-timer-left-corner.png');
+    }
+
+    &:after {
+        top: 0;
+        right: 0;
+        background-image: url('/images/backgrounds/misc/extra-timer-right-corner.png');
+    }
+
+    border: 2px solid #fff;
+    border-color: transparent;
+    border-image: url('/images/backgrounds/misc/extra-timer-bg-new.png') 3 stretch;
+    padding: rem(40);
+    position: relative;
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .extra-selector__extra-timer-bg {
+        border-image: url('/images/backgrounds/misc/extra-timer-bg-new@2x.png') 3 stretch;
+
+        &:before {
+            bottom: 0;
+            left: 0;
+            background-image: url('/images/backgrounds/misc/extra-timer-left-corner@2x.png');
+        }
+
+        &:after {
+            top: 0;
+            right: 0;
+            background-image: url('/images/backgrounds/misc/extra-timer-right-corner@2x.png');
+        }
+    }
+}
+
+.heading-1-justlovely-48 {
+    @include font($font-face-just-lovely, $font-weight-regular, 48);
+}
+
+.extra-timer__main-body-text {
+    @include font($font-face-gill-sans, $font-weight-light, 20);
+}
+
+.extra-timer__hourglass-wrapper {
+    margin-top: rem(30);
+}
+
+.extra-timer__timer-copy {
+    @include font($font-face-gill-sans, $font-weight-regular, 18);
+    max-width: rem(320);
+}
+
+.extra-timer__timer-copy--time {
+    @include font($font-face-gill-sans, $font-weight-regular, 26);
+}
+
+@include breakpoint(small down) {
+    .image-misc__image--largehourglass {
+        width: 55px;
+        height: 79px;
+    }
+}

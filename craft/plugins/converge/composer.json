@@ -1,0 +1,5 @@
+{
+    "require": {
+        "lemonstand/omnipay-elavon": "^1.1"
+    }
+}

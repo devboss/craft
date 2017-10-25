@@ -1,0 +1,59 @@
+.adults__boxes-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	& > div {
+
+	}
+
+	.image-misc__image--child-details-box {
+		min-height: rem(230);
+		background-repeat: no-repeat;
+		width: rem(520);
+		padding: rem(20);
+		@include breakpoint(medium down) {
+			width: 100%;
+		}
+
+		@include breakpoint(small down) {
+			background: none;
+			margin-bottom: rem(100);
+		}
+
+		@include breakpoint(1024px down) {
+			background: none;
+		}
+
+		label {
+			@include font( $font-gill-sans, $font-weight-regular, 16 );
+			text-transform: uppercase;
+		}
+
+		input {
+			&:not([type='checkbox']) {
+				width: 100%;
+			}
+		}
+		form {
+			& > div {
+				margin-bottom: rem(10);
+			}
+		}
+	}
+}
+
+.adults__update-details-wrapper {
+	margin-top: rem(50);
+	a {
+		margin: 0 auto;
+	}
+}
+
+.adults__use-my-details-label {
+	margin-top: 6px;
+	position: absolute;
+	margin-left: 12px;
+}
+
+.adults--used-booker-detail {
+	opacity: 0.7!important;
+}

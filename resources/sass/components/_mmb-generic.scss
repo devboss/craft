@@ -1,0 +1,94 @@
+.mmb-app {
+	.blueprint__container {
+		padding-top: rem(30) !important;
+	}
+
+	.image-misc__image--mmb-banner {
+		background-size: 100% 100% !important;
+		width: 100%!important;
+		height: rem(54)!important;
+		padding: rem(9);
+	}
+
+	.image-misc__image--mobile-mmb-banner {
+		background-size: initial;
+		width: 100%!important;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-content: center;
+		height: rem(45);
+		cursor: pointer;
+		div {
+			align-self: center;
+			@include font($font-doves-type, $font-weight-regular, 26);
+			color: rgba(#3D4C63, 1);
+		}
+		.image-misc__image--arrowdown {
+			position: absolute;
+			margin: .75rem 0rem 0rem 0rem;
+			align-self: flex-end;
+			right: rem(30);
+			top: 0;
+
+		}
+		&.-mobile-menu {
+			.image-misc__image--arrowdown {
+				transform: rotate(180deg);
+				margin: 1rem 0rem 0rem 0rem;
+			}
+		}
+	}
+
+	.mmb-nav__mobile-menu,
+	.mobile-mmb-nav__container {
+		@include background-image( "misc/mobile-mmb-menu-bg.png", auto );
+		background-size: 100%;
+        background-repeat: repeat;
+	}
+
+	.mobile-mmb-nav__container {
+		list-style: none;
+		color: rgba(#3D4C63, 1);
+		padding-top: rem(20);
+		@include font($font-doves-type, $font-weight-regular, 26);
+
+		li {
+			height: rem(50);
+		}
+
+		.image-misc__image--down-arrow {
+			margin-right: 0;
+			margin-top: 0;
+			float: none;
+		}
+
+		.my-experience__booking-dropdown--booking:hover {
+			background-color: inherit;
+			cursor: pointer;
+		}
+	}
+
+	.mobile-mmb-nav__container,
+	.mmb-nav__container {
+		.router-link-active {
+			text-decoration: underline;
+		}
+	}
+
+	.blueprint--directions {
+		overflow: hidden;
+	}
+}
+
+.image-misc__image--right-horse {
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+.image-misc__image--left-horse {
+	position: absolute;
+	top: rem(82);
+	left: rem(-190);
+}

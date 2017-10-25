@@ -1,0 +1,7 @@
+#!/usr/bin/env php
+<?php
+$env = getenv("CRAFT_ENVIRONMENT");
+if (isset($env)) {
+    define('CRAFT_ENVIRONMENT', $env);
+}
+require_once(dirname(__FILE__).'/yiic.php');

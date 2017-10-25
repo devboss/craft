@@ -1,0 +1,15 @@
+.hotel-partners-intro {
+    @include font( $font-just-lovely, $font-weight-regular, 56, 52 );
+    text-align: left;
+    margin-top: 240px;
+
+    @include breakpoint( large ) {
+        @include font-size-line-height( 74, 74 );
+        text-align: center;
+        margin-top: 302px;
+    }
+
+    @include breakpoint( xlarge ) {
+        margin-top: 340px;
+    }
+}

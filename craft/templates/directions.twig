@@ -1,0 +1,126 @@
+{% import "_macros.twig" as macros %}
+
+{% extends "_blueprint-layout" %}
+
+{% block blueprint_content %}
+	<div class="blueprint__container">
+		{{ macros.worksheet }}
+
+		{{ macros.title( 'Directions' ) }}
+
+		<div class="row">
+			<div class="column large-5 small-order-1 large-order-default">
+				<div class="blueprint__text-section -title-padding-left-xsmall">
+                    {% set block0 = entry.directionsContent.type('paragraph').nth(0) %}
+                    {% if block0 %}
+                        <h2>{{ block0.heading }}</h2>
+                        {{ block0.text }}
+                    {% endif %}
+				</div>
+
+				<div class="blueprint__text-section -margin-bottom-large -padding-left-large -title-padding-left-medium">
+                    {% set block1 = entry.directionsContent.type('paragraph').nth(1) %}
+                    {% if block1 %}
+						<h2>{{ block1.heading }}</h2>
+                        {{ block1.text }}
+                    {% endif %}
+				</div>
+
+				<div class="blueprint__text-section -margin-bottom-none -padding-left-small">
+                    {% set block2 = entry.directionsContent.type('paragraph').nth(2) %}
+                    {% if block2 %}
+						<h2>{{ block2.heading }}</h2>
+                        {{ block2.text }}
+                    {% endif %}
+				</div>
+			</div>
+			<div class="column large-7 flex-center">
+				<div class="directions-map">
+					<div class="figure-box--directions show-for-medium">
+						<div class="figure-box__vertical-lines rotate-ccw-small">
+							<div class="figure-box__horizontal-lines"></div>
+						</div>
+
+						<div class="figure-box__content">
+							<p><span class="font-weight-regular font-style-italic">Fig 1.</span> Grown ups directions to the Enchanted Forest</p>
+							<p><span class="font-weight-regular">1:25 000</span> (not to scale)</p>
+						</div>
+
+						<div class="figure-box__arrow--bottom-left"></div>
+					</div>
+
+					<a class="directions-map__image-link column-child-expander medium-column-child-collapse" href="https://www.google.co.uk/maps/place/Lapland+UK/@51.4085751,-0.7102024,17z/data=!4m13!1m7!3m6!1s0x48767e61db367521:0x169cfdbb33f9255a!2sWinkfield+Row,+Ascot+SL5+8BD!3b1!8m2!3d51.4114105!4d-0.7070735!3m4!1s0x0:0xb8768fbfd40856ed!8m2!3d51.4083507!4d-0.7082688" target="_blank">
+						<img class="directions-map__image" src="/images/static/directions-map-1090w.png">
+					</a>
+
+					{{ macros.button( 'View larger map', 'https://www.google.co.uk/maps/place/Lapland+UK/@51.4085751,-0.7102024,17z/data=!4m13!1m7!3m6!1s0x48767e61db367521:0x169cfdbb33f9255a!2sWinkfield+Row,+Ascot+SL5+8BD!3b1!8m2!3d51.4114105!4d-0.7070735!3m4!1s0x0:0xb8768fbfd40856ed!8m2!3d51.4083507!4d-0.7082688', 'blueprint', 'margin-bottom-large rotate-ccw-small' ) }}
+
+					<div class="directions-map__click-scribble">Click for larger map</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="column large-7 flex-center">
+				<img class="column-child-expander medium-column-child-collapse large-column-child-expander--double" src="/images/static/directions-watch-1436w.png">
+			</div>
+
+			<div class="column large-5">
+				<div class="blueprint__text-section -margin-bottom-medium -title-padding-left-small">
+                    {% set block3 = entry.directionsContent.type('paragraph').nth(3) %}
+                    {% if block3 %}
+						<h2>{{ block3.heading }}</h2>
+                        {{ block3.text }}
+                    {% endif %}
+				</div>
+
+				<div class="blueprint__text-section -margin-bottom-medium -padding-left-xlarge -title-padding-left-xlarge">
+                    {% set block4 = entry.directionsContent.type('paragraph').nth(4) %}
+                    {% if block4 %}
+						<h2>{{ block4.heading }}</h2>
+                        {{ block4.text }}
+                    {% endif %}
+				</div>
+
+				<div class="blueprint__text-section -margin-bottom-large -padding-left-xsmall">
+                    {% set block5 = entry.directionsContent.type('paragraph').nth(5) %}
+                    {% if block5 %}
+						<h2>{{ block5.heading }}</h2>
+                        {{ block5.text }}
+                    {% endif %}
+				</div>
+			</div>
+		</div>
+
+		{#<div class="row">#}
+			{#<div class="column large-6">#}
+				{#<div class="sketch-line-box -title-padding-left-xsmall">#}
+					{#<div class="sketch-line-box__vertical-lines">#}
+						{#<div class="sketch-line-box__horizontal-lines"></div>#}
+					{#</div>#}
+					{#<div class="sketch-line-box__contents">#}
+                        {#{% if entry.localInformationHeading and entry.localInformationText %}#}
+							{#<h2>{{ entry.localInformationHeading }}</h2>#}
+                            {#{{ entry.localInformationText }}#}
+                        {#{% endif %}#}
+					{#</div>#}
+				{#</div>#}
+			{#</div>#}
+			{#<div class="column large-6">#}
+				{#<div class="sketch-line-box -padding-left-small -title-padding-left-medium">#}
+					{#<div class="sketch-line-box__vertical-lines--v1 rotate-ccw-small">#}
+						{#<div class="sketch-line-box__horizontal-lines--v1"></div>#}
+					{#</div>#}
+					{#<div class="sketch-line-box__contents">#}
+                        {#{% if entry.accommodationHeading and entry.accommodationText %}#}
+							{#<h2>{{ entry.accommodationHeading }}</h2>#}
+                            {#{{ entry.accommodationText }}#}
+                        {#{% endif %}#}
+					{#</div>#}
+				{#</div>#}
+			{#</div>#}
+		{#</div>#}
+
+		{{ macros.sign_off_box( 'Zauber', 'The most magical of the Elves' ) }}
+	</div>
+{% endblock %}

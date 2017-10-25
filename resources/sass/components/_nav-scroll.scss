@@ -1,0 +1,95 @@
+.nav-scroll {
+    position: relative;
+}
+
+.nav-scroll__body {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: z-index( nav-scroll__body );
+
+    @include background-image( "nav/scroll-top.png" );
+    @include background-image-dimensions( "nav/scroll-top.png", 232 );
+    @include background-image-spacing( 0, 36, 14, 5, $nav-scroll-scale-large );
+
+    @include breakpoint( xxlarge ) {
+        @include background-image-dimensions( "nav/scroll-top.png" );
+        @include background-image-spacing( 0, 36, 14, 5 );
+    }
+}
+
+.nav-scroll__title {
+    @include font( $font-doves-type, $font-weight-regular, 20, 35 );
+
+    flex: 0 0 auto;
+    display: block;
+    white-space: nowrap;
+    color: rgba( $color-white, 0.8 );
+    cursor: default;
+}
+
+.nav-scroll__container {
+    position: absolute;
+    transition: height $transition-medium $ease-in-out-quart;
+    overflow: hidden;
+    z-index: z-index( nav-scroll__container );
+
+    width: scale-value( 196px, $nav-scroll-scale-large);
+    left: scale-value( 19px, $nav-scroll-scale-large);
+    top: scale-value( 64px, $nav-scroll-scale-large);
+    height: scale-value( 30px, $nav-scroll-scale-large);
+
+    @include breakpoint( xxlarge ) {
+        width: 196px;
+        left: 19px;
+        top: 64px;
+        height: 30px;
+    }
+}
+
+.nav-scroll__menu {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    //background-color: rgba( $color-black, 0.3 );
+    //box-shadow: 0 0 20px 5px rgba( $color-black, 0.3 );
+
+    @include background-image( "nav/scroll-paper.png" );
+    @include background-image-dimensions( "nav/scroll-paper.png", scale-value( 196, $nav-scroll-scale-large ), false );
+    padding: scale-value( 26px, $nav-scroll-scale-large ) 0;
+
+    background-repeat: no-repeat;
+    background-position: center bottom;
+
+    @include breakpoint( xxlarge ) {
+        @include background-image-dimensions( "nav/scroll-paper.png", auto, false );
+        padding: 26px 0;
+    }
+}
+
+.nav-scroll__link {
+    @include font( $font-doves-type, $font-weight-regular, 20, 38 );
+    @include link-color( rgba( $color-white, 0.8 ) );
+
+    position: relative;
+    display: block;
+    height: px( $nav-scroll-link-height );
+    text-align: center;
+
+    &:after {
+        @include background-image( "nav/scroll-underline.png" );
+        @include background-image-dimensions( "nav/scroll-underline.png" );
+
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate( -50%, 0 );
+        opacity: 0;
+    }
+
+    .active > &:after, &.active:after, .desktop &:hover:after {
+        opacity: 1;
+    }
+}

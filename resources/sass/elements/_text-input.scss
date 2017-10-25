@@ -1,0 +1,160 @@
+.input-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    @include breakpoint( medium ) {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .multiselect__tags {
+        border: none;
+    }
+}
+
+.input-container--flex-start {
+    @extend .input-container;
+
+    align-items: flex-start;
+
+    @include breakpoint( medium ) {
+        justify-content: flex-start;
+        align-items: center;
+    }
+}
+
+.input-container--danger {
+    input[type=text],
+    input[type=email],
+    input[type=number],
+    input[type=tel],
+    input[type=password],
+    .input-container__input {
+        border-color: #fff602;
+        color: #fff602;
+    }
+}
+
+.input-container__error {
+    flex-shrink: 0;
+    order: 3;
+    width: 100%;
+    color: #fff602;
+    font-style: italic;
+
+    @include breakpoint( medium ) {
+        margin-left: 75%;
+    }
+}
+
+.child-form__form-wrapper .input-container__error {
+
+    @include breakpoint( medium ) {
+        margin-left: 80%;
+    }
+}
+
+.input-container__text {
+    @include paragraph( 0, true );
+    @include font( $font-gill-sans, $font-weight-regular, 16, 26 );
+
+    flex: 1 1 0;
+    text-transform: uppercase;
+    margin-bottom: rem( 7 );
+
+    @include breakpoint( medium ) {
+        margin: 0 rem( 29 );
+    }
+}
+
+input[type=text],
+input[type=email],
+input[type=number],
+input[type=tel],
+input[type=password],
+.input-container__input {
+    @include paragraph(0, true);
+
+    height: 50px;
+    width: 100%;
+    background: transparent;
+    border: 1px solid rgba($color-white, 0.7);
+    color: $color-white;
+    outline: 0;
+    padding: 0 12px;
+
+    @include breakpoint( medium ) {
+        width: auto;
+    }
+
+    @include placeholder-color( rgba(255, 255, 255, 0.5) );
+
+    &.multiselect__input {
+        border: none;
+        margin-top: -0.75rem;
+        text-align: center;
+        width: 100%;
+    }
+
+    &[disabled] {
+        border-color: rgba($color-white, 0.5);
+        color: rgba($color-white, 0.5);
+        font-style: italic;
+    }
+}
+
+%input-container__text--right {
+    @extend .input-container__text;
+
+    @include breakpoint( medium ) {
+        flex: 0 0 auto;
+        text-align: right;
+        margin-left: 0;
+        margin-right: 15px;
+    }
+}
+
+.input-container__text--login {
+    @extend %input-container__text--right;
+
+    @include breakpoint( medium ) {
+        width: 90px;
+    }
+}
+
+.input-container__text--faqs {
+    @extend %input-container__text--right;
+
+    @include breakpoint( medium ) {
+        width: 152px;
+    }
+}
+
+.input-container__input--login {
+    @extend .input-container__input;
+
+    flex: 0 0 auto !important;
+
+    @include breakpoint( medium ) {
+        flex: 1 0 auto !important;
+        margin-left: 15px;
+    }
+}
+
+.input-container .multiselect,
+#booking-details .input-container .vdp-datepicker {
+    @include paragraph(0, true);
+    height: 50px;
+    width:100%;
+    background: transparent;
+    border: 1px solid rgba($color-white, 0.7);
+    padding: 0;
+    flex: 2 1 0%;
+    @include breakpoint(medium) {
+        width: auto;
+        padding: 0 rem(12)!important;
+    }
+}

@@ -1,0 +1,411 @@
+$widget-padding-right: 36;
+$widget-header-height: 66;
+$widget-query-field-padding-top: 18;
+$widget-core-padding-bottom: 12;
+
+[nr-normalize] p {
+    @include font($font-gill-sans, $font-weight-light, 16, 21);
+    margin-top: 0;
+    margin-bottom: rem( 10 );
+}
+
+.widget-floating {
+    color: $color-cocoa-bean;
+}
+
+.widget-floating__wrapper {
+    background-color: transparent;
+    padding: 0;
+    box-shadow: none;
+    transition: width $transition-xfast $ease-in-out-quad;
+
+    // only seem to be able to set minimised width via cart assist interface!
+    .widget-floating--state-0 & {
+        width: 310px !important;
+    }
+
+    .widget-floating--state-1 & {
+        width: 421px !important;
+    }
+
+    .widget-floating--state-2 & {
+        width: 421px !important;
+    }
+
+    .widget-floating--state-4 & {
+        width: 72px !important;
+    }
+}
+
+.widget-floating__header {
+    @include background-image( "cart-assist/floating-widget-background-head.png", auto );
+
+    background-position: right top;
+    background-repeat: no-repeat;
+
+    position: relative;
+    overflow: visible;
+    background-color: transparent;
+    width: 100%;
+    height: px( $widget-header-height ) !important;
+    padding: 0 !important;
+    z-index: 2;
+}
+
+.widget-floating__buttons {
+    float: none;
+    height: 30px;
+    position: absolute;
+    right: px( $widget-padding-right + 1 );
+    top: 32px;
+    padding: 0 !important;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.widget-floating__button {
+    display: block;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    margin: 0 2px;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.widget-floating__title {
+    @include background-image( "cart-assist/wishipedia-title.png", auto );
+
+    position: absolute;
+    width: 137px !important;
+    height: 47px !important;
+    right: 160px;
+    top: 30px;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden;
+    text-indent: -9999px;
+}
+
+.widget-floating__button--close {
+    @include icon-sprite-el( $close );
+}
+
+.widget-floating__button--increase {
+    @include icon-sprite-el( $maximise );
+
+    .widget-floating--state-2 & {
+        display: none;
+    }
+}
+
+.widget-floating__button--collapse {
+    @include icon-sprite-el( $minimise );
+}
+
+.widget-floating__button--hidden {
+    display: none;
+}
+
+.widget-floating__content {
+    @include background-image( "cart-assist/floating-widget-background-content.png", auto );
+
+    position: relative;
+    z-index: 1;
+    background-color: transparent;
+    background-position: right top;
+    background-repeat: repeat-y;
+
+    padding-right: px( $widget-padding-right );
+}
+
+.core-search {
+    margin: 0 15px;
+}
+
+.core-search__query-field {
+    background-color: transparent;
+    box-shadow: none;
+    padding-bottom: px( $widget-core-padding-bottom );
+}
+
+.query-field {
+    padding-top: px( $widget-query-field-padding-top );
+}
+
+.query-field__inner {
+    background: transparent;
+    border-bottom: 1px solid $color-cocoa-bean;
+}
+
+.query-field__input, .query-field__placeholder {
+    @include font( $font-gill-sans, $font-weight-regular, 16 );
+    height: 26px !important;
+    padding: 3px 6px !important;
+    color: $color-cocoa-bean;
+}
+
+.query-field__button {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    margin: 0 2px;
+
+    &:focus {
+        outline: none;
+    }
+
+    &:last-child {
+        margin-right: 0;
+    }
+}
+
+.query-field__icon {
+    margin: 0 auto;
+}
+
+.query-field__button--search {
+    .query-field__icon {
+        @include icon-sprite-el( $magnifying-glass );
+        margin: 0;
+    }
+}
+
+.query-field__button--reset {
+    .query-field__icon {
+        @include icon-sprite-el( $cross );
+        margin: 0;
+    }
+}
+
+.query-field__suggestions {
+    @include font( $font-gill-sans, $font-weight-light, 16, 20 );
+    background: transparent;
+    box-shadow: none;
+    border: none;
+
+    @include breakpoint( medium down ) {
+        padding-top: 11px;
+    }
+}
+
+.query-field__suggestion {
+    background: transparent;
+    padding: 11px 6px;
+    cursor: pointer;
+    color: $color-cocoa-bean;
+    text-decoration: underline;
+
+    @include breakpoint( medium down ) {
+        @include chevron ( 1, 11, $font-weight-bold );
+    }
+
+    @include breakpoint( large ) {
+        padding: 10px 6px;
+        text-decoration: none;
+    }
+
+    b {
+        font-weight: $font-weight-regular;
+    }
+
+    &.query-field__suggestion--active {
+        background-color: rgba( $color-cocoa-bean, 0.1 );
+    }
+}
+
+.answer-header__wrapper {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 6px 0 4px;
+
+    @include breakpoint( large ) {
+        padding: 6px 10px 4px;
+    }
+}
+
+.answer-header__title {
+    width: auto;
+    flex: 1 1 auto;
+    margin-right: 8px;
+    padding: 0;
+}
+
+.answer-header__controls {
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: auto;
+    padding: 0;
+}
+
+.answer-header__control {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    margin: 0 2px;
+
+    > * {
+        display: block;
+        margin: 0;
+    }
+}
+
+.link-to-answer {
+    @include icon-sprite-el( $external-link );
+}
+
+.answer-header__title-text-node {
+    @include font( $font-doves-type, $font-weight-regular, 26, 29 );
+    color: $color-cocoa-bean;
+}
+
+.sharing__opener {
+    @include icon-sprite-el( $share );
+}
+
+.sharing__drop {
+    @include sharing-drop();
+    @include sharing-buttons-container();
+}
+
+.sharing__corner {
+    &:before {
+        @include sharing-corner();
+    }
+}
+
+.sharing__item {
+    @include sharing-button();
+}
+
+.sharing__icon {
+    @include sharing-icon();
+
+    .sharing__item--clipboard &, .sharing__item--clipboard:hover & {
+        @include icon-sprite-el( $copy );
+    }
+
+    .sharing__item--email &, .sharing__item--email:hover &  {
+        @include icon-sprite-el( $email );
+    }
+
+    .sharing__item--facebook &, .sharing__item--facebook:hover &  {
+        @include icon-sprite-el( $facebook );
+    }
+
+    .sharing__item--twitter &, .sharing__item--twitter:hover &  {
+        @include icon-sprite-el( $twitter );
+    }
+}
+
+.answer-list__content .answer-content__inline-form,
+.answer-list__content .answer-content__multipage,
+.answer-list__content .answer-content__singlepage {
+    padding: 10px 0;
+
+    @include breakpoint( large ) {
+        padding: 10px;
+    }
+}
+
+.core-search__answer-list,
+.core-search__faq,
+.core-search__inner-page {
+    background: transparent;
+}
+
+.answer-list__answer {
+    background: transparent;
+    box-shadow: none;
+}
+
+.answer-list__footer {
+    background: transparent;
+    box-shadow: none;
+
+    @include breakpoint( medium down ) {
+        padding-bottom: 10px;
+    }
+}
+
+.answer-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: transparent;
+}
+
+.feedback-survey {
+    @include answer-feedback( false );
+}
+
+.feedback-survey__title, .feedback-survey__thanks {
+    @include answer-feedback-text( 16 );
+}
+
+.feedback-survey__separator {
+    display: none;
+}
+
+.feedback-survey__button {
+    box-sizing: border-box;
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    padding: 3px 7px 3px 6px;
+    color: rgba( 255, 255, 255, 0 ) !important;
+
+    &:before {
+        content: '';
+        @include icon-sprite-el( $thumbs-up );
+    }
+
+    &.feedback-survey__button--active:before {
+        @include icon-sprite-el( $thumbs-up-active );
+    }
+}
+
+.feedback-survey__button--no {
+    &:before {
+        transform: rotate( 180deg );
+    }
+}
+
+.feedback-dialog__area {
+    color: $color-black;
+}
+
+.channeling-bar__wrap {
+    &:before {
+        display: none !important;
+    }
+}
+
+.channeling-bar__icon--1 {
+    @include icon-sprite-el( $email );
+
+    .channeling-bar__button:hover &,
+    .channeling-bar__button:focus &,
+    .channeling-bar__item--active & {
+        @include sprite-position( $email );
+    }
+}
+
+.channeling-bar__text {
+    display: none;
+}
+
+.core-search__poweredby {
+    display: none;
+}

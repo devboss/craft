@@ -1,0 +1,161 @@
+$objects: (
+    star: (
+        1: (
+            large: (
+                left: 21.6%,
+                top: 33.2%
+            )
+        ),
+        2: (
+            small: (
+                top: 80,
+                right: percentage( 58 / 375 ),
+                scale: 1,
+            ),
+            medium: (
+                scale: 1,
+            ),
+            large: (
+                top: 88,
+                right: percentage( 88 / $blueprint-max-width ),
+                scale: 0.87
+            ),
+            xlarge: (
+                scale: 0.87
+            )
+        ),
+        3: (
+            large: (
+                top: 298,
+                right: percentage( 368 / $blueprint-max-width ),
+                scale: 0.51
+            ),
+            xlarge: (
+                top: 272,
+                scale: 0.51
+            )
+        ),
+        4: (
+            large: (
+                top: 258,
+                right: percentage( 522 / $blueprint-max-width ),
+                scale: 0.51
+            ),
+            xlarge: (
+                top: 232,
+                scale: 0.51
+            )
+        ),
+        5: (
+            large: (
+                top: 394,
+                left: percentage( 538 / $blueprint-max-width ),
+                scale: 0.67
+            ),
+            xlarge: (
+                top: 368,
+                scale: 0.67
+            )
+        ),
+        6: (
+            large: (
+                left: 5.7%,
+                bottom: percentage( 260 / 1821 ),
+                scale: 0.73
+            ),
+            xlarge: (
+                scale: 0.73
+            )
+        ),
+        7: (
+            large: (
+                left: 5%,
+                bottom: percentage( 523 / 1821 ),
+                scale: 0.87
+            ),
+            xlarge: (
+                scale: 0.87
+            )
+        ),
+        8: (
+            large: (
+                left: 52.5%,
+                bottom: percentage( 278 / 1821 ),
+                scale: 0.87
+            ),
+            xlarge: (
+                scale: 0.87
+            )
+        ),
+        9: (
+            large: (
+                left: 59.6%,
+                bottom: percentage( 863 / 1821 ),
+                scale: 0.87
+            ),
+            xlarge: (
+                scale: 0.87
+            )
+        ),
+        10: (
+            large: (
+                left: 86%,
+                bottom: percentage( 290 / 1821 ),
+                scale: 0.73
+            ),
+            xlarge: (
+                scale: 0.73
+            )
+        )
+    ),
+    bell: (
+        1: (
+            image-suffix: '1',
+            small: (
+                left: 43.7%,
+                top: 70.4%
+            ),
+            large: (
+                left: 43.7%,
+                top: 70.4%
+            )
+        ),
+        2: (
+            image-suffix: '2',
+            large: (
+                left: 96.1%,
+                top: 35.5%
+            )
+        ),
+        3: (
+            image-suffix: '3',
+            small: (
+                scale: 0.8,
+                right: 9%,
+                bottom: 269,
+            ),
+            medium: (
+                scale: 0.8,
+                right: 17%,
+                bottom: 322
+            ),
+            large: (
+                center: false,
+                right: -11.3%,
+                bottom: 35.7%
+            )
+        )
+    )
+);
+
+@each $name, $data in $objects {
+    @each $num, $object-data in $data {
+        $object-data: map-merge( $object-data, ( z-index: z-index( blueprint-object ) ) );
+        $image-suffix: _map-get( $object-data, image-suffix, '' );
+        $image-suffix: if( str-length( $image-suffix ) != 0, '-' + $image-suffix, '' );
+
+        .premium-plus-#{$name}--#{$num} {
+            @include background-sketch( "premium-plus-#{$name}#{$image-suffix}", $object-data );
+        }
+    }
+}

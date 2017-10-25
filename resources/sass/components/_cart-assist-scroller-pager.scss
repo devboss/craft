@@ -1,0 +1,71 @@
+.nr-answering-scroller-pager {
+    padding: 0;
+
+    ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 56px;
+    }
+
+    li {
+        display: block;
+        color: $color-cocoa-bean;
+    }
+
+    span {
+        @include paragraph( 0 );
+        padding: 0 6px;
+        line-height: 1;
+    }
+
+    .nr-answering-scroller-pager-active span {
+        @include paragraph( 0, true );
+        line-height: 1;
+        color: inherit;
+    }
+
+    &:before, &:after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        margin-left: -412px;
+    }
+
+    &:before {
+        @include icon-sprite-el( $pager-bar-top );
+        top: 0;
+    }
+
+    &:after {
+        @include icon-sprite-el( $pager-bar-bottom );
+        bottom: 0;
+    }
+}
+
+.nr-answering-scroller-prev, .nr-answering-scroller-next {
+    position: absolute;
+    display: block;
+    padding: 0;
+    margin-top: -10px;
+    top: 50%;
+    left: 0;
+
+    .nr-svg-icon {
+        @include icon-sprite( $left-arrow );
+    }
+
+    &.nr-answering-scroller-disabled {
+        cursor: default;
+        opacity: 0.2;
+    }
+}
+
+.nr-answering-scroller-next {
+    left: auto;
+    right: 0;
+
+    .nr-svg-icon {
+        transform: rotate( 180deg );
+    }
+}

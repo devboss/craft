@@ -1,0 +1,31 @@
+.overlay__background--video {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay__content--video {
+    transition: transform $transition-medium $ease-in-back, opacity $transition-medium linear;
+    transform: scale( 0.85 );
+    opacity: 0;
+
+    &.-video-ready {
+        transition: transform $transition-medium $ease-out-back, opacity $transition-medium linear;
+        transform: scale( 1 );
+        opacity: 1;
+    }
+
+    width: 100vw;
+    height: 56.25vw;
+
+    @include breakpoint( large ) {
+        width: 80vw;
+        height: 45vw;
+    }
+
+    iframe {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+}

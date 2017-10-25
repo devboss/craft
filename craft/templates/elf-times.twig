@@ -1,0 +1,99 @@
+{% import "_macros.twig" as macros %}
+
+{% extends "_layout" %}
+
+{% block content %}
+	<div class="wooden-background">
+		<div class="elf-times">
+			<div class="elf-times-header">
+				<div class="elf-times-header__text-container">
+					<span class="elf-times-header__text">{{ entry.elfTimesPrice }}</span>
+					<span class="elf-times-header__edition show-for-large">Edition No.<br><span class="elf-times-header__edition-no">{{ entry.elfTimesEdition }}</span></span>
+					<span class="elf-times-header__text">{{ entry.elfTimesSeason }}</span>
+				</div>
+				<div class="elf-times-header__banner"><span class="show-for-sr">The Lapland Times</span></div>
+			</div>
+
+			<div class="elf-times-content">
+				<div class="row">
+					<div class="column small-12">
+						<span class="elf-times-content__leader">{{ entry.elfTimesHeadlines }}</span></span>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="column small-12 large-8 xlarge-9 flex-column -justify-content-space-between">
+						<div class="elf-times-main-article">
+							<span class="elf-times-main-article__breaking-news column-child-expander--quadruple large-column-child-collapse">–BREAKING NEWS!–</span>
+
+							<h1 class="elf-times-main-article__headline">{{ entry.elfTimesArticleTitle }}</h1>
+
+							{% set image = entry.elfTimesArticleImage.first() %}
+                            {% if image %}
+								<figure class="elf-times-main-article__figure">
+									<img class="elf-times-main-article__img"
+										 src="{{ image.getUrl('elfTimes852w') }}"
+										 srcset="{{ image.getUrl('elfTimes500w') }} 500w, {{ image.getUrl('elfTimes852w') }} 852w, {{ image.getUrl('elfTimes1704w') }} 1704w"
+										 sizes="(min-width: 1024px) 62vw, 84vw">
+
+									<figcaption class="elf-times-main-article__caption">{{ image.title }}</figcaption>
+								</figure>
+                            {% endif %}
+
+							{{ entry.elfTimesArticleContent }}
+						</div>
+
+						{% set advert = entry.elfTimesAdvert.first() %}
+                        {% if advert %}
+							<img class="elf-times-advert show-for-large"
+								 alt="{{ advert.title }}"
+								 src="{{ advert.getUrl('elfTimes852w') }}"
+								 srcset="{{ advert.getUrl('elfTimes500w') }} 500w, {{ advert.getUrl('elfTimes852w') }} 852w, {{ advert.getUrl('elfTimes1704w') }} 1704w"
+								 sizes="(min-width: 1024px) 62vw, 84vw">
+                        {% endif %}
+					</div>
+
+					<div class="elf-times-footer column small-12 hide-for-large">
+						<svg class="elf-times-footer__icon">
+							<use xlink:href="/images/svg/sprite.svg#pine-cone"
+							     xmlns:xlink="http://www.w3.org/1999/xlink" />
+						</svg>
+					</div>
+
+					<div class="column small-12 large-4 xlarge-3">
+                        {% for article in entry.elfTimesSmallArticles %}
+							<div class="elf-times-small-article">
+								<h2>{{ article.articleTitle }}</h2>
+
+								{% set image = article.articleImage.first() %}
+                                {% if image %}
+									<img class="show-for-large"
+										 src="{{ image.getUrl('elfTimes264w') }}"
+										 srcset="{{ image.getUrl('elfTimes264w') }} 264w, {{ image.getUrl('elfTimes528w') }} 528w"
+										 sizes="20vw">
+                                {% endif %}
+
+								{{ article.articleContent }}
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+
+				<div class="row show-for-large">
+					<div class="elf-times-footer column">
+						<svg class="elf-times-footer__icon">
+							<use xlink:href="/images/svg/sprite.svg#pine-cone"
+							     xmlns:xlink="http://www.w3.org/1999/xlink" />
+						</svg>
+					</div>
+				</div>
+			</div>
+
+			<img class="elf-times-advert hide-for-large"
+			     alt="Elf Emporium - Grand Re-Opening November 2017"
+			     src="/images/static/elf-times-advert-852w.jpg"
+			     srcset="/images/static/elf-times-advert-500w.jpg 500w, /images/static/elf-times-advert-852w.jpg 852w, /images/static/elf-times-advert-1704w.jpg 1704w"
+			     sizes="100vw">
+		</div>
+	</div>
+{% endblock %}

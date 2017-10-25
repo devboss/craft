@@ -1,0 +1,22 @@
+ip: 192.168.10.106
+memory: 2048
+cpus: 1
+provider: virtualbox
+authorize: ~/.ssh/id_rsa.pub
+keys:
+    - ~/.ssh/id_rsa
+folders:
+    -
+        map: ./
+        to: /home/vagrant/Code/lapland-website
+sites:
+    -
+        map: lapland-website.app
+        to: /home/vagrant/Code/lapland-website/public
+    -
+        map: magic-website.app
+        to: /home/vagrant/Code/lapland-website/public_magic
+databases:
+    - lapland
+name: lapland-website
+hostname: lapland-website

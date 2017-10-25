@@ -1,0 +1,28 @@
+.bulleted-list-title {
+    @include font( $font-gill-sans, $font-weight-regular, 18, 26 );
+    text-transform: uppercase;
+}
+
+.bulleted-list {
+
+}
+
+.bulleted-list__item {
+    @include paragraph();
+
+    position: relative;
+    padding-left: em( 16, 18 );
+    //margin-bottom: em( 8, 18 );
+
+    &::before {
+        content: '\2022';
+        font-size: 1em;
+        display: block;
+        position: absolute;
+        width: em( 12, 18 );
+        line-height: inherit;
+        text-align: center;
+        left: 0;
+        top: 0;
+    }
+}

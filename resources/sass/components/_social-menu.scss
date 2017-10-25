@@ -1,0 +1,29 @@
+.social-menu {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: px( $nav-scroll-link-height );
+    margin: 0 auto;
+    padding: 0 10px;
+
+    &.-burger-menu {
+        max-width: 380px;
+    }
+}
+
+.social-menu__item {
+    flex: 0 0 auto;
+}
+
+.social-menu__link {
+    display: block;
+    width: 22px;
+    height: 18px;
+    color: rgba( $color-white, 0.8 );
+
+    &.-burger-menu {
+        color: $color-white;
+        width: 33px;
+        height: 27px;
+    }
+}

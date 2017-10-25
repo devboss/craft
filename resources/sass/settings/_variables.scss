@@ -1,0 +1,110 @@
+$base-font-size: 16;
+$breakpoint-classes: (small medium large xlarge);
+$grid-gutters: (
+    small: 20,
+    xlarge: 30
+);
+
+$image-title-scales: (
+    small: 0.714,
+    medium: 0.814,
+    large: 0.889,
+    xlarge: 1
+);
+
+$breakpoint-xxsmall: 320;
+$breakpoint-xsmall: 375;
+$breakpoint-signed-off-ml: 768;
+$breakpoint-nav-xlxxl: 1366;
+
+$main-nav-height: 193;
+
+$wooden-background-padding-large: 25;
+$wooden-background-padding-xlarge: 38;
+
+$elf-times-max-width: 1286;
+$elf-times-padding-small: 10;
+$elf-times-padding-large: 40;
+
+$blueprint-max-width: 1292;
+$blueprint-outer-padding-small: 10;
+$blueprint-outer-padding-large: 25;
+$blueprint-outer-padding-xlarge: 30;
+
+$blueprint-inner-padding-top-small: 90;
+$blueprint-inner-padding-top-medium: 102;
+$blueprint-inner-padding-top-large: 130;
+$blueprint-inner-padding-top-xlarge: 84;
+$blueprint-inner-padding-bottom-small: 136;
+$blueprint-inner-padding-bottom-medium: 200;
+$blueprint-inner-padding-bottom-medium-large: 118;
+$blueprint-inner-padding-bottom-large: 140;
+$blueprint-inner-padding-bottom-xlarge: 140;
+$blueprint-inner-padding-horizontal-medium-perc: 78 / 1490;
+$blueprint-inner-padding-horizontal-large-perc: 38 / 1842;
+$blueprint-inner-padding-horizontal-xlarge-perc: 104 / 2460;
+
+// 2 for 1px border either side
+$blueprint-inner-width-small: 375 - ( $blueprint-outer-padding-small * 2 ) - 2;
+
+// must match BookTablet.js
+$book-max-width: 964;
+$book-max-height: 610;
+$book-page-max-width: $book-max-width / 2;
+$book-page-max-height: $book-max-height;
+
+$font-face-gill-sans: 'GillSansMTStd';
+$font-face-just-lovely: 'JustLovely';
+$font-face-doves-type: 'DovesType';
+
+$font-gill-sans: $font-face-gill-sans, sans-serif;
+$font-just-lovely: $font-face-just-lovely, serif;
+$font-doves-type: $font-face-doves-type, Georgia, serif;
+
+/**
+ * 100 - Thin
+ * 200 - Extra Light, Ultra Light
+ * 300 - Light
+ * 400 - Normal, Book, Regular
+ * 500 - Medium
+ * 600 - Semi Bold, Demi Bold
+ * 700 - Bold
+ * 800 - Extra Bold, Ultra Bold
+ * 900 - Black, Heavy
+ */
+$font-weight-thin: 100;
+$font-weight-ultra-light: 200;
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semi-bold: 600;
+$font-weight-bold: 700;
+$font-weight-ultra-bold: 800;
+$font-weight-black: 900;
+
+$nav-scroll-link-height: 38;
+
+$nav-scroll-scale-large: 232 / 241;
+$nav-book-button-scale-xsmall: 138 / 231;
+$nav-book-button-scale-small: 158 / 231;
+$nav-book-button-scale-large: 192 / 231;
+
+$lapland-sign-scale-small: 150 / 292;
+$lapland-sign-scale-medium: 265 / 292;
+$lapland-sign-scale-large: 218 / 292;
+$lapland-sign-scale-xlarge: 242 / 292;
+
+$signed-off-box-font-small: 607 / 1232 * 10;
+$signed-off-box-font-medium: 820 / 961 * 10;
+
+$camera-max-width: 905;
+$camera-max-height: 1004;
+
+$cursor-crosshair-value: crosshair !default;
+$cursor-default-value: default !default;
+$cursor-pointer-value: pointer !default;
+$cursor-help-value: help !default;
+$cursor-text-value: text !default;
+
+$available-bg: #c5cedb;
+$unavailable-bg: #7087a9;

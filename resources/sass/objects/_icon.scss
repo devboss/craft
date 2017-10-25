@@ -1,0 +1,26 @@
+.icon {
+    display: inline-block;
+    height: 64px;
+    width: 64px;
+    vertical-align: middle;
+    background-repeat: no-repeat;
+    background-size: 64px 64px;
+}
+
+.icon--danger {
+    background-image: url('/images/backgrounds/icons/danger.png');
+}
+
+.icon--warning {
+    background-image: url('/images/backgrounds/icons/warning.png');
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .icon--danger {
+        background-image: url('/images/backgrounds/icons/danger@2x.png');
+    }
+
+    .icon--warning {
+        background-image: url('/images/backgrounds/icons/warning@2x.png');
+    }
+}

@@ -1,0 +1,60 @@
+.mmb-my-party-add {
+	.image-misc__image--underline {
+		margin: 1.875rem auto 1rem auto !important
+	}
+}
+
+.party-additions__wrapper {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-content: center;
+	&>div {
+		@include font($font-gill-sans, $font-weight-regular, 18);
+		align-self: center;
+		width: 20%;
+		text-align: center;
+	}
+	&.-caps {
+		text-transform: uppercase;
+	}
+	&.-border {
+		border-bottom: 2px solid rgba(#4F6D93, 1);
+	}
+
+	.hide-for-small-only {
+		padding-left: rem(10);
+	}
+
+	&.-margin {
+		margin-bottom: rem(30);
+	}
+
+	@include breakpoint(small down) {
+		.multiselect__single {
+			padding-left: 0;
+		}
+	}
+
+}
+
+.sans-18-light {
+	@include sans-18-light();
+	@include breakpoint(small down) {
+		margin-top: rem(20);
+	}
+}
+
+div[name=numberOfAdditionalWheelchairs] {
+	@include breakpoint(small down) {
+		max-width: rem(115);
+	}
+}
+
+.party-additions__check-availability-button {
+	margin: rem(20) auto;
+}
+
+.ticket-payment__wrapper {
+	margin-top: rem(50);
+}

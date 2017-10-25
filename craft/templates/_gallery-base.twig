@@ -1,0 +1,90 @@
+{% import "_macros.twig" as macros %}
+
+{% extends "_blueprint-layout" %}
+
+{% block blueprint_content %}
+	<div class="blueprint__container--gallery">
+		{{ macros.worksheet }}
+
+		{% block gallery_title %}
+		{% endblock %}
+
+		<div class="camera" data-class="Camera">
+			<div class="camera__body-container">
+				<span class="background-text--gallery-step-1">Step 1: Press this button</span>
+				<span class="background-text--gallery-press-button show-for-large">press the big red button</span>
+				<span class="background-sketch--gallery-accordion show-for-large"></span>
+				<span class="background-sketch--gallery-ratchet show-for-large"></span>
+				<span class="background-text--gallery-click-to-enlarge show-for-large">Click photograph to enlarge</span>
+
+				<a class="camera__button"></a>
+
+				<div class="camera__body">
+					<div class="camera__polaroid-container"></div>
+				</div>
+
+				<span class="background-text--gallery-step-2">Step 2: Select a photograph &amp; admire</span>
+			</div>
+		</div>
+
+		<div class="polaroid-carousel row" data-class="PolaroidCarousel">
+			<div class="polaroid-carousel__container swiper-container">
+				<div class="swiper-wrapper">
+					{% for image in entry.images %}
+						<div class="swiper-slide">
+							<a class="polaroid--slide -drop-shadow">
+								<div class="polaroid__image-container">
+									<img class="polaroid__image"
+									     data-caption="{{ image.title }}"
+									     src="{{ image.getUrl('large') }}"
+									     sizes="(max-width: 639px) 27vw, 13vw"
+									     srcset="{{ image.getUrl('thumb') }} 135w,
+											{{ image.getUrl('small') }} 325w,
+											{{ image.getUrl('medium') }} 500w,
+											{{ image.getUrl('large') }} 1000w,
+											{{ image.getUrl('extraLarge') }} 1800w">
+								</div>
+							</a>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+
+			<a class="polaroid-carousel__button -next"></a>
+			<a class="polaroid-carousel__button -previous"></a>
+
+			<span class="background-sketch--gallery-90deg show-for-large"></span>
+			<span class="background-sketch--gallery-cog show-for-large"></span>
+		</div>
+
+		{{ macros.sign_off_box( 'Zauber', 'The most magical of the Elves' ) }}
+	</div>
+{% endblock %}
+
+{% block overlays %}
+	<div class="gallery-overlay overlay" data-class="GalleryOverlay" data-name="gallery">
+		<div class="overlay__background overlay__background--gallery">
+			<a class="gallery-overlay__close"><span class="gallery-overlay__close-text">Close</span></a>
+
+			<div class="overlay__content overlay__content--gallery-overlay swiper-container">
+				<div class="swiper-wrapper">
+					{% for image in entry.images %}
+						<div class="swiper-slide swiper-slide--gallery-overlay">
+							<img class="gallery-overlay__image lazyload"
+							     data-src="{{ image.getUrl('large') }}"
+							     data-sizes="(max-width: 639px) 100vw, 80vw"
+							     data-srcset="{{ image.getUrl('thumb') }} 135w,
+									{{ image.getUrl('small') }} 325w,
+									{{ image.getUrl('medium') }} 500w,
+									{{ image.getUrl('large') }} 1000w,
+									{{ image.getUrl('extraLarge') }} 1800w">
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+
+			<a class="polaroid-carousel__button--gallery-overlay -previous"></a>
+			<a class="polaroid-carousel__button--gallery-overlay -next"></a>
+		</div>
+	</div>
+{% endblock %}

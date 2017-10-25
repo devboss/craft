@@ -1,0 +1,54 @@
+@mixin horizontal-line-background ( $horizontal-offset: false ) {
+    $horizontal-position: if( $horizontal-offset, px-or-existing-unit( $horizontal-offset ), left );
+
+    @include background-image( "blueprints/horizontal-line.png", auto );
+    background-position: $horizontal-position center;
+    background-repeat: repeat-x;
+}
+
+@mixin vertical-line-background ( $vertical-offset: false ) {
+    $vertical-position: if( $vertical-offset, px-or-existing-unit( $vertical-offset ), top );
+
+    @include background-image( "blueprints/vertical-line.png", auto );
+    background-position: center $vertical-position;
+    background-repeat: repeat-y;
+}
+
+@mixin sketch-line-vertical( $top, $left, $height: 100%, $offset: false, $opacity: 0.85 ) {
+    @include vertical-line-background( $offset );
+
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: rem-or-existing-unit( $height );
+    left: rem-or-existing-unit( $left );
+    top: rem-or-existing-unit( $top );
+    opacity: $opacity;
+}
+
+@mixin sketch-line-horizontal( $top, $left, $width, $offset: false, $opacity: 0.85 ) {
+    @include horizontal-line-background( $offset );
+
+    content: '';
+    position: absolute;
+    width: rem-or-existing-unit( $width );
+    height: 2px;
+    left: rem-or-existing-unit( $left );
+    top: rem-or-existing-unit( $top );
+    opacity: $opacity;
+}
+
+@mixin sketch-lines-vertical-container () {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: z-index( background );
+}
+
+@mixin sketch-lines-horizontal-container () {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}

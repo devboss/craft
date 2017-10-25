@@ -1,0 +1,46 @@
+.overlay__content--book {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: z-index( overlay__content );
+    overflow: auto;
+
+    .mobile &, .tablet & {
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    @include breakpoint( medium down ) {
+        transition: transform $transition-medium $ease-in-back;
+        transform: scale( 0.85 );
+
+        .-visible.-book-visible & {
+            transition: transform $transition-medium $ease-out-back;
+            transform: scale( 1 );
+        }
+    }
+
+    @include breakpoint( large ) {
+        overflow: visible;
+        transition: transform $transition-xxslow $ease-in-out-quart;
+        transform: translate3d(0, 100%, 700px) rotateX(-45deg);
+
+        .preserve-3d & {
+            transform-style: preserve-3d;
+        }
+
+        .no-preserve-3d & {
+            transform: translate3d(0, 100%, 0);
+        }
+
+        .-visible.-book-visible & {
+            transform: translate3d(0, 0, 0) rotateX(0deg);
+
+            .no-preserve-3d & {
+                transform: translate3d(0, 0, 0);
+            }
+        }
+    }
+}
